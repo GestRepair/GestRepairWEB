@@ -9,3 +9,6 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+// Configurations
+export const API = { 'url': 'http://127.0.0.1:8080' };

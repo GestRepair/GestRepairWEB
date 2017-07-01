@@ -7,12 +7,14 @@ import 'rxjs/add/operator/map';
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/catch";
 
+import { API } from '../../main';
+
 import { Register } from './register';
 
 @Injectable()
 export class RegisterService {
 
-    private apiUrl = '';  // URL to web api
+    apiUrl = API.url;;  // URL to web api
 
     constructor(private _http: Http) { }
 
