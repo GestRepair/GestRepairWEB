@@ -7,18 +7,36 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <form action="">
-      <div class="form-group">
-        <label for="username-email">E-mail or Username</label>
-        <input value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login">
+      <div class="form-group input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="email" class="form-control" id="tfLogEmail" placeholder="Email" [(ngModel)]="email" name="email" email required>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" value='' placeholder="Password" type="text" class="form-control" />
+      <div class="form-group input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input type="password" class="form-control" id="tfLogUserPass" placeholder="Password" [(ngModel)]="password" name="password" required>
+      </div>
+      <div class="help-block text-right"><a routerLink="recovery" routerLinkActive="active">Esqueceu-se da Password?</a></div>
+      <div *ngIf="error==true" class="alert alert-danger">
+        <p>Dados incorrectos</p>
       </div>
       <div class="form-group text-center">
         <button class="btn btn-danger btn-cancel-action" routerLink="" routerLinkActive="active-link">Voltar</button>
-        <input type="submit" class="btn btn-success btn-login-submit" value="Login" />
+        <button (click)="login()" id="btUserLogin" [disabled]="loading" class="btn btn-success btn-login-submit">Entrar</button>
+        <div *ngIf="loading">
+          <div class="loading" style="width:50px; height:50px; padding-top:30px;">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="checkbox">
+        <!--<label>
+				  <input type="checkbox" name="lembra_me"> 
+				</label>-->
       </div>
     </form>
   </div>

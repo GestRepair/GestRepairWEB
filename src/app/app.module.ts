@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 //service
 import { RegisterService } from './register/register.service';
+import { AuthService } from "app/auth/auth.service";
 //module
 import { AppRoutingModule } from "app/app.routing.module";
 
@@ -27,6 +28,7 @@ import { AppRoutingModule } from "app/app.routing.module";
     AppRoutingModule
   ],
   providers: [
+    AuthService,
     RegisterService
   ],
   bootstrap: [AppComponent]

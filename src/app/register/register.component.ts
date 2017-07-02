@@ -22,11 +22,14 @@ export class RegisterComponent {
         private router: Router) { }
 
     // sign up when the form is valid
-    add(model: Register, isValid: boolean) {
+    addUser(model: Register, isValid: boolean) {
         // check if model is valid
         if (isValid) {
             this._registerService.create(model).subscribe(
-                data => this.registers = data,
+                data => {
+                    this.registers = data
+                    console.log(data);
+                },
                 error => {
                     let myContainer = <HTMLElement>document.querySelector("#notif");
                     myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
