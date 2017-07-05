@@ -1,20 +1,21 @@
 import { Injectable, Output, EventEmitter } from "@angular/core";
 import { FormsModule }   from '@angular/forms';
 import { Http, Response, Headers } from "@angular/http";
-import { Auth } from "./auth"
+import { Auth } from "./auth";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { API } from '../../main';
+import { API } from '../main';
 import { Subject } from "rxjs/Subject";
 import { ReplaySubject } from "rxjs/ReplaySubject";
 
 @Injectable()
-export class AuthService {
+export class AppService {
 
     private readonly apiURL:string;
+    public nome: string;
     public role: string;
     public roleChange = new ReplaySubject<any>(1);
     
@@ -46,8 +47,8 @@ export class AuthService {
                     "nif":data.data.nif
                 }));
                 console.log(JSON.parse(localStorage.getItem('currentUser')));
+                this.nome = data.data.nome;
                 this.role = data.data.nomeRole;
-
                 // return true to indicate successful login
                 return true;
             } else {
@@ -67,7 +68,7 @@ export class AuthService {
 
     private handleError(error: Response) {
         console.error(error);
-        return Observable.throw(error.json().error || 'Server Error');
+        return Observable.throw(error.json().message);
     }
 
     public logout(): void {

@@ -5,21 +5,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
 import { AppComponent } from './app.component';
-import { AuthComponent } from "app/auth/auth.component";
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { UserEditComponent } from "app/user/edit/edit.component";
+import { UserInfoComponent } from "app/user/info/info.component";
 //service
+import { AppService } from "app/app.service";
 import { RegisterService } from './register/register.service';
-import { AuthService } from "app/auth/auth.service";
+import { UserEditService } from "app/user/edit/edit.service";
+import { UserInfoService } from "app/user/info/info.service";
 //module
 import { AppRoutingModule } from "app/app.routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserEditComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +32,10 @@ import { AppRoutingModule } from "app/app.routing.module";
     AppRoutingModule
   ],
   providers: [
-    AuthService,
-    RegisterService
+    AppService,
+    RegisterService,
+    UserEditService,
+    UserInfoService
   ],
   bootstrap: [AppComponent]
 })
