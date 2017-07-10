@@ -1,33 +1,33 @@
-import { Component, Input } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { RegisterService } from './register.service';
+import { UserCreateService } from './create.user.service';
 
-import { Register } from './register';
+import { UserCreate } from './createuser';
 
 @Component({
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+	templateUrl: './create.user.component.html',
+	styleUrls: ['./create.user.component.css']
 })
 
-export class RegisterComponent {
+export class UserCreateComponent {
 
     title = 'Registar Utilizador';
 
-    registers: string;
-    selectedRegister: Register;
+    createUser: string;
+	selectedRegister: UserCreate;
 
     constructor(
-        private _registerService: RegisterService,
+		private _createUserService: UserCreateService,
         private router: Router) { }
 
     // sign up when the form is valid
-    addUser(model: Register, isValid: boolean) {
+	addUser(model: UserCreate, isValid: boolean) {
         // check if model is valid
         if (isValid) {
-            this._registerService.create(model).subscribe(
+            this._createUserService.create(model).subscribe(
                 data => {
-                    this.registers = data
+					this.createUser = data
                     console.log(data);
                 },
                 error => {

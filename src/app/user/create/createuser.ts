@@ -1,4 +1,4 @@
-export interface Register {
+﻿export interface UserCreate {
   nome:string;
 	username:string;
 	password:string;

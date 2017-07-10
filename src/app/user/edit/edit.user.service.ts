@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 
@@ -7,22 +7,23 @@ import 'rxjs/add/operator/map';
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/catch";
 
-import { API } from '../../main';
+import { API } from '../../../main';
 
-import { Register } from './register';
+import { UserEdit } from './edituser';
 
 @Injectable()
-export class RegisterService {
+export class UserEditService {
 
     apiUrl = API.url;;  // URL to web api
 
     constructor(private _http: Http) { }
 
-    create(data: Register) {
+    edit(data: UserEdit,num: number) {
         console.log(data);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this._http.post(this.apiUrl + '/user', JSON.stringify(data), { headers: headers })
+        headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
+        return this._http.put(this.apiUrl + '/user/'+num, JSON.stringify(data), { headers: headers })
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }

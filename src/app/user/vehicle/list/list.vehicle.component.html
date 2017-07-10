@@ -1,0 +1,39 @@
+﻿<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Quilometros</th>
+            <th>Combustível</th>
+            <th>Cilindrada</th>
+            <th>Ano</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicle of vehicles">
+            <td>{{vehicle?.matricula}}</td>
+            <td>{{vehicle?.marca}}</td>
+            <td>{{vehicle?.modeloVeiculo}}</td>
+            <td>{{vehicle?.quilometros}}</td>
+            <td>{{vehicle?.Combustivel}}</td>
+            <td>{{vehicle?.cilindrada}}</td>
+            <td>{{vehicle?.ano}}</td>
+            <td><button class="btn btn-primary">Info</button></td>
+            <td><button class="btn btn-danger">Editar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from "@angular/core";
+﻿import { Injectable, Output, EventEmitter } from "@angular/core";
 import { FormsModule }   from '@angular/forms';
 import { Http, Response, Headers } from "@angular/http";
 import { Auth } from "./auth";
@@ -16,7 +16,8 @@ export class AppService {
 
     private readonly apiURL:string;
     public nome: string;
-    public role: string;
+	public role: string;
+	public idUser: string;
     public roleChange = new ReplaySubject<any>(1);
     
     constructor(private _http: Http){
@@ -47,8 +48,10 @@ export class AppService {
                     "nif":data.data.nif
                 }));
                 console.log(JSON.parse(localStorage.getItem('currentUser')));
-                this.nome = data.data.nome;
-                this.role = data.data.nomeRole;
+				this.nome = data.data.nome;
+				this.idUser = data.data.numUtilizador;
+				this.role = data.data.nomeRole;
+
                 // return true to indicate successful login
                 return true;
             } else {

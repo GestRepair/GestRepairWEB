@@ -1,3 +1,10 @@
-.white{
+﻿.back{
     background-color: #FFFFFF;
+    padding-top:4%;
+}
+.not {
+  position: absolute;
+  right: 2%;
+  top: 7%;
+  z-index: 1;
 }
