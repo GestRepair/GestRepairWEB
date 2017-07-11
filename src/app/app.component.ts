@@ -35,17 +35,10 @@ export class AppComponent {
           this.autenticated = true;
           this.nome = JSON.parse(localStorage.getItem('currentUser')).nome;
           this.nomeRole = JSON.parse(localStorage.getItem('currentUser')).nomeRole;
-          let myContainer = <HTMLElement>document.querySelector("#notif");
-          myContainer.innerHTML = '<div class="alert alert-success"><strong>Login</strong> Bem-Vindo ' + this.nome + '</div>';
-          setTimeout(() => { myContainer.innerHTML = '' }, 3000);
-          //this.router.navigate(['home']);
         },
         error => {
           this.error = true;
           this.loading = false;
-          let myContainer = <HTMLElement>document.querySelector("#notif");
-          myContainer.innerHTML = '<div class="alert alert-danger"><strong>Login</strong> ' + error + '</div>';
-          setTimeout(() => { myContainer.innerHTML = '' }, 3000);
         }
       );
       this.load();

@@ -26,7 +26,7 @@ export class VehicleListService {
 	}
 	getVehicles(num:number): Observable<VehicleList[]> {
 		return this._http
-			.get(this.apiUrl + '/vehicle/'+num, this.options)
+			.get(this.apiUrl + '/vehicle/'+num+'/user', this.options)
 			.map((response: Response) => <VehicleList[]>response.json().data)
 			.catch(this.handleError);
 	}

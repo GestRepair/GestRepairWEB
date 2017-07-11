@@ -7,6 +7,7 @@ import { UserCreateComponent } from "app/user/create/create.user.component";
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
 import { VehicleListComponent } from "app/user/vehicle/list/list.vehicle.component";
+import { VehicleInfoComponent } from "app/user/vehicle/info/info.vehicle.component";
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
 	{ path: 'user/edit', component: UserEditComponent },
 	{ path: 'user/info', component: UserInfoComponent },
 	{ path: 'user/vehicle/list', component: VehicleListComponent },
+	{ path: 'user/vehicle/info/:id', component: VehicleInfoComponent }
 ];
 
 @NgModule({

@@ -9,10 +9,10 @@ import "rxjs/add/operator/catch";
 
 import { API } from '../../../../main';
 
-import { UserInfo } from './info';
+import { VehicleInfo } from './infovehicle';
 
 @Injectable()
-export class UserInfoService {
+export class VehicleInfoService {
     
     headers: Headers;
     options: RequestOptions;
@@ -25,9 +25,9 @@ export class UserInfoService {
         this.options = new RequestOptions({ headers: this.headers });
     }
 
-    info(num: number): Observable<UserInfo>  {
+	info(num: number): Observable<VehicleInfo>  {
         return this._http
-            .get(this.apiUrl+`/user/`+num, this.options)
+			.get(this.apiUrl +`/vehicle/`+num, this.options)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }

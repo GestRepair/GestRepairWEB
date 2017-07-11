@@ -18,7 +18,6 @@
             <th>Cilindrada</th>
             <th>Ano</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,8 +29,7 @@
             <td>{{vehicle?.Combustivel}}</td>
             <td>{{vehicle?.cilindrada}}</td>
             <td>{{vehicle?.ano}}</td>
-            <td><button class="btn btn-primary">Info</button></td>
-            <td><button class="btn btn-danger">Editar</button></td>
+            <td><button class="btn btn-primary" [routerLink]="['/user/vehicle/info', vehicle?.idVeiculo]">Info</button></td>
           </tr>
         </tbody>
       </table>
