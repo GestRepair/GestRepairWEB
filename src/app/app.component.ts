@@ -1,6 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { AppService } from "app/app.service";
+import { ServiceService } from "app/service/service.service";
 import { Router } from "@angular/router";
+import { Service } from "app/service/service";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,8 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = 'app';
+
+  services: Service[];
 
   private username: string;
   private password: string;
@@ -24,9 +28,11 @@ export class AppComponent {
   private loading = false;
   private error = false;
   private autenticated = false;
+  
 
-  constructor(private _httpService: AppService, private router: Router) { }
+  constructor(private _httpService: AppService, private _serviceService: ServiceService, private router: Router) { }
   ngOnInit() {
+	  this.serv();
     if (JSON.parse(localStorage.getItem('currentUser'))) {
       this.loading = true;
       this._httpService.auth(JSON.parse(localStorage.getItem('currentUser')).username, JSON.parse(localStorage.getItem('currentUser')).password).subscribe(
@@ -44,7 +50,12 @@ export class AppComponent {
       this.load();
     }
   }
-
+  serv() {
+	  this._serviceService.list().subscribe(
+		  services => this.services = services,
+		  error => console.log("Impossível carregar lista de Serviços")
+	  );
+  }
   login() {
     this.loading = true;
     this._httpService.auth(this.username, this.password).subscribe(

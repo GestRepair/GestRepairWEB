@@ -1,7 +1,7 @@
 ﻿import { Component, Input } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { UserCreateService } from './create.user.service';
+import { UserService } from '../user.service';
 
 import { UserCreate } from './createuser';
 
@@ -18,11 +18,11 @@ export class UserCreateComponent {
 	selectedRegister: UserCreate;
 
     constructor(
-		private _createUserService: UserCreateService,
+		private _createUserService: UserService,
         private router: Router) { }
 
     // sign up when the form is valid
-	addUser(model: UserCreate, isValid: boolean) {
+	create(model: UserCreate, isValid: boolean) {
         // check if model is valid
         if (isValid) {
             this._createUserService.create(model).subscribe(

@@ -9,7 +9,7 @@
   <div class="col-md-2">
   </div>
   <div class="col-md-8">
-    <form class="form-horizontal" #f="ngForm" (ngSubmit)="editUser(f.value, f.valid)" novalidate>
+    <form class="form-horizontal" #f="ngForm" (ngSubmit)="edit(f.value, f.valid)" novalidate>
       <div class="form-group">
         <label for="nome" class="col-md-4 control-label">Nome Completo <small>(obrigatório)</small></label>
         <div class="col-md-8">
@@ -159,7 +159,7 @@
       <div class="form-group">
         <div class="col-md-4"></div>
         <div class="col-md-8">
-          <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
+          <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Alterar</button>
         </div>
       </div>
     </form>

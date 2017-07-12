@@ -1,7 +1,7 @@
 ﻿import { Component, Input } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { UserEditService } from './edit.user.service';
+import { UserService } from '../user.service';
 
 import { UserEdit } from './edituser';
 
@@ -11,15 +11,12 @@ import { UserEdit } from './edituser';
 })
 
 export class UserEditComponent {
-    morada: any=  (JSON.parse(localStorage.getItem('currentUser')).morada).toString();
-    
-
     title = 'Editar Utilizador';
-    edit: string;
+    data: string;
     selectedEdit: UserEdit;
     
     constructor(
-        private _UserEditService: UserEditService,
+        private _UserService: UserService,
         private router: Router) { 
             
         }
@@ -27,13 +24,12 @@ export class UserEditComponent {
         
     }
     // sign up when the form is valid
-    editUser(model: UserEdit, isValid: boolean) {
+    edit(model: UserEdit, isValid: boolean) {
         // check if model is valid
         if (isValid) {
-            this._UserEditService.edit(model,JSON.parse(localStorage.getItem('currentUser')).numUtilizador).subscribe(
+            this._UserService.edit(model,JSON.parse(localStorage.getItem('currentUser')).numUtilizador).subscribe(
                 data => {
-                    this.edit = data
-                    
+                    this.data = data
                     console.log(data);
                 },
                 error => {

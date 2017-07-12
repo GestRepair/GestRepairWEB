@@ -6,30 +6,31 @@ import { RouterModule } from '@angular/router';
 //component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ServiceInfoComponent } from 'app/service/info/info.service.component';
 import { UserCreateComponent } from 'app/user/create/create.user.component';
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
-import { VehicleListComponent } from "app/user/vehicle/list/list.vehicle.component";
-import { VehicleInfoComponent } from "app/user/vehicle/info/info.vehicle.component";
+import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
+import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
 //service
 import { AppService } from "app/app.service";
-import { UserCreateService } from 'app/user/create/create.user.service';
-import { UserEditService } from "app/user/edit/edit.user.service";
-import { UserInfoService } from "app/user/info/info.user.service";
-import { VehicleListService } from "app/user/vehicle/list/list.vehicle.service";
-import { VehicleInfoService } from "app/user/vehicle/info/info.vehicle.service";
+import { ServiceService } from "app/service/service.service";
+import { UserService } from "app/user/user.service";
+import { VehicleService } from "app/vehicle/vehicle.service";
 //module
 import { AppRoutingModule } from "app/app.routing.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ServiceInfoComponent,
     UserCreateComponent,
     UserEditComponent,
-	UserInfoComponent,
-	VehicleListComponent,
-	VehicleInfoComponent
+    UserInfoComponent,
+    VehicleListComponent,
+    VehicleInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +40,9 @@ import { AppRoutingModule } from "app/app.routing.module";
   ],
   providers: [
     AppService,
-    UserCreateService,
-    UserEditService,
-	UserInfoService,
-	VehicleListService,
-	VehicleInfoService
+    ServiceService,
+    UserService,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })

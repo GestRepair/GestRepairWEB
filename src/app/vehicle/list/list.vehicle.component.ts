@@ -2,14 +2,14 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { VehicleListService } from './list.vehicle.service';
+import { VehicleService } from '../vehicle.service';
 
 import { VehicleList } from './listvehicle';
 
 @Component({
 	templateUrl: './list.vehicle.component.html',
 	styleUrls: ['./list.vehicle.component.css'],
-	providers: [VehicleListService]
+	providers: [VehicleService]
 })
 
 export class VehicleListComponent {
@@ -21,15 +21,18 @@ export class VehicleListComponent {
 	searchFilter: string;
 
 	constructor(
-		private _VehicleListService: VehicleListService,
+		private _VehicleService: VehicleService,
 		private router: ActivatedRoute
 	) { }
 
 	// Method that is called on initialization of the page
 	ngOnInit(): void {
-		this._VehicleListService.getVehicles(JSON.parse(localStorage.getItem('currentUser')).numUtilizador).subscribe(
+		this.getList(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+	}
+	getList(id:number) {
+		this._VehicleService.list(id).subscribe(
 			vehicles => this.vehicles = vehicles,
 			error => console.log("Impossível carregar lista de estudantes")
 		);
-	}  
+	}
 }

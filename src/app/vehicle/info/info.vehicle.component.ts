@@ -2,14 +2,14 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { VehicleInfoService } from './info.vehicle.service';
+import { VehicleService } from '../vehicle.service';
 
 import { VehicleInfo } from './infovehicle';
 
 @Component({
     templateUrl: './info.vehicle.component.html',
 	styleUrls: ['./info.vehicle.component.css'],
-	providers: [VehicleInfoService]
+	providers: [VehicleService]
 })
 
 export class VehicleInfoComponent {
@@ -19,7 +19,7 @@ export class VehicleInfoComponent {
 	vehicle: VehicleInfo;
 
     constructor(
-		private _VehicleInfoService: VehicleInfoService,
+		private _VehicleService: VehicleService,
         private router: ActivatedRoute
     ) { }
 
@@ -28,7 +28,7 @@ export class VehicleInfoComponent {
 	}
 	info() {
 		this.router.params
-			.switchMap((params: Params) => this._VehicleInfoService.info(+params['id']))
+			.switchMap((params: Params) => this._VehicleService.info(+params['id']))
 			.subscribe(
 			vehicle => {
 				this.vehicle = vehicle;

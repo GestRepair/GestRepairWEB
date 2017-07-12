@@ -2,14 +2,14 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { UserInfoService } from './info.user.service';
+import { UserService } from '../user.service';
 
 import { UserInfo } from './infouser';
 
 @Component({
     templateUrl: './info.user.component.html',
     styleUrls: ['./info.user.component.css'],
-    providers: [UserInfoService]
+    providers: [UserService]
 })
 
 export class UserInfoComponent {
@@ -19,13 +19,16 @@ export class UserInfoComponent {
     user: UserInfo;
 
     constructor(
-        private _UserInfoService: UserInfoService,
+        private _UserService: UserService,
         private router: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
+        this.info(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+    }
+    info(id:number) {
         this.router.params
-            .switchMap((params: Params) => this._UserInfoService.info(JSON.parse(localStorage.getItem('currentUser')).numUtilizador))
+            .switchMap((params: Params) => this._UserService.info(id))
             .subscribe(
             user => {
                 this.user = user;
