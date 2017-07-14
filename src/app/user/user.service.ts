@@ -15,24 +15,22 @@ import { UserInfo } from "./info/infouser";
 
 @Injectable()
 export class UserService {
-
     headers: Headers;
     options: RequestOptions;
-    apiUrl = API.url;  // URL to web api
-
+    apiUrl = API.url+API.port;  // URL to web api
 
     constructor(private _http: Http) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
-        this.headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
+        if(localStorage.getItem('currentUser')){
+            this.headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
+        }
         this.options = new RequestOptions({ headers: this.headers });
     }
 
     create(data: UserCreate) {
         console.log(data);
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this._http.post(this.apiUrl + '/user', JSON.stringify(data), { headers: headers })
+        return this._http.post(this.apiUrl + '/user', JSON.stringify(data),this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }

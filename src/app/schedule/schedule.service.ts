@@ -9,10 +9,10 @@ import "rxjs/add/operator/catch";
 
 import { API } from '../../main';
 
-import { Service } from './service';
+import { Schedule } from './schedule';
 
 @Injectable()
-export class ServiceService {
+export class ScheduleService {
 
 	headers: Headers;
 	options: RequestOptions;
@@ -20,21 +20,13 @@ export class ServiceService {
 	
 	constructor(private _http: Http) {
 		this.headers = new Headers();
-		this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Content-Type', 'application/json');
+        if(localStorage.getItem('currentUser')){
+            this.headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
+        }
 		this.options = new RequestOptions({ headers: this.headers });
 	}
-	list(): Observable<Service[]> {
-		return this._http
-			.get(this.apiUrl + '/service', this.options)
-			.map((response: Response) => <Service[]>response.json().data)
-			.catch(this.handleError);
-	}
-	info(num: number): Observable<Service>  {
-        return this._http
-			.get(this.apiUrl +'/service/'+num, this.options)
-            .map((res: Response) => res.json().data)
-            .catch(this.handleError);
-    }
+	
 	private handleError(error: Response) {
 		return Observable.throw(error.json().message);
 	}

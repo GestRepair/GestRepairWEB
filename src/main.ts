@@ -2,6 +2,9 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
+
+
+
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -11,4 +14,7 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule);
 
 // Configurations
-export const API = { 'url': 'http://127.0.0.1:8080' };
+export const API = {
+  'url': 'http://'+location.hostname,
+  'port': ':8080'
+};

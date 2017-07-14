@@ -22,7 +22,7 @@ export class AppService {
     
     constructor(private _http: Http){
         // set token if saved in local storage      
-        this.apiURL = API.url;
+        this.apiURL = API.url+API.port;
     }
 
     auth(username: string, password:string): Observable<boolean>{
@@ -42,7 +42,7 @@ export class AppService {
                     "morada":data.data.morada,
                     "codPostal":data.data.codPostal,
                     "localidade":data.data.localidade,
-                    "nomeRole":data.data.nomeRole,
+                    "nameRole":data.data.nameRole,
                     "email":data.data.email,
                     "contacto":data.data.contacto,
                     "nif":data.data.nif
@@ -50,7 +50,7 @@ export class AppService {
                 console.log(JSON.parse(localStorage.getItem('currentUser')));
 				this.nome = data.data.nome;
 				this.idUser = data.data.numUtilizador;
-				this.role = data.data.nomeRole;
+				this.role = data.data.nameRole;
 
                 // return true to indicate successful login
                 return true;
