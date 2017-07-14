@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ServiceService } from '../service.service';
@@ -18,20 +18,24 @@ export class ServiceInfoComponent {
 
 	constructor(
 		private _serviceService: ServiceService,
-		private router: ActivatedRoute
+		private router: ActivatedRoute,
+		private nrouter: Router
 	) { }
 
 	ngOnInit(): void {
 		this.info();
 	}
-	info(){
+	info() {
 		this.router.params
 			.switchMap((params: Params) => this._serviceService.info(+params['id']))
 			.subscribe(
 			service => {
 				this.service = service;
 			},
-			error => console.log("Impossível carregar perfil de Utilizador")
+			error => {
+				console.log(error)
+				this.nrouter.navigate(['home']);
+			}
 			);
 	}
 }

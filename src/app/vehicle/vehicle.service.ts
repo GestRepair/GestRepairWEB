@@ -17,7 +17,7 @@ export class VehicleService {
 
     headers: Headers;
     options: RequestOptions;
-    apiUrl = API.url;  // URL to web api
+    apiUrl = API.url+API.port;  // URL to web api
 
     constructor(private _http: Http) {
         this.headers = new Headers();

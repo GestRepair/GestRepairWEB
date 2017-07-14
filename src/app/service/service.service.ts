@@ -16,8 +16,8 @@ export class ServiceService {
 
 	headers: Headers;
 	options: RequestOptions;
-	apiUrl = API.url;  // URL to web api
-
+	apiUrl = API.url+API.port;
+	
 	constructor(private _http: Http) {
 		this.headers = new Headers();
 		this.headers.append('Content-Type', 'application/json');
@@ -36,7 +36,7 @@ export class ServiceService {
             .catch(this.handleError);
     }
 	private handleError(error: Response) {
-		return Observable.throw(error.json().error || "Server error");
+		return Observable.throw(error.json().message);
 	}
 
 }

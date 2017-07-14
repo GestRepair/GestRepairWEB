@@ -6,44 +6,38 @@ import { RouterModule } from '@angular/router';
 //component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ServiceInfoComponent } from 'app/service/info/info.service.component';
-import { UserCreateComponent } from 'app/user/create/create.user.component';
-import { UserEditComponent } from "app/user/edit/edit.user.component";
-import { UserInfoComponent } from "app/user/info/info.user.component";
-import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
-import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
+import { NavbarComponent } from 'app/navbar/navbar.component';
 //service
 import { AppService } from "app/app.service";
-import { ServiceService } from "app/service/service.service";
-import { UserService } from "app/user/user.service";
-import { VehicleService } from "app/vehicle/vehicle.service";
 //module
+import { DatepickerModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from "app/app.routing.module";
+import { ScheduleModule} from "app/schedule/schedule.module";
+import { ServiceModule } from "app/service/service.module";
+import { UserModule } from "app/user/user.module";
+import { VehicleModule } from "app/vehicle/vehicle.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ServiceInfoComponent,
-    UserCreateComponent,
-    UserEditComponent,
-    UserInfoComponent,
-    VehicleListComponent,
-    VehicleInfoComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    RouterModule,
+    DatepickerModule.forRoot(),
+    //Module We Create
+    AppRoutingModule,
+    ScheduleModule,
+    ServiceModule,
+    UserModule,
+    VehicleModule
   ],
-  providers: [
-    AppService,
-    ServiceService,
-    UserService,
-    VehicleService
-  ],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

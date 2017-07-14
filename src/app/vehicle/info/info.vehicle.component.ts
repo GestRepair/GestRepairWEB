@@ -1,27 +1,29 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { VehicleService } from '../vehicle.service';
 
 import { VehicleInfo } from './infovehicle';
+import { Observable } from "rxjs/Observable";
 
 @Component({
-    templateUrl: './info.vehicle.component.html',
+	templateUrl: './info.vehicle.component.html',
 	styleUrls: ['./info.vehicle.component.css'],
 	providers: [VehicleService]
 })
 
 export class VehicleInfoComponent {
 
-    title = 'Informação do Veiculo';
+	title = 'Informação do Veiculo';
 
 	vehicle: VehicleInfo;
 
-    constructor(
+	constructor(
 		private _VehicleService: VehicleService,
-        private router: ActivatedRoute
-    ) { }
+		private router: ActivatedRoute,
+		private nrouter: Router
+	) { }
 
 	ngOnInit(): void {
 		this.info();
@@ -33,7 +35,9 @@ export class VehicleInfoComponent {
 			vehicle => {
 				this.vehicle = vehicle;
 			},
-			error => console.log("Impossível carregar perfil de Utilizador")
-			);
+			error => {
+				this.nrouter.navigate(['home']);
+				console.log(error);
+			})
 	}
 }
