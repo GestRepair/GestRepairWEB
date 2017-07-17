@@ -26,6 +26,12 @@ export class ScheduleService {
         }
 		this.options = new RequestOptions({ headers: this.headers });
 	}
+	create(data: Schedule) {
+        console.log(data);
+        return this._http.post(this.apiUrl + '/schedule', JSON.stringify(data),this.options)
+            .map((response: Response) => response.json())
+			.catch(this.handleError);
+    }
 	
 	private handleError(error: Response) {
 		return Observable.throw(error.json().message);

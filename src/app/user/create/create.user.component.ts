@@ -15,7 +15,6 @@ export class UserCreateComponent {
     title = 'Registar Utilizador';
 
     createUser: string;
-	selectedRegister: UserCreate;
 
     constructor(
 		private _createUserService: UserService,

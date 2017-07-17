@@ -27,7 +27,6 @@ export class UserService {
         }
         this.options = new RequestOptions({ headers: this.headers });
     }
-
     create(data: UserCreate) {
         console.log(data);
         return this._http.post(this.apiUrl + '/user', JSON.stringify(data),this.options)

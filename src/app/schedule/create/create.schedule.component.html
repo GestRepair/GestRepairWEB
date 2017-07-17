@@ -5,16 +5,54 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class='col-md-12'>
-    <div class="form-group">
-      <label for="comment">Data:</label>
-      <div class='input-group date' id='datetimepicker6'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
+<div class=" row">
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
+    <form class="form-horizontal" #f="ngForm" (ngSubmit)="create(f.value, f.valid)" novalidate>
+      <div class="row">
+        <div class='col-md-4'>
+          <div class="form-group">
+            <label for="comment">Veiculo:</label>
+            <div class='input-group'>
+              <select class="form-control" id="sel1" class="form-control" [(ngModel)]="f.vehicle" #date="ngModel" name="vehicle">
+          <option *ngFor="let vehicle of vehicles"  value="{{vehicle?.idVeiculo}}" >{{vehicle?.matricula}}</option>
+        </select>
+              <span class="input-group-addon">
+          <span class="glyphicon glyphicon-service"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-4'>
+          <div class="form-group">
+            <label for="comment">Serviço:</label>
+            <div class='input-group'>
+              <select class="form-control" id="sel2" class="form-control" [(ngModel)]="f.service" #date="ngModel" name="service">
+          <option *ngFor="let service of services" value="{{service.idService}}" >{{service?.nameService}}</option>
+        </select>
+              <span class="input-group-addon">
+          <span class="glyphicon glyphicon-service"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-4'>
+          <div class="form-group">
+            <label for="comment">Data:</label>
+            <div class='input-group date' id='datetimepicker6'>
+              <input type='text' class="form-control" [(ngModel)]="f.date" #date="ngModel" name="date">
+              <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
-        </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Marcar" [disabled]="!f.form.valid">
+        </div>
+      </div>
+    </form>
   </div>
 </div>
