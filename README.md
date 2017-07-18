@@ -1,6 +1,5 @@
-# GestRepair Frontend Angular
-==============
-Repository with the Web Frontend code 
+## GestRepair Frontend Angular
+#Repository with the Web Frontend code 
 
 ## API
 The API can be found [here](https://github.com/barcelosrui/gestRepairapi)
