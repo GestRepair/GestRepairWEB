@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent} from 'app/navbar/navbar.component';
+import { RepairInfoComponent } from "app/repair/info/info.repair.component";
+import { RepairListComponent } from "app/repair/list/list.repair.component";
 import { ScheduleCreateComponent } from 'app/schedule/create/create.schedule.component';
 import { ScheduleInfoComponent } from 'app/schedule/info/info.schedule.component';
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
@@ -15,12 +17,16 @@ import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
 
 
+
 const routes: Routes = [
 	{ path: 'home', redirectTo: '', pathMatch: 'full' },
 	{ path: 'user/info', redirectTo: 'user', pathMatch: 'full' },
-	{ path: 'vehicle/list', redirectTo: 'vehicle', pathMatch: 'full' },
+	{ path: 'repair/list', redirectTo: 'repair', pathMatch: 'full' },
 	{ path: 'schedule/list', redirectTo: 'schedule', pathMatch: 'full' },
+	{ path: 'vehicle/list', redirectTo: 'vehicle', pathMatch: 'full' },
 	{ path: '', component: HomeComponent },
+	{ path: 'repair', component: RepairListComponent },
+	{ path: 'repair/:id', component: RepairInfoComponent },
 	{ path: 'schedule/create', component: ScheduleCreateComponent },
 	{ path: 'schedule', component: ScheduleListComponent },
 	{ path: 'schedule/:id', component: ScheduleInfoComponent },

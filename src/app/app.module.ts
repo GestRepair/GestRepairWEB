@@ -12,10 +12,12 @@ import { AppService } from "app/app.service";
 //module
 import { DatepickerModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from "app/app.routing.module";
+import { RepairModule } from "app/repair/repair.module";
 import { ScheduleModule} from "app/schedule/schedule.module";
 import { ServiceModule } from "app/service/service.module";
 import { UserModule } from "app/user/user.module";
 import { VehicleModule } from "app/vehicle/vehicle.module";
+
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { VehicleModule } from "app/vehicle/vehicle.module";
     DatepickerModule.forRoot(),
     //Module We Create
     AppRoutingModule,
+    RepairModule,
     ScheduleModule,
     ServiceModule,
     UserModule,

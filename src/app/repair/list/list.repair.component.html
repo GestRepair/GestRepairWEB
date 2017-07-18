@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Preço</th>
+            <th>Estado</th>
+            <th>Data de Inicio</th>
+            <th>Data de Fim</th>
+            <th>Funcionário</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let repair of repairs">
+            <td>{{repair?.registration}}</td>
+            <td>{{repair?.price}}</td>
+            <td>{{repair?.nameState}}</td>
+            <td>{{repair?.startDate | date : "dd/MM/yyyy - HH:mm" }}</td>
+            <td>{{repair?.finishDate | date : "dd/MM/yyyy - HH:mm" }}</td>
+            <td>{{repair?.employer}}</td>
+            <td><button class="btn btn-primary" [routerLink]="['/repair', repair?.idRepair]">Info</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
