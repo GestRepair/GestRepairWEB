@@ -2,7 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { ScheduleService } from "app/schedule/schedule.service";
 import { Router } from "@angular/router";
 import { VehicleService } from "app/vehicle/vehicle.service";
-import { VehicleList } from "app/vehicle/list/listvehicle";
+import { Vehicle } from "app/vehicle/vehicle";
 import { ServiceService } from "app/service/service.service";
 import { Service } from "app/service/service";
 import { Schedule} from "app/schedule/schedule";
@@ -19,7 +19,7 @@ export class ScheduleCreateComponent {
   title = 'Agendar Serviço';
   schedule:string;
   services:Service[];
-  vehicles:VehicleList[];
+  vehicles:Vehicle[];
   constructor(private _schedule: ScheduleService, private _service:ServiceService,private _vehicle:VehicleService,
     private router: Router
   ) {
@@ -27,7 +27,7 @@ export class ScheduleCreateComponent {
   ngOnInit(): void {
     this.datapicker();
     this.serv();
-    this.vehic(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+    this.vehic(JSON.parse(localStorage.getItem('currentUser')).idUser);
   }
   // sign up when the form is valid
 	create(model: Schedule, isValid: boolean) {
@@ -36,7 +36,6 @@ export class ScheduleCreateComponent {
             this._schedule.create(model).subscribe(
                 data => {
                     this.schedule = data;
-                    console.log(data);
                 },
                 error => {
                     let myContainer = <HTMLElement>document.querySelector("#notif");

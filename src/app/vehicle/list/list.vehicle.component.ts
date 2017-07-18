@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { VehicleService } from '../vehicle.service';
 
-import { VehicleList } from './listvehicle';
+import { Vehicle } from '../vehicle';
 
 @Component({
 	templateUrl: './list.vehicle.component.html',
@@ -16,7 +16,7 @@ export class VehicleListComponent {
 
 	title = 'Lista de Veiculos';
 
-	vehicles: VehicleList[];
+	vehicles: Vehicle[];
 	errorMessage: string;
 	searchFilter: string;
 
@@ -27,7 +27,7 @@ export class VehicleListComponent {
 
 	// Method that is called on initialization of the page
 	ngOnInit(): void {
-		this.getList(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 	}
 	getList(id:number) {
 		this._VehicleService.list(id).subscribe(

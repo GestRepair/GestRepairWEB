@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { VehicleService } from '../vehicle.service';
 
-import { VehicleInfo } from './infovehicle';
+import { Vehicle } from '../vehicle';
 import { Observable } from "rxjs/Observable";
 
 @Component({
@@ -17,10 +17,10 @@ export class VehicleInfoComponent {
 
 	title = 'Informação do Veiculo';
 
-	vehicle: VehicleInfo;
+	vehicle: Vehicle;
 
 	constructor(
-		private _VehicleService: VehicleService,
+		private _Vehicle: VehicleService,
 		private router: ActivatedRoute,
 		private nrouter: Router
 	) { }
@@ -30,7 +30,7 @@ export class VehicleInfoComponent {
 	}
 	info() {
 		this.router.params
-			.switchMap((params: Params) => this._VehicleService.info(+params['id']))
+			.switchMap((params: Params) => this._Vehicle.info(JSON.parse(localStorage.getItem('currentUser')).idUser,+params['id']))
 			.subscribe(
 			vehicle => {
 				this.vehicle = vehicle;

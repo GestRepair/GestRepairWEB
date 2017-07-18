@@ -16,14 +16,14 @@ export class NavbarComponent {
 
   private username: string;
   private password: string;
-  private numUtilizador: number;
-  private nome: string;
-  private morada: string;
-  private codPostal: string;
-  private localidade: string;
+  private idUser: number;
+  private name: string;
+  private street: string;
+  private zipcode: string;
+  private city: string;
   private nameRole: string;
   private email: string;
-  private contacto: string;
+  private contact: string;
   private nif: string;
   private loading = false;
   private error = false;
@@ -51,7 +51,7 @@ export class NavbarComponent {
         result => {
           this.error = false;
           this.autenticated = true;
-          this.nome = JSON.parse(localStorage.getItem('currentUser')).nome;
+          this.name = JSON.parse(localStorage.getItem('currentUser')).name;
           this.nameRole = JSON.parse(localStorage.getItem('currentUser')).nameRole;
         },
         error => {
@@ -68,10 +68,10 @@ export class NavbarComponent {
       result => {
         this.error = false;
         this.autenticated = true;
-        this.nome = JSON.parse(localStorage.getItem('currentUser')).nome;
-        this.nameRole = JSON.parse(localStorage.getItem('currentUser')).nomeRole;
+        this.name = JSON.parse(localStorage.getItem('currentUser')).name;
+        this.nameRole = JSON.parse(localStorage.getItem('currentUser')).nameRole;
         let myContainer = <HTMLElement>document.querySelector("#notif");
-        myContainer.innerHTML = '<div class="alert alert-success"><strong>Login</strong> Bem-Vindo ' + this.nome + '</div>';
+        myContainer.innerHTML = '<div class="alert alert-success"><strong>Login</strong> Bem-Vindo ' + this.name + '</div>';
         setTimeout(() => { myContainer.innerHTML = '' }, 3000);
       },
       error => {

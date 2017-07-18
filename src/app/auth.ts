@@ -1,13 +1,13 @@
 export interface Auth {
     username: string;
     password: string;
-    numUtilizador: number;
-    nome: string;
-    morada:string;
-    codPostal:string;
-    localidade:string;
+    idUser: number;
+    name: string;
+    street:string;
+    zipcode:string;
+    city:string;
     email:string;
     nif: string;
-    contacto: string;
+    contact: string;
     nameRole: string;
 }

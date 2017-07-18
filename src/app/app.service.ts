@@ -15,7 +15,7 @@ import { ReplaySubject } from "rxjs/ReplaySubject";
 export class AppService {
 
     private readonly apiURL:string;
-    public nome: string;
+    public name: string;
 	public role: string;
 	public idUser: string;
     public roleChange = new ReplaySubject<any>(1);
@@ -37,18 +37,18 @@ export class AppService {
                 localStorage.setItem('currentUser', JSON.stringify({
                     "username":username,
                     "password":password,
-                    "numUtilizador":data.data.numUtilizador,
-                    "nome":data.data.nome,
-                    "morada":data.data.morada,
-                    "codPostal":data.data.codPostal,
-                    "localidade":data.data.localidade,
+                    "idUser":data.data.idUser,
+                    "name":data.data.name,
+                    "street":data.data.street,
+                    "zipcode":data.data.zipcode,
+                    "city":data.data.city,
                     "nameRole":data.data.nameRole,
                     "email":data.data.email,
-                    "contacto":data.data.contacto,
+                    "contact":data.data.contact,
                     "nif":data.data.nif
                 }));
                 console.log(JSON.parse(localStorage.getItem('currentUser')));
-				this.nome = data.data.nome;
+				this.name = data.data.name;
 				this.idUser = data.data.numUtilizador;
 				this.role = data.data.nameRole;
 

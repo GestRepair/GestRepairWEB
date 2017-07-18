@@ -16,20 +16,20 @@
             <th>Quilometros</th>
             <th>Combustível</th>
             <th>Cilindrada</th>
-            <th>Ano</th>
+            <th>Data</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let vehicle of vehicles">
-            <td>{{vehicle?.matricula}}</td>
-            <td>{{vehicle?.marca}}</td>
-            <td>{{vehicle?.modeloVeiculo}}</td>
-            <td>{{vehicle?.quilometros}}</td>
-            <td>{{vehicle?.Combustivel}}</td>
-            <td>{{vehicle?.cilindrada}}</td>
-            <td>{{vehicle?.ano}}</td>
-            <td><button class="btn btn-primary" [routerLink]="['/vehicle', vehicle?.idVeiculo]">Info</button></td>
+            <td>{{vehicle?.registration}}</td>
+            <td>{{vehicle?.nameBrand}}</td>
+            <td>{{vehicle?.nameModel}}</td>
+            <td>{{vehicle?.kilometers}}</td>
+            <td>{{vehicle?.nameFuel}}</td>
+            <td>{{vehicle?.displacement}}</td>
+            <td>{{vehicle?.date}}</td>
+            <td><button class="btn btn-primary" [routerLink]="['/vehicle', vehicle?.idVehicle]">Info</button></td>
           </tr>
         </tbody>
       </table>

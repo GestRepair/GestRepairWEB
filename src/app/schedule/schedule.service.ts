@@ -27,7 +27,6 @@ export class ScheduleService {
 		this.options = new RequestOptions({ headers: this.headers });
 	}
 	create(data: Schedule) {
-		console.log(data);
 		return this._http.post(this.apiUrl + '/schedule', JSON.stringify(data), this.options)
 			.map((response: Response) => response.json())
 			.catch(this.handleError);
@@ -40,7 +39,7 @@ export class ScheduleService {
 	}
 	info(id: number,vehicle:number): Observable<Schedule> {
 		return this._http
-			.get(this.apiUrl + `/schedule/` + id+'/'+vehicle, this.options)
+			.get(this.apiUrl + `/schedule/` + id +`/` +vehicle, this.options)
 			.map((res: Response) => res.json().data)
 			.catch(this.handleError);
 	}

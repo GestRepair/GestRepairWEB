@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
 
-import { UserInfo } from './infouser';
+import { User } from '../user';
 
 @Component({
     templateUrl: './info.user.component.html',
@@ -16,7 +16,7 @@ export class UserInfoComponent {
 
     title = 'Informação do Utilizador';
 
-    user: UserInfo;
+    user: User;
 
     constructor(
         private _UserService: UserService,
@@ -24,7 +24,7 @@ export class UserInfoComponent {
     ) { }
 
     ngOnInit(): void {
-        this.info(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+        this.info(JSON.parse(localStorage.getItem('currentUser')).idUser);
     }
     info(id:number) {
         this.router.params

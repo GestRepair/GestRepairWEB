@@ -27,7 +27,7 @@ export class ScheduleListComponent {
 
 	// Method that is called on initialization of the page
 	ngOnInit(): void {
-		this.getList(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 	}
 	getList(id:number) {
 		this._schedule.list(id).subscribe(

@@ -15,8 +15,8 @@
             <label for="comment">Veiculo:</label>
             <div class='input-group'>
               <select class="form-control" id="sel1" class="form-control" [(ngModel)]="f.vehicle" #date="ngModel" name="vehicle">
-          <option *ngFor="let vehicle of vehicles"  value="{{vehicle?.idVeiculo}}" >{{vehicle?.matricula}}</option>
-        </select>
+                <option *ngFor="let vehicle of vehicles"  value="{{vehicle?.idVehicle}}" >{{vehicle?.registration}}</option>
+              </select>
               <span class="input-group-addon">
           <span class="glyphicon glyphicon-service"></span>
               </span>

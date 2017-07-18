@@ -9,9 +9,8 @@ import "rxjs/add/operator/catch";
 
 import { API } from '../../main';
 
-import { UserCreate } from './create/createuser';
-import { UserEdit } from "./edit/edituser";
-import { UserInfo } from "./info/infouser";
+import { User } from './user';
+
 
 @Injectable()
 export class UserService {
@@ -27,19 +26,19 @@ export class UserService {
         }
         this.options = new RequestOptions({ headers: this.headers });
     }
-    create(data: UserCreate) {
+    create(data: User) {
         console.log(data);
         return this._http.post(this.apiUrl + '/user', JSON.stringify(data),this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
-    edit(data: UserEdit, num: number) {
+    edit(data: User, num: number) {
         console.log(data);
         return this._http.put(this.apiUrl + '/user/' + num, JSON.stringify(data), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
-    info(num: number): Observable<UserInfo> {
+    info(num: number): Observable<User> {
         return this._http
             .get(this.apiUrl + `/user/` + num, this.options)
             .map((res: Response) => res.json().data)

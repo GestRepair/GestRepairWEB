@@ -26,7 +26,7 @@ export class ScheduleInfoComponent {
     ) { }
 
     ngOnInit(): void {
-        this.info(JSON.parse(localStorage.getItem('currentUser')).numUtilizador);
+        this.info(JSON.parse(localStorage.getItem('currentUser')).idUser);
     }
     info(id:number) {
         this.router.params
