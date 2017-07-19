@@ -10,14 +10,13 @@ import { NavbarComponent } from 'app/navbar/navbar.component';
 //service
 import { AppService } from "app/app.service";
 //module
-import { DatepickerModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from "app/app.routing.module";
+import { BudgetModule } from "app/budget/budget.module";
 import { RepairModule } from "app/repair/repair.module";
 import { ScheduleModule} from "app/schedule/schedule.module";
 import { ServiceModule } from "app/service/service.module";
 import { UserModule } from "app/user/user.module";
 import { VehicleModule } from "app/vehicle/vehicle.module";
-
 
 
 @NgModule({
@@ -31,14 +30,14 @@ import { VehicleModule } from "app/vehicle/vehicle.module";
     FormsModule,
     HttpModule,
     RouterModule,
-    DatepickerModule.forRoot(),
     //Module We Create
     AppRoutingModule,
+    BudgetModule,
     RepairModule,
     ScheduleModule,
     ServiceModule,
     UserModule,
-    VehicleModule
+    VehicleModule,
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

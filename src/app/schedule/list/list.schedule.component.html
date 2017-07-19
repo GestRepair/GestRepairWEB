@@ -23,7 +23,7 @@
             <td>{{schedule?.service}}</td>
             <td>{{schedule?.vehicle}}</td>
             <td><button class="btn btn-primary" [routerLink]="['/schedule', schedule?.idSchedule]">Info</button></td>
-            <td><button class="btn btn-danger" [routerLink]="['/disable', schedule?.idSchedule]">Cancelar</button></td>
+            <td><button class="btn btn-danger" [routerLink]="['/schedule/disable', schedule?.idSchedule]">Cancelar</button></td>
           </tr>
         </tbody>
       </table>

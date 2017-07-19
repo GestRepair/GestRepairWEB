@@ -10,6 +10,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Serviço</th>
             <th>Matrícula</th>
             <th>Preço</th>
             <th>Estado</th>
@@ -21,6 +22,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let repair of repairs">
+            <td>{{repair?.service}}</td>
             <td>{{repair?.registration}}</td>
             <td>{{repair?.price}}</td>
             <td>{{repair?.nameState}}</td>

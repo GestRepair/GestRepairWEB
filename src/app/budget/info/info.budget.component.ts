@@ -2,26 +2,25 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { RepairService } from '../repair.service';
+import { BudgetService } from '../budget.service';
 
-import { Repair, Part } from '../repair';
+import { Budget } from '../budget';
 import { Observable } from "rxjs/Observable";
 
 @Component({
-    templateUrl: './info.repair.component.html',
-    styleUrls: ['./info.repair.component.css'],
-    providers: [RepairService]
+    templateUrl: './info.budget.component.html',
+    styleUrls: ['./info.budget.component.css'],
+    providers: [BudgetService]
 })
 
-export class RepairInfoComponent {
+export class BudgetInfoComponent {
 
-    title = 'Reparação N.º';
+    title = 'Orçamento N.º';
 
-    repair: Repair;
-    parts:Part[];
+    budget: Budget;
 
     constructor(
-        private _repair: RepairService,
+        private _budget: BudgetService,
         private router: ActivatedRoute,
         private nrouter: Router
     ) { }
@@ -31,11 +30,10 @@ export class RepairInfoComponent {
     }
     info(id:number) {
         this.router.params
-            .switchMap((params: Params) => this._repair.info(id,+params['id']))
+            .switchMap((params: Params) => this._budget.info(id,+params['id']))
             .subscribe(
             data => {
-                this.repair = data;
-                this.parts = data.part;
+                this.budget = data;
             },
             error => {
                 this.nrouter.navigate(['home']);

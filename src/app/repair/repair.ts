@@ -1,5 +1,6 @@
 export interface Repair {
     idRepair: number;
+    service:string;
     registration:string;
     description: string;
     price: number;

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="jumbotron">
-            <h1>{{title}} {{repair?.idRepair}}</h1>
+            <h1>{{title}} {{budget?.idBudget}}</h1>
         </div>
     </div>
 </div>
@@ -12,7 +12,7 @@
                 <h4><small>Serviço</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.service}}</h4>
+                <h4>{{budget?.service}}</h4>
             </div>
         </div>
         <div class="row">
@@ -20,7 +20,7 @@
                 <h4><small>Veiculo</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.registration}}</h4>
+                <h4>{{budget?.vehicle}}</h4>
             </div>
         </div>
         <div class="row">
@@ -28,15 +28,15 @@
                 <h4><small>Descrição</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.description}}</h4>
+                <h4>{{budget?.description}}</h4>
             </div>
         </div>
-        <div class="row" *ngIf="repair?.price != null">
+        <div class="row" *ngIf="budget?.price != null">
             <div class="col-md-4">
                 <h4><small>Preço</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.price}} €</h4>
+                <h4>{{budget?.price}} €</h4>
             </div>
         </div>
         <div class="row">
@@ -44,7 +44,7 @@
                 <h4><small>Estado</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.nameState}}</h4>
+                <h4>{{budget?.state}}</h4>
             </div>
         </div>
     </div>
@@ -54,41 +54,31 @@
                 <h4><small>Data de Início</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.startDate | date : "dd/MM/yyyy - HH:mm" }}</h4>
+                <h4>{{budget?.processOpen | date : "dd/MM/yyyy - HH:mm" }}</h4>
             </div>
         </div>
-        <div class="row" *ngIf="repair?.finishDate != null">
+        <div class="row" *ngIf="budget?.processClose != null">
             <div class="col-md-4">
                 <h4><small>Data de Fim</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.finishDate | date : "dd/MM/yyyy - HH:mm" }}</h4>
+                <h4>{{budget?.processClose | date : "dd/MM/yyyy - HH:mm" }}</h4>
             </div>
         </div>
-        <div class="row" *ngIf="repair?.information != null">
+        <div class="row" *ngIf="repair?.repairTime != null">
             <div class="col-md-4">
-                <h4><small>Informação</small></h4>
+                <h4><small>Tempo de Reparação</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.information}}</h4>
+                <h4>{{budget?.repairTime}}</h4>
             </div>
         </div>
-        <div class="row" *ngIf="repair?.employer != null">
+        <div class="row" *ngIf="budget?.resolution != null">
             <div class="col-md-4">
-                <h4><small>Reparação efectuada por:</small></h4>
+                <h4><small>Resolução:</small></h4>
             </div>
             <div class="col-md-8">
-                <h4>{{repair?.employer}}</h4>
-            </div>
-        </div>
-        <div class="row" *ngIf="repair?.part.lenght != 0">
-            <div class="col-md-4">
-                <h4><small>Peças:</small></h4>
-            </div>
-            <div class="col-md-8">
-                <ul *ngFor="let part of repair?.part">
-                    <li>{{part?.part}}</li>
-                </ul>
+                <h4>{{budget?.resolution}}</h4>
             </div>
         </div>
     </div>
@@ -96,6 +86,6 @@
 <div class="row">
     <div class="col-md-10"></div>
     <div class="col-md-2">
-        <button class="btn btn-info" routerLink="/repair">Voltar</button>
+        <button class="btn btn-info" routerLink="/budget">Voltar</button>
     </div>
 </div>

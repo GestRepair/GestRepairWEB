@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Serviço</th>
+            <th>Veiculo</th>
+            <th>Estado</th>
+            <th>Preço</th>
+            <th>Início do Processo</th>
+            <th>Tempo de Reparação</th>
+            <th>Fim do Processo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let budget of budgets">
+            <td>{{budget?.service}}</td>
+            <td>{{budget?.vehicle}}</td>
+            <td>{{budget?.state}}</td>
+            <td>{{budget?.price}}</td>
+            <td>{{budget?.processOpen | date : "dd/MM/yyyy - HH:mm" }}</td>
+            <td>{{budget?.repairTime}}</td>
+            <td>{{budget?.processClose | date : "dd/MM/yyyy - HH:mm" }}</td>
+
+            <td><button class="btn btn-primary" [routerLink]="['/budget', budget?.idBudget]">Info</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
