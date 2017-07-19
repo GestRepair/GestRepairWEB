@@ -6,8 +6,8 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 
 @Component({
-	templateUrl: './create.user.component.html',
-	styleUrls: ['./create.user.component.css']
+    templateUrl: './create.user.component.html',
+    styleUrls: ['./create.user.component.css']
 })
 
 export class UserCreateComponent {
@@ -15,19 +15,30 @@ export class UserCreateComponent {
     title = 'Registar Utilizador';
 
     createUser: string;
+    email:string;
 
     constructor(
-		private _createUserService: UserService,
+        private _user: UserService,
         private router: Router) { }
 
     // sign up when the form is valid
-	create(model: User, isValid: boolean) {
+    create(model: User, isValid: boolean) {
         // check if model is valid
         if (isValid) {
-            this._createUserService.create(model).subscribe(
+            this._user.create(model).subscribe(
                 data => {
-					this.createUser = data
-                    console.log(data);
+                    this.createUser = data
+                    this._user.activate(model.email).subscribe(
+                        email => {
+                            this.email = email;
+                            this.router.navigate(['user/activated']);
+                        },
+                        error => {
+                                let myContainer = <HTMLElement>document.querySelector("#notif");
+                                myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                                setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                            }
+                    );
                 },
                 error => {
                     let myContainer = <HTMLElement>document.querySelector("#notif");

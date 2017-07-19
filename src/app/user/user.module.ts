@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
+import { UserActivateComponent } from "app/user/activate/activate.user.component";
 import { UserCreateComponent } from 'app/user/create/create.user.component';
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
@@ -11,8 +12,10 @@ import { UserInfoComponent } from "app/user/info/info.user.component";
 import { UserService } from "app/user/user.service";
 
 
+
 @NgModule({
     declarations: [
+        UserActivateComponent,
         UserCreateComponent,
         UserEditComponent,
         UserInfoComponent
@@ -23,6 +26,7 @@ import { UserService } from "app/user/user.service";
         HttpModule
     ],
     exports: [
+        UserActivateComponent,
         UserCreateComponent,
         UserEditComponent,
         UserInfoComponent

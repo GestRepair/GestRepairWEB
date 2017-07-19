@@ -27,8 +27,12 @@ export class UserService {
         this.options = new RequestOptions({ headers: this.headers });
     }
     create(data: User) {
-        console.log(data);
-        return this._http.post(this.apiUrl + '/user', JSON.stringify(data),this.options)
+        return this._http.post(this.apiUrl + '/user',JSON.stringify(data),this.options)
+            .map((response: Response) =>response.json())
+            .catch(this.handleError);
+    }
+    activate(email: string) {
+        return this._http.post(this.apiUrl + '/user/'+ email +'/active',this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }

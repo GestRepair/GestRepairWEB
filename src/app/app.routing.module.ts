@@ -13,6 +13,7 @@ import { ScheduleDisableComponent } from 'app/schedule/disable/disable.schedule.
 import { ScheduleInfoComponent } from 'app/schedule/info/info.schedule.component';
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
 import { ServiceInfoComponent } from 'app/service/info/info.service.component';
+import { UserActivateComponent } from "app/user/activate/activate.user.component";
 import { UserCreateComponent } from "app/user/create/create.user.component";
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
@@ -36,6 +37,7 @@ const routes: Routes = [
 	{ path: 'schedule/disable/:id', component: ScheduleDisableComponent },
 	{ path: 'schedule/:id', component: ScheduleInfoComponent },
 	{ path: 'service/:id', component: ServiceInfoComponent },
+	{ path: 'user/activated', component: UserActivateComponent },
 	{ path: 'user/create', component: UserCreateComponent },
 	{ path: 'user/edit', component: UserEditComponent },
 	{ path: 'user', component: UserInfoComponent },
