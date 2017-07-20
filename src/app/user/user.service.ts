@@ -37,8 +37,6 @@ export class UserService {
             .catch(this.handleError);
     }
     active(email:string, token:string) {
-        alert(email);
-        alert(token);
         return this._http.get(this.apiUrl + '/user/'+ email +'/active/'+token,this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
@@ -53,6 +51,16 @@ export class UserService {
         return this._http
             .get(this.apiUrl + `/user/` + num, this.options)
             .map((res: Response) => res.json().data)
+            .catch(this.handleError);
+    }
+    rec(email: string) {
+        return this._http.post(this.apiUrl + '/user/'+email+'/recovery',this.options)
+            .map((response: Response) =>response.json())
+            .catch(this.handleError);
+    }
+    recemail(data:User,email: string,token:string) {
+        return this._http.put(this.apiUrl + '/user/'+email+'/recovery/'+token,JSON.stringify(data),this.options)
+            .map((response: Response) =>response.json())
             .catch(this.handleError);
     }
     private handleError(error: Response) {

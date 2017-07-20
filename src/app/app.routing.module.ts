@@ -18,6 +18,8 @@ import { UserActiveEmailComponent } from "app/user/activateUser/active.email.use
 import { UserCreateComponent } from "app/user/create/create.user.component";
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
+import { UserRecoveryComponent } from "app/user/recovery/recovery.user.component";
+import { UserRecoveryEmailComponent } from "app/user/recoveryemail/recovery.email.user.component";
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
 
@@ -42,6 +44,8 @@ const routes: Routes = [
 	{ path: 'user/activated/:email/:token', component: UserActiveEmailComponent },
 	{ path: 'user/create', component: UserCreateComponent },
 	{ path: 'user/edit', component: UserEditComponent },
+	{ path: 'user/recovery', component: UserRecoveryComponent },
+	{ path: 'user/recovery/:email/:token', component: UserRecoveryEmailComponent },
 	{ path: 'user', component: UserInfoComponent },
 	{ path: 'vehicle', component: VehicleListComponent },
 	{ path: 'vehicle/:id', component: VehicleInfoComponent },

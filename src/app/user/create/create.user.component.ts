@@ -47,13 +47,7 @@ export class UserCreateComponent {
                     let myContainer = <HTMLElement>document.querySelector("#notif");
                     myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
                     setTimeout(() => { myContainer.innerHTML = '' }, 3000)
-                }/*,
-                () => {
-                    let myContainer = <HTMLElement>document.querySelector("#notif");
-                    myContainer.innerHTML = '<div class="alert alert-success"><strong>Registo</strong> Efectuado com Sucesso</div>';
-                    setTimeout(() => { myContainer.innerHTML = '' }, 3000)
-                    this.router.navigate(['home']);
-                }*/
+                }
             );
         }
     }

@@ -9,11 +9,10 @@ import { UserActiveEmailComponent } from "app/user/activateUser/active.email.use
 import { UserCreateComponent } from 'app/user/create/create.user.component';
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
+import { UserRecoveryComponent } from "app/user/recovery/recovery.user.component";
+import { UserRecoveryEmailComponent } from "app/user/recoveryemail/recovery.email.user.component";
 //service
 import { UserService } from "app/user/user.service";
-
-
-
 
 @NgModule({
     declarations: [
@@ -21,7 +20,9 @@ import { UserService } from "app/user/user.service";
         UserActiveEmailComponent,
         UserCreateComponent,
         UserEditComponent,
-        UserInfoComponent
+        UserInfoComponent,
+        UserRecoveryComponent,
+        UserRecoveryEmailComponent
     ],
     imports: [
         BrowserModule,
@@ -33,7 +34,9 @@ import { UserService } from "app/user/user.service";
         UserActiveEmailComponent,
         UserCreateComponent,
         UserEditComponent,
-        UserInfoComponent
+        UserInfoComponent,
+        UserRecoveryComponent,
+        UserRecoveryEmailComponent
     ],providers: [
         UserService
     ]

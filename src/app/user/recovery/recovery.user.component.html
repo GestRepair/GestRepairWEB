@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>{{title}}</h1>
+    </div>
+  </div>
+</div>
+<form class="form-horizontal" #f="ngForm" (ngSubmit)="recovery(f.value, f.valid)" novalidate>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="email" class="col-md-4 control-label">Email <small>(obrigatório)</small></label>
+        <div class="col-md-8">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+            <input type="email" class="form-control" [(ngModel)]="f.email" #email="ngModel" name="email" id="tfSigninUserEmail" placeholder="Introduz o teu email"
+              email required/>
+            <div class="has-error" *ngIf="email.invalid && email.touched">
+              <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+            </div>
+            <div class="has-success" *ngIf="email.valid && email.touched">
+              <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+            </div>
+          </div>
+          <small class="text-danger" *ngIf="email.invalid && email.touched"> A introdução do email é obrigatória e deve ser um email válido.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="submit" class="btn btn-primary" [disabled]="!f.form.valid" value="Recuperar Password">
+      <button class="btn btn-primary" routerLink="home">Voltar</button>
+    </div>
+  </div>
+</form>
