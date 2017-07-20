@@ -14,6 +14,7 @@ import { ScheduleInfoComponent } from 'app/schedule/info/info.schedule.component
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
 import { ServiceInfoComponent } from 'app/service/info/info.service.component';
 import { UserActivateComponent } from "app/user/activate/activate.user.component";
+import { UserActiveEmailComponent } from "app/user/activateUser/active.email.user.component";
 import { UserCreateComponent } from "app/user/create/create.user.component";
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
@@ -38,6 +39,7 @@ const routes: Routes = [
 	{ path: 'schedule/:id', component: ScheduleInfoComponent },
 	{ path: 'service/:id', component: ServiceInfoComponent },
 	{ path: 'user/activated', component: UserActivateComponent },
+	{ path: 'user/activated/:email/:token', component: UserActiveEmailComponent },
 	{ path: 'user/create', component: UserCreateComponent },
 	{ path: 'user/edit', component: UserEditComponent },
 	{ path: 'user', component: UserInfoComponent },

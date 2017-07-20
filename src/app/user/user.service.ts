@@ -36,6 +36,13 @@ export class UserService {
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
+    active(email:string, token:string) {
+        alert(email);
+        alert(token);
+        return this._http.get(this.apiUrl + '/user/'+ email +'/active/'+token,this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
     edit(data: User, num: number) {
         console.log(data);
         return this._http.put(this.apiUrl + '/user/' + num, JSON.stringify(data), this.options)

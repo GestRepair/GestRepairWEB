@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
 import { UserActivateComponent } from "app/user/activate/activate.user.component";
+import { UserActiveEmailComponent } from "app/user/activateUser/active.email.user.component";
 import { UserCreateComponent } from 'app/user/create/create.user.component';
 import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
@@ -13,9 +14,11 @@ import { UserService } from "app/user/user.service";
 
 
 
+
 @NgModule({
     declarations: [
         UserActivateComponent,
+        UserActiveEmailComponent,
         UserCreateComponent,
         UserEditComponent,
         UserInfoComponent
@@ -27,6 +30,7 @@ import { UserService } from "app/user/user.service";
     ],
     exports: [
         UserActivateComponent,
+        UserActiveEmailComponent,
         UserCreateComponent,
         UserEditComponent,
         UserInfoComponent
