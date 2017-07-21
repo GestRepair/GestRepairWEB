@@ -20,6 +20,7 @@ import { UserEditComponent } from "app/user/edit/edit.user.component";
 import { UserInfoComponent } from "app/user/info/info.user.component";
 import { UserRecoveryComponent } from "app/user/recovery/recovery.user.component";
 import { UserRecoveryEmailComponent } from "app/user/recoveryemail/recovery.email.user.component";
+import { VehicleCreateComponent } from "app/vehicle/create/create.vehicle.component";
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
 
@@ -48,6 +49,7 @@ const routes: Routes = [
 	{ path: 'user/recovery/:email/:token', component: UserRecoveryEmailComponent },
 	{ path: 'user', component: UserInfoComponent },
 	{ path: 'vehicle', component: VehicleListComponent },
+	{ path: 'vehicle/create', component: VehicleCreateComponent },
 	{ path: 'vehicle/:id', component: VehicleInfoComponent },
 	{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];

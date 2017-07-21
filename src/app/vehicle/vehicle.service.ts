@@ -10,13 +10,17 @@ import "rxjs/add/operator/catch";
 import { API } from '../../main';
 
 import { Vehicle } from './vehicle';
+import { Brand } from './brand';
+import { Model } from './model';
+import { Fuel } from './fuel';
+import { CreateVehicle } from "app/vehicle/create/createVehicle";
 
 @Injectable()
 export class VehicleService {
 
     headers: Headers;
     options: RequestOptions;
-    apiUrl = API.url+API.port;  // URL to web api
+    apiUrl = API.url + API.port;  // URL to web api
 
     constructor(private _http: Http) {
         this.headers = new Headers();
@@ -24,14 +28,37 @@ export class VehicleService {
         this.headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
         this.options = new RequestOptions({ headers: this.headers });
     }
-
-    info(id:number, vehicle:number): Observable<Vehicle> {
+    create(data: CreateVehicle) {
+        return this._http.post(this.apiUrl + '/vehicle/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify(data), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    info(id: number, vehicle: number): Observable<Vehicle> {
         return this._http
-            .get(this.apiUrl + `/vehicle/`+ id+'/'+vehicle, this.options)
+            .get(this.apiUrl + `/vehicle/` + id + '/' + vehicle, this.options)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
-    
+
+    listBrand(): Observable<Brand[]> {
+        return this._http
+            .get(this.apiUrl + '/vehicle/brand', this.options)
+            .map((response: Response) => <Brand[]>response.json().data)
+            .catch(this.handleError);
+    }
+    listModel(id: number): Observable<Model[]> {
+        return this._http
+            .get(this.apiUrl + '/vehicle/' + id + '/model', this.options)
+            .map((response: Response) => <Model[]>response.json().data)
+            .catch(this.handleError);
+    }
+    listFuel(): Observable<Fuel[]> {
+        return this._http
+            .get(this.apiUrl + '/vehicle/fuel', this.options)
+            .map((response: Response) => <Fuel[]>response.json().data)
+            .catch(this.handleError);
+    }
+
     list(id: number): Observable<Vehicle[]> {
         return this._http
             .get(this.apiUrl + '/vehicle/' + id + '/user', this.options)
