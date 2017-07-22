@@ -10,6 +10,7 @@ import "rxjs/add/operator/catch";
 import { API } from '../../main';
 
 import { User } from './user';
+import { ChangePassword } from "app/user/changePassword/changePassword";
 
 
 @Injectable()
@@ -60,6 +61,11 @@ export class UserService {
     }
     recemail(data:User,email: string,token:string) {
         return this._http.put(this.apiUrl + '/user/'+email+'/recovery/'+token,JSON.stringify(data),this.options)
+            .map((response: Response) =>response.json())
+            .catch(this.handleError);
+    }
+    changePass(data:ChangePassword,id: number){
+        return this._http.put(this.apiUrl + '/chpass/'+id,JSON.stringify(data),this.options)
             .map((response: Response) =>response.json())
             .catch(this.handleError);
     }
