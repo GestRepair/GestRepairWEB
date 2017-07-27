@@ -42,7 +42,7 @@ export class AppService {
                     "street":data.data.street,
                     "zipcode":data.data.zipcode,
                     "city":data.data.city,
-                    "nameRole":data.data.nameRole,
+                    "isEmployer":data.data.isEmployer,
                     "email":data.data.email,
                     "contact":data.data.contact,
                     "nif":data.data.nif
@@ -50,7 +50,7 @@ export class AppService {
                 console.log(JSON.parse(localStorage.getItem('currentUser')));
 				this.name = data.data.name;
 				this.idUser = data.data.numUtilizador;
-				this.role = data.data.nameRole;
+				this.role = data.data.isEmployer;
 
                 // return true to indicate successful login
                 return true;

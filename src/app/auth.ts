@@ -9,5 +9,5 @@ export interface Auth {
     email:string;
     nif: string;
     contact: string;
-    nameRole: string;
+    isEmployer: number;
 }
