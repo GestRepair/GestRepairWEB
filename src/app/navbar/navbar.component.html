@@ -1,51 +1,101 @@
-﻿<nav class="navbar-inverse">
-  <form class="form" role="form" class="navbar-form" method="post" action="login" accept-charset="UTF-8" id="login">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
+﻿
+<div class="container-fluid back">
+  <div class=" row">
+    <div class="col-md-6 header" >
+      <img routerLink="/" routerLinkActive="active-link" src="../assets/logo.png" height="100px" alt="">
+      <h1>GestRepair</h1>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197" style="line-height:100px; background-color:rgba(0, 102, 255,0.7);">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <img lass="navbar-brand" routerLink="/" routerLinkActive="active-link" src="../assets/logo.png" width="50px" alt="">
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/" routerLinkActive="active-link">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviço<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li *ngFor=" let service of services"><a [routerLink]="['/service', service?.idService]">{{service?.nameService}}</a></li>
+          </ul>
+        </li>
+        <li *ngIf="autenticated" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="vehicle">Lista de Veiculos</a></li>
+            <li><a routerLink="vehicle/create">Registar Veiculos</a></li>
+            <li><a routerLink="schedule/create">Agendar Serviço</a></li>
+            <li><a routerLink="schedule">Ver Agendamentos</a></li>
+            <li><a routerLink="repair">Ver Reparações</a></li>
+            <li><a routerLink="budget">Ver Orçamentos</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!autenticated">
+        <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registar<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="user/create" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a routerLink="user/recovery" routerLinkActive="active">Esqueceu-se da Password?</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="autenticated">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{name}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="user/edit" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Editar Utilizador </a></li>
+            <li><a routerLink="user/info" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Ver Perfil </a></li>
+            <li><a routerLink="user/changepass" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Alterar Password </a></li>
+          </ul>
+        </li>
+        <li>
+          <a id="btUserLogout" (click)="logout()"><span class="glyphicon glyphicon-user"></span> Logout </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Autenticação</h4>
       </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a routerLink="/" routerLinkActive="active-link">Home</a></li>     
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviço<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li *ngFor=" let service of services"><a [routerLink]="['/service', service?.idService]">{{service?.nameService}}</a></li>
-            </ul>
-          </li>
-          <li *ngIf="autenticated" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="vehicle">Lista de Veiculos</a></li>
-              <li><a routerLink="vehicle/create">Registar Veiculos</a></li>
-              <li><a routerLink="schedule/create">Agendar Serviço</a></li>
-              <li><a routerLink="schedule">Ver Agendamentos</a></li>
-              <li><a routerLink="repair">Ver Reparações</a></li>
-              <li><a routerLink="budget">Ver Orçamentos</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" *ngIf="!autenticated">
-          <li>
-            <div class="form-group input-group">
+      <div class="modal-body">
+        <form class="form" role="form" class="navbar-form" method="post" action="login" accept-charset="UTF-8" id="login">
+          <div class="row">
+            <div class="form-group input-group col-md-12">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" class="form-control" id="tfLogUsername" placeholder="Username" [(ngModel)]="username" name="username" required>
+              <input type="text" class="form-control" id="tfLogUsername" placeholder="Username" [(ngModel)]="username" name="username"
+                required>
             </div>
-            <div class="form-group input-group">
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group input-group col-md-12">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" class="form-control" id="tfLogUserPass" placeholder="Password" [(ngModel)]="password" name="password" required>
+              <input type="password" class="form-control" id="tfLogUserPass" placeholder="Password" [(ngModel)]="password" name="password"
+                required>
             </div>
-          </li>
-          <li>
+          </div>
+          <br>
+          <div class="row">
             <div *ngIf="loading">
               <div class="loading" style="width:50px; height:50px; padding-top:30px;">
                 <div class="loading-bar"></div>
@@ -54,36 +104,12 @@
                 <div class="loading-bar"></div>
               </div>
             </div>
-          </li>
-          <li>
-            <button (click)="login()" id="btUserLogin" [disabled]="loading" class="btn btn-success">Entrar</button>
-          </li>
-
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registar<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="user/create" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a routerLink="user/recovery" routerLinkActive="active">Esqueceu-se da Password?</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" *ngIf="autenticated">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{name}}<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="user/edit" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Editar Utilizador </a></li>
-              <li><a routerLink="user/info" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Ver Perfil </a></li>
-              <li><a routerLink="user/changepass" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Alterar Password </a></li>
-            </ul>
-          </li>
-          <li>
-            <a id="btUserLogout" (click)="logout()"><span class="glyphicon glyphicon-user"></span> Logout </a>
-          </li>
-        </ul>
-
+          </div>
+        </form>
       </div>
-      <!-- /.navbar-collapse -->
+      <div class="modal-footer">
+        <button (click)="login()" id="btUserLogin" [disabled]="loading" class="btn btn-success" data-dismiss="modal">Entrar</button>
+      </div>
     </div>
-  </form>
-</nav>
-
+  </div>
+</div>

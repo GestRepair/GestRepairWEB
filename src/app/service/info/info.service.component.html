@@ -6,12 +6,15 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-md-4">
+    <img *ngIf="service" src="{{service?.photo}}" width="100%" alt="">
+  </div>
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-3">
         <h4><small>Nome do Serviço</small></h4>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <h4>{{service?.nameService}}</h4>
       </div>
     </div>
@@ -27,18 +30,9 @@
       <div class="col-md-3">
         <h4><small>Preço</small></h4>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <h4>{{service?.priceService}}</h4>
       </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <img *ngIf="service" src="{{service?.photo}}" width="100%" alt="">
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10"></div>
-  <div class="col-md-2">
-    <button class="btn btn-info" routerLink="/">Voltar</button>
   </div>
 </div>

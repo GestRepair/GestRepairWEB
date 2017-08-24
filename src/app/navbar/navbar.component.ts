@@ -3,7 +3,7 @@ import { AppService } from "app/app.service";
 import { ServiceService } from "app/service/service.service";
 import { Router } from "@angular/router";
 import { Service } from "app/service/service";
-
+declare var $;
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -11,9 +11,9 @@ import { Service } from "app/service/service";
 })
 export class NavbarComponent {
   title = 'app';
-
+  
   services: Service[];
-
+  
   private username: string;
   private password: string;
   private idUser: number;
@@ -28,7 +28,7 @@ export class NavbarComponent {
   private loading = false;
   private error = false;
   private autenticated = false;
-
+  
 
   constructor(private _httpService: AppService, private _serviceService: ServiceService, private router: Router) { }
   ngOnInit() {
@@ -44,6 +44,7 @@ export class NavbarComponent {
       }
     );
   }
+  
   autologin() {
     if (JSON.parse(localStorage.getItem('currentUser'))) {
       this.loading = true;
@@ -73,6 +74,7 @@ export class NavbarComponent {
         let myContainer = <HTMLElement>document.querySelector("#notif");
         myContainer.innerHTML = '<div class="alert alert-success"><strong>Login</strong> Bem-Vindo ' + this.name + '</div>';
         setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+        $("#myModal").modal("hide");
       },
       error => {
         this.error = true;
