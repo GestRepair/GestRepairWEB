@@ -33,9 +33,8 @@ export class ServiceInfoComponent {
 				this.service = service;
 			},
 			error => {
-				console.log(error)
 				this.nrouter.navigate(['home']);
-			}
-			);
+				console.log(error);
+			})
 	}
 }

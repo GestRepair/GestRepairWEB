@@ -1,10 +1,11 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
 
 import { User } from '../user';
+import { Observable } from "rxjs/Observable";
 
 @Component({
     templateUrl: './info.user.component.html',
@@ -20,7 +21,8 @@ export class UserInfoComponent {
 
     constructor(
         private _UserService: UserService,
-        private router: ActivatedRoute
+        private router: ActivatedRoute,
+		private nrouter: Router
     ) { }
 
     ngOnInit(): void {
@@ -33,7 +35,9 @@ export class UserInfoComponent {
             user => {
                 this.user = user;
             },
-            error => console.log("Impossível carregar perfil de Utilizador")
-            );
+            error => {
+				this.nrouter.navigate(['home']);
+				console.log(error);
+			});
     }
 }

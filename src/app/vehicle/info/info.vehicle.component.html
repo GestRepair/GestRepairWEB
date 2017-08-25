@@ -1,83 +1,44 @@
 ﻿<div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}: {{vehicle?.registration}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/car.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Matrícula</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.registration}}</h4>
-      </div>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}} - {{vehicle?.nameBrand}} {{vehicle?.nameModel}} {{vehicle?.registration}}</h1>
     </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Marca</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.nameBrand}}</h4>
-      </div>
+    <br>
+    <div class="col-md-6">
+      <ul class=" details">
+        <li>
+          <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>{{vehicle?.registration}}</p>
+        </li>
+        <li>
+          <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>{{vehicle?.displacement}} CC</p>
+        </li>
+        <li>
+          <p><span class="glyphicon glyphicon-dashboard one" style="width:50px;"></span>{{vehicle?.kilometers}} KM</p>
+        </li>
+      </ul>
     </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Modelo</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.nameModel}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Cilindrada</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.displacement}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Quilometros</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.kilometers}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Combustível:</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.nameFuel}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Medida dos Pneus da Frente</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.fronttiresize}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Medidas dos Pneus de Trás</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.reartiresize}}</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2 col-sm-4 col-xs-12">
-        <h4><small>Ano</small></h4>
-      </div>
-      <div class="col-md-10 col-sm-8 col-xs-12">
-        <h4>{{vehicle?.date}}</h4>
-      </div>
+    <div class="col-md-6">
+      <div class="col-sm-6 col-xs-6 tital ">Combustível:</div>
+      <div class="col-sm-6 col-xs-6 ">{{vehicle?.nameFuel}}</div>
+      <div class="clearfix"></div>
+      <div class="bot-border"></div>
+      <div class="col-sm-6 col-xs-6 tital ">Data de Registo:</div>
+      <div class="col-sm-6 col-xs-6 ">{{vehicle?.date | date:'dd-MM-y' }}</div>
+      <div class="clearfix"></div>
+      <div class="bot-border"></div>
+      <div class="col-sm-6 col-xs-6 tital ">Medida dos pneus frontal:</div>
+      <div class="col-sm-6 col-xs-6 ">{{vehicle?.fronttiresize}}</div>
+      <div class="clearfix"></div>
+      <div class="bot-border"></div>
+      <div class="col-sm-6 col-xs-6 tital ">Medida dos pneus traseiros:</div>
+      <div class="col-sm-6 col-xs-6 ">{{vehicle?.reartiresize}}</div>
+      <div class="clearfix"></div>
+      <div class="bot-border"></div>
     </div>
   </div>
 </div>
