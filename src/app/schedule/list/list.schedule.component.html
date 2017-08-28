@@ -1,31 +1,52 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/schedule.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Serviço</th>
-            <th>Veiculo</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let schedule of schedules">
-            <td>{{schedule?.date | date : "dd/MM/yyyy - HH:mm" }}</td>
-            <td>{{schedule?.service}}</td>
-            <td>{{schedule?.vehicle}}</td>
-            <td><button class="btn btn-primary" [routerLink]="['/schedule', schedule?.idSchedule]">Info</button></td>
-            <td><button class="btn btn-danger" [routerLink]="['/schedule/disable', schedule?.idSchedule]">Cancelar</button></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}}</h1>
     </div>
+    <br>
+    <div class="col-md-12">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default" *ngFor="let schedule of schedules">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#c{{schedule?.idSchedule}}">Marcação n.º {{schedule?.idSchedule}} - {{schedule?.vehicle}}</a>
+            </h4>
+          </div>
+          <div id="c{{schedule?.idSchedule}}" data-parent="#accordion" class="panel-collapse collapse">
+            <div class="panel-body">
+              <br>
+              <div class="col-md-6">
+                <ul class=" details">
+                  <li>
+                    <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Matrícula: {{schedule?.vehicle}}</p>
+                  </li>
+                  <li>
+                    <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>Serviço: {{schedule?.service}}</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="col-sm-6 col-xs-6 tital ">Data:</div>
+                <div class="col-sm-6 col-xs-5">{{schedule?.date | date : "dd/MM/yyyy - HH:mm" }}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+                <br>
+                <div class="col-sm-6 col-xs-6 tital "></div>
+                <div class="col-sm-2 col-xs-2 "></div>
+                <div class="col-sm-2 col-xs-2 "></div>
+                <div class="col-sm-2 col-xs-2 "><button class="btn btn-danger" [routerLink]="['/schedule/disable', schedule?.idSchedule]">Cancelar</button></div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

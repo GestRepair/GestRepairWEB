@@ -11,18 +11,18 @@
     <br>
     <div class="col-md-12">
       <h3>Dados da ultíma visita</h3>
-      <div class="panel-group" *ngFor="let vehicle of vehicles">
-        <div class="panel panel-default">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default" *ngFor="let vehicle of vehicles">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" href="#c{{vehicle?.idVehicle}}">{{vehicle?.nameBrand}} {{vehicle?.nameModel}} - {{vehicle?.registration}}</a>
             </h4>
           </div>
-          <div id="c{{vehicle?.idVehicle}}" class="panel-collapse collapse">
-            <div class="row" >
+          <div id="c{{vehicle?.idVehicle}}" data-parent="#accordion"  class="panel-collapse collapse">
+            <div class="panel-body">
               <br>
               <div class="col-md-5">
-                <ul class=" details" style="background-color:#FFFFFF;">
+                <ul class=" details">
                   <li>
                     <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Matrícula: {{vehicle?.registration}}</p>
                   </li>
@@ -34,7 +34,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="col-md-6" style="background-color:#FFFFFF;">
+              <div class="col-md-6">
                 <div class="col-sm-6 col-xs-6 tital ">Combustível:</div>
                 <div class="col-sm-6 col-xs-5 ">{{vehicle?.nameFuel}}</div>
                 <div class="clearfix"></div>
@@ -59,46 +59,3 @@
     </div>
   </div>
 </div>
-
-<!--
-<div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-
-
-    <table class="table table-striped table-responsive">
-      <thead>
-        <tr>
-          <th>Matrícula</th>
-          <th>Marca</th>
-          <th>Modelo</th>
-          <th>Quilometros</th>
-          <th>Combustível</th>
-          <th>Cilindrada</th>
-          <th>Data</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vehicle of vehicles">
-          <td>{{vehicle?.registration}}</td>
-          <td>{{vehicle?.nameBrand}}</td>
-          <td>{{vehicle?.nameModel}}</td>
-          <td>{{vehicle?.kilometers}}</td>
-          <td>{{vehicle?.nameFuel}}</td>
-          <td>{{vehicle?.displacement}}</td>
-          <td>{{vehicle?.date | date : "dd-MM-y" }}</td>
-          <td><button class="btn btn-primary" [routerLink]="['/vehicle', vehicle?.idVehicle]">Info</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>-->

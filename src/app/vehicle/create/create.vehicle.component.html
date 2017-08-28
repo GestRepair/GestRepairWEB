@@ -1,94 +1,149 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/car.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-  </div>
-  <div class="col-md-8">
-    <form class="form-horizontal" #f="ngForm" (ngSubmit)="create(f.value, f.valid)" novalidate>
-      <div class="form-group">
-        <label for="brand" class="col-md-4 control-label">Marca <small>(obrigatório)</small></label>
-        <div class="col-md-8">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-            <select class="form-control" [ngModel]="brand" #brand="ngModel" name="brand" (ngModelChange)="listModel($event)" required>
-              <option *ngFor="let brand of brands" [value]="brand.idBrand"  >{{brand.nameBrand}}</option>
-            </select>
-            <div class="has-error" *ngIf="brand.invalid && brand.touched">
-              <span *ngIf="brand.invalid && brand.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}}</h1>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <form class="form-horizontal" #f="ngForm" (ngSubmit)="create(f.value, f.valid)" novalidate>
+        <div class="form-group">
+          <label for="brand" class="col-md-4 control-label">Marca <small>(obrigatório)</small></label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <select class="form-control" [ngModel]="brand" #brand="ngModel" name="brand" (ngModelChange)="listModel($event)" required>
+                      <option *ngFor="let brand of brands" [value]="brand.idBrand"  >{{brand.nameBrand}}</option>
+                    </select>
+              <div class="has-error" *ngIf="brand.invalid && brand.touched">
+                <span *ngIf="brand.invalid && brand.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+              </div>
+              <div class="has-success" *ngIf="brand.valid && brand.touched">
+                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+              </div>
             </div>
-            <div class="has-success" *ngIf="brand.valid && brand.touched">
-              <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+            <small class="text-danger" *ngIf="brand.invalid && brand.touched">Deverá selecionar uma marca</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="model" class="col-md-4 control-label">Modelo <small>(obrigatório)</small></label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <select class="form-control" [ngModel]="model" #model="ngModel" name="model">
+                      <option *ngFor="let model of models" [value]="model.idModel">{{model.nameModel}}</option>
+                    </select>
+              <div class="has-error" *ngIf="model.invalid && model.touched">
+                <span *ngIf="model.invalid && model.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+              </div>
+              <div class="has-success" *ngIf="model.valid && model.touched">
+                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="model.invalid && model.touched">Deverá selecionar uma marca</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fuel" class="col-md-4 control-label">Combustivel <small>(obrigatório)</small></label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <select class="form-control" [ngModel]="fuel" #fuel="ngModel" name="fuel">
+                      <option *ngFor="let fuel of fuels" [value]="fuel.idFuel">{{fuel.nameFuel}}</option>
+                    </select>
+              <div class="has-error" *ngIf="fuel.invalid && fuel.touched">
+                <span *ngIf="fuel.invalid && fuel.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+              </div>
+              <div class="has-success" *ngIf="fuel.valid && fuel.touched">
+                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="fuel.invalid && fuel.touched">Deverá selecionar uma marca</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="registration" class="col-md-4 control-label">Matrícula <small>(obrigatório)</small></label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" [(ngModel)]="f.registration" #registration="ngModel" name="registration" id="tfMorada"
+                placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
+              <div class="has-error" *ngIf="registration.invalid && registration.touched">
+                <span *ngIf="registration.invalid && registration.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+              </div>
+              <div class="has-success" *ngIf="registration.valid && registration.touched">
+                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="registration.invalid && registration.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
+          </div>
+        </div>
+        <div class="row">
+          <label for="registration" class="col-md-4 control-label">Data <small>(obrigatório)</small></label>
+          <div class='col-md-2'>
+            <div class="form-group">
+              <label for="comment">Ano:</label>
+              <div class='input-group'>
+                <select class="form-control" [ngModel]="date" #date="ngModel" name="year" (ngModelChange)="month($event)"> 
+                        <option [value]="y" *ngFor="let y of ys">{{y}}</option> 
+                    </select>
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-service"></span>
+                </span>
+              </div>
             </div>
           </div>
-          <small class="text-danger" *ngIf="brand.invalid && brand.touched">Deverá selecionar uma marca</small>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="model" class="col-md-4 control-label">Modelo <small>(obrigatório)</small></label>
-        <div class="col-md-8">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-            <select class="form-control" [ngModel]="model" #model="ngModel" name="model">
-              <option *ngFor="let model of models" [value]="model.idModel">{{model.nameModel}}</option>
-            </select>
-            <div class="has-error" *ngIf="model.invalid && model.touched">
-              <span *ngIf="model.invalid && model.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-            </div>
-            <div class="has-success" *ngIf="model.valid && model.touched">
-              <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+          <div class='col-md-2'>
+            <div class="form-group">
+              <label for="comment">Mês:</label>
+              <div class='input-group'>
+                <select class="form-control" [ngModel]="date" #date="ngModel" name="month" (ngModelChange)="day($event)"> 
+                        <option [value]="m" *ngFor="let m of ms">{{m}}</option>
+                    </select>
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-service"></span>
+                </span>
+              </div>
             </div>
           </div>
-          <small class="text-danger" *ngIf="model.invalid && model.touched">Deverá selecionar uma marca</small>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="fuel" class="col-md-4 control-label">Combustivel <small>(obrigatório)</small></label>
-        <div class="col-md-8">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-            <select class="form-control" [ngModel]="fuel" #fuel="ngModel" name="fuel">
-              <option *ngFor="let fuel of fuels" [value]="fuel.idFuel">{{fuel.nameFuel}}</option>
-            </select>
-            <div class="has-error" *ngIf="fuel.invalid && fuel.touched">
-              <span *ngIf="fuel.invalid && fuel.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-            </div>
-            <div class="has-success" *ngIf="fuel.valid && fuel.touched">
-              <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+          <div class='col-md-2'>
+            <div class="form-group">
+              <label for="comment">Dia:</label>
+              <div class='input-group'>
+                <select class="form-control" [ngModel]="date" #date="ngModel" name="day" (ngModelChange)="hour($event)"> 
+                        <option [value]="d" *ngFor="let d of ds">{{d}}</option>
+                    </select>
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-service"></span>
+                </span>
+              </div>
             </div>
           </div>
-          <small class="text-danger" *ngIf="fuel.invalid && fuel.touched">Deverá selecionar uma marca</small>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="registration" class="col-md-4 control-label">Matrícula <small>(obrigatório)</small></label>
-        <div class="col-md-8">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-            <input type="text" class="form-control" [(ngModel)]="f.registration" #registration="ngModel" name="registration" id="tfMorada"
-              placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
-            <div class="has-error" *ngIf="registration.invalid && registration.touched">
-              <span *ngIf="registration.invalid && registration.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-            </div>
-            <div class="has-success" *ngIf="registration.valid && registration.touched">
-              <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+          <div class='col-md-2'>
+            <div class="form-group">
+              <label for="comment">Hora:</label>
+              <div class='input-group'>
+                <select class="form-control" [ngModel]="date" #date="ngModel" name="hour" (ngModelChange)="obth($event)"> 
+                    <option [value]="h" *ngFor="let h of hs">{{h}}</option>
+                </select>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-service"></span>
+                </span>
+              </div>
             </div>
           </div>
-          <small class="text-danger" *ngIf="registration.invalid && registration.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
-          <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
+        <div class="form-group">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-2">
+      </form>
+    </div>
   </div>
 </div>

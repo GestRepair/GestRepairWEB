@@ -27,14 +27,14 @@ export class RepairService {
     
     info(id:number, repair:number): Observable<Repair> {
         return this._http
-            .get(this.apiUrl + `/repair/`+ id+'/'+repair, this.options)
+            .get(this.apiUrl + `/repair/user/`+ id +'/'+repair, this.options)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
     
     list(id: number): Observable<Repair[]> {
         return this._http
-            .get(this.apiUrl + '/repair/' + id, this.options)
+            .get(this.apiUrl + '/repair/user/' + id, this.options)
             .map((response: Response) => <Repair[]>response.json().data)
             .catch(this.handleError);
     }

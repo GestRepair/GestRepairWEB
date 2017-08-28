@@ -1,38 +1,63 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/budget.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Serviço</th>
-            <th>Veiculo</th>
-            <th>Estado</th>
-            <th>Preço</th>
-            <th>Início do Processo</th>
-            <th>Tempo de Reparação</th>
-            <th>Fim do Processo</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let budget of budgets">
-            <td>{{budget?.service}}</td>
-            <td>{{budget?.vehicle}}</td>
-            <td>{{budget?.state}}</td>
-            <td>{{budget?.price}}</td>
-            <td>{{budget?.processOpen | date : "dd/MM/yyyy - HH:mm" }}</td>
-            <td>{{budget?.repairTime}}</td>
-            <td>{{budget?.processClose | date : "dd/MM/yyyy - HH:mm" }}</td>
-
-            <td><button class="btn btn-primary" [routerLink]="['/budget', budget?.idBudget]">Info</button></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}}</h1>
     </div>
+    <br>
+    <div class="col-md-12">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default" *ngFor="let budget of budgets">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#c{{budget?.idBudget}}">Orçamento n.º: {{budget?.idBudget}} - {{budget?.vehicle}} - {{budget?.state}}</a>
+            </h4>
+          </div>
+          <div id="c{{budget?.idBudget}}" data-parent="#accordion" class="panel-collapse collapse">
+            <div class="panel-body">
+              <br>
+              <div class="col-md-5">
+                <ul class=" details">
+                  <li>
+                    <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Matrícula: {{budget?.vehicle}}</p>
+                  </li>
+                  <li>
+                    <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>Estado: {{budget?.state}}</p>
+                  </li>
+                  <li *ngIf="budget?.price != null">
+                    <p><span class="glyphicon glyphicon-dashboard one" style="width:50px;"></span>Preço: {{budget?.price}} €</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="col-sm-6 col-xs-6 tital ">Início do Processo:</div>
+                <div class="col-sm-6 col-xs-5">{{budget?.processOpen | date : "dd/MM/yyyy - HH:mm" }}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="budget?.processClose != null">Fim do Processo:</div>
+                <div class="col-sm-6 col-xs-5" *ngIf="budget?.processClose != null">{{budget?.processClose | date : "dd/MM/yyyy - HH:mm" }}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="budget?.repairTime != null">Tempo de Reparação:</div>
+                <div class="col-sm-6 col-xs-6" *ngIf="budget?.repairTime != null">{{budget?.repairTime}} dias</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+                <br>
+                <div class="col-sm-6 col-xs-6 tital "></div>
+                <div class="col-sm-2 col-xs-2 "></div>
+                <div class="col-sm-2 col-xs-2 "><button class="btn btn-success">Aprovar</button></div>
+                <div class="col-sm-2 col-xs-2 "><button class="btn btn-danger">Reprovar</button></div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

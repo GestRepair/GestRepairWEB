@@ -1,37 +1,80 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/wrench.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Serviço</th>
-            <th>Matrícula</th>
-            <th>Preço</th>
-            <th>Estado</th>
-            <th>Data de Inicio</th>
-            <th>Data de Fim</th>
-            <th>Funcionário</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let repair of repairs">
-            <td>{{repair?.service}}</td>
-            <td>{{repair?.registration}}</td>
-            <td>{{repair?.price}}</td>
-            <td>{{repair?.nameState}}</td>
-            <td>{{repair?.startDate | date : "dd/MM/yyyy - HH:mm" }}</td>
-            <td>{{repair?.finishDate | date : "dd/MM/yyyy - HH:mm" }}</td>
-            <td>{{repair?.employer}}</td>
-            <td><button class="btn btn-primary" [routerLink]="['/repair', repair?.idRepair]">Info</button></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}}</h1>
     </div>
+    <br>
+    <div class="col-md-12">
+      <h3>Dados da ultíma visita</h3>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default" *ngFor="let reps of repairs">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">
+                      Reparação n.º {{reps?.registration}} - {{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} {{reps?.nameState}}</a>
+            </h4>
+          </div>
+          <div id="c{{reps?.idRepair}}" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="col-md-6">
+                <ul class=" details">
+                  <li>
+                    <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Viatura: {{reps?.registration}}</p>
+                  </li>
+                  <li *ngIf="reps?.price != null">
+                    <p><span class="glyphicon glyphicon-euro one" style="width:50px;"></span>Preço: {{reps?.price}} €</p>
+                  </li>
+                  <li>
+                    <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>Diagonóstico do Utilizador: {{reps?.description}}</p>
+                  </li>
+                  <li *ngIf="reps?.information != null">
+                    <p><span class="glyphicon glyphicon-wrench one" style="width:50px;"></span>Dados da Reparação: {{reps?.information}}</p>
+                  </li>
+                  <li>
+                    <p><span class="glyphicon glyphicon-warning-sign one" style="width:50px;"></span>Estado: {{reps?.nameState }}</p>
+                  </li>
+                  <li>
+                    <p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span><span class="glyphicon glyphicon-menu-right one"
+                        style="width:50px;"></span>Entrada: {{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }}</p>
+                  </li>
+                  <li *ngIf="reps?.finishDate != null">
+                    <p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span><span class="glyphicon glyphicon-menu-left one"
+                        style="width:50px;"></span>Saida: {{reps?.finishDate | date : "dd/MM/yyyy - HH:mm" }}</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="repair?.employer != null">Serviços:</div>
+                <div class="col-sm-6 col-xs-6 " *ngIf="repair?.employer != null">
+                  <ul class=" details">
+                    <li *ngFor="let employer of repair?.employer">
+                      <p>{{employer?.nameService}} - {{employer?.nameEmployer}}</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+                <br>
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="repair?.part != null">Peças:</div>
+                <div class="col-sm-6 col-xs-6 " *ngIf="repair?.part != null">
+                  <ul class=" details">
+                    <li *ngFor="let part of repair?.part">
+                      <p>{{part?.part}}</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

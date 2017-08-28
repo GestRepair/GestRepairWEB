@@ -6,10 +6,13 @@
     </div>
     <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
         <div class="" style="border-bottom:1px solid black">
-            <h1>{{title}} - {{user?.name}}</h1>
+            <h1>{{title}} </h1>
         </div>
         <br>
         <div class="col-md-8">
+            <blockquote>
+                <p>{{user?.name}}</p> <small><cite title="Source Title">{{user?.street}}, {{user?.zipcode}} {{user?.city}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+            </blockquote>
             <ul class=" details">
                 <li>
                     <p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{user?.contact}}</p>
@@ -18,18 +21,11 @@
                     <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{user?.email}}</p>
                 </li>
                 <li>
-                    <p><span class="glyphicon glyphicon-road one" style="width:50px;"></span>{{user?.street}}</p>
-                </li>
-                <li>
-                    <p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>{{user?.zipcode}} {{user?.city}}</p>
-                </li>
+                        <p><b><span class="glyphicon glyphicon-check one"></span> NIF: </b> {{user?.nif}}</p>
+                    </li>
             </ul>
         </div>
         <div class="col-md-4">
-            <div class="col-sm-5 col-xs-6 tital ">NIF:</div>
-            <div class="col-sm-7 col-xs-6 ">{{user?.nif}}</div>
-            <div class="clearfix"></div>
-            <div class="bot-border"></div>
         </div>
     </div>
 </div>

@@ -1,37 +1,38 @@
 ﻿<div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{service?.nameService}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img *ngIf="service" src="{{service?.photo}}" width="100%" alt="">
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <img *ngIf="service" src="{{service?.photo}}" width="100%" alt="">
-  </div>
-  <div class="col-md-8">
-    <div class="row">
-      <div class="col-md-3">
-        <h4><small>Nome do Serviço</small></h4>
-      </div>
-      <div class="col-md-8">
-        <h4>{{service?.nameService}}</h4>
-      </div>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+        <h1>{{service?.nameService}}</h1>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <h4><small>Descrição</small></h4>
+    <br>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3">
+          <h4><small>Nome do Serviço</small></h4>
+        </div>
+        <div class="col-md-8">
+          <h4>{{service?.nameService}}</h4>
+        </div>
       </div>
-      <div class="col-md-9">
-        <h4>{{service?.description}}</h4>
+      <div class="row">
+        <div class="col-md-3">
+          <h4><small>Descrição</small></h4>
+        </div>
+        <div class="col-md-9">
+          <h4>{{service?.description}}</h4>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <h4><small>Preço</small></h4>
-      </div>
-      <div class="col-md-8">
-        <h4>{{service?.priceService}}</h4>
+      <div class="row">
+        <div class="col-md-3">
+          <h4><small>Preço</small></h4>
+        </div>
+        <div class="col-md-8">
+          <h4>Desde: {{service?.priceService}}€</h4>
+        </div>
       </div>
     </div>
   </div>
