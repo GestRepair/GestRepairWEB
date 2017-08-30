@@ -2,15 +2,12 @@
 import { RouterModule, Routes } from '@angular/router';
 //components
 import { AppComponent } from './app.component';
-import { BudgetInfoComponent } from "app/budget/info/info.budget.component";
 import { BudgetListComponent } from "app/budget/list/list.budget.component";
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent} from 'app/navbar/navbar.component';
-import { RepairInfoComponent } from "app/repair/info/info.repair.component";
 import { RepairListComponent } from "app/repair/list/list.repair.component";
 import { ScheduleCreateComponent } from 'app/schedule/create/create.schedule.component';
 import { ScheduleDisableComponent } from 'app/schedule/disable/disable.schedule.component';
-import { ScheduleInfoComponent } from 'app/schedule/info/info.schedule.component';
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
 import { ServiceInfoComponent } from 'app/service/info/info.service.component';
 import { UserActivateComponent } from "app/user/activate/activate.user.component";
@@ -34,13 +31,10 @@ const routes: Routes = [
 	{ path: 'vehicle/list', redirectTo: 'vehicle', pathMatch: 'full' },
 	{ path: '', component: HomeComponent },
 	{ path: 'budget', component: BudgetListComponent },
-	{ path: 'budget/:id', component: BudgetInfoComponent },
 	{ path: 'repair', component: RepairListComponent },
-	{ path: 'repair/:id', component: RepairInfoComponent },
 	{ path: 'schedule/create', component: ScheduleCreateComponent },
 	{ path: 'schedule', component: ScheduleListComponent },
 	{ path: 'schedule/disable/:id', component: ScheduleDisableComponent },
-	{ path: 'schedule/:id', component: ScheduleInfoComponent },
 	{ path: 'service/:id', component: ServiceInfoComponent },
 	{ path: 'user/activated', component: UserActivateComponent },
 	{ path: 'user/activated/:email/:token', component: UserActiveEmailComponent },

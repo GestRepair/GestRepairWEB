@@ -11,7 +11,7 @@ import { UserService } from "app/user/user.service";
 })
 
 export class UserChangePassComponent {
-    title = 'Recuperação de password';
+    title = 'Alterar password';
     altera: string;
     constructor(
         private route: ActivatedRoute,

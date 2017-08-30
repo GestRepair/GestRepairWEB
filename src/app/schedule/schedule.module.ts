@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 //Component
 import { ScheduleCreateComponent } from 'app/schedule/create/create.schedule.component';
 import { ScheduleDisableComponent } from 'app/schedule/disable/disable.schedule.component';
-import { ScheduleInfoComponent } from 'app/schedule/info/info.schedule.component';
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
 //service
 import { ScheduleService } from "app/schedule/schedule.service";
@@ -15,7 +14,6 @@ import { ScheduleService } from "app/schedule/schedule.service";
     declarations: [
         ScheduleCreateComponent,
         ScheduleDisableComponent,
-        ScheduleInfoComponent,
         ScheduleListComponent
     ],
     imports: [
@@ -27,7 +25,6 @@ import { ScheduleService } from "app/schedule/schedule.service";
     exports: [
         ScheduleCreateComponent,
         ScheduleDisableComponent,
-        ScheduleInfoComponent,
         ScheduleListComponent
     ],
     providers: [

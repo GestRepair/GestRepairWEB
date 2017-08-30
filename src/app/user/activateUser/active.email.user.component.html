@@ -1,20 +1,28 @@
 <div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h1>{{title}}</h1>
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/profile.png" alt="stack photo" class="img">
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <p>A sua Conta está prestes a ser Ativada</p>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}} </h1>
+    </div>
+    <br>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+          <p>A sua Conta está prestes a ser Ativada</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary" (click)="activate()">Ativar Conta</button>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <button class="btn btn-primary" (click)="activate()">Ativar Conta</button>
-  </div>
-  <div class="col-md-6">
-    <button class="btn btn-primary" routerLink="/home">Voltar</button>
-  </div>
-</div>

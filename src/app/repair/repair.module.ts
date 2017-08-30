@@ -5,14 +5,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
 import { RepairListComponent } from "app/repair/list/list.repair.component";
-import { RepairInfoComponent } from "app/repair/info/info.repair.component";
 //service
 import { RepairService } from "app/repair/repair.service";
 
 @NgModule({
     declarations: [
-        RepairListComponent,
-        RepairInfoComponent
+        RepairListComponent
     ],
     imports: [
         BrowserModule,
@@ -21,8 +19,7 @@ import { RepairService } from "app/repair/repair.service";
         RouterModule
     ],
     exports: [
-        RepairListComponent,
-        RepairInfoComponent
+        RepairListComponent
     ],
     providers: [
         RepairService

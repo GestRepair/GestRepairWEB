@@ -5,14 +5,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
 import { BudgetListComponent } from "app/budget/list/list.budget.component";
-import { BudgetInfoComponent } from "app/budget/info/info.budget.component";
 //service
 import { BudgetService } from "app/budget/budget.service";
 
 @NgModule({
     declarations: [
-        BudgetListComponent,
-        BudgetInfoComponent
+        BudgetListComponent
     ],
     imports: [
         BrowserModule,
@@ -21,8 +19,7 @@ import { BudgetService } from "app/budget/budget.service";
         RouterModule
     ],
     exports: [
-        BudgetListComponent,
-        BudgetInfoComponent
+        BudgetListComponent
     ],
     providers: [
         BudgetService
