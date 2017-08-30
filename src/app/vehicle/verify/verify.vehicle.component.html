@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+    <div class="thumbnail text-center photo_view_postion_b">
+      <img src="assets/car.png" alt="stack photo" class="img">
+    </div>
+  </div>
+  <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+    <div class="" style="border-bottom:1px solid black">
+      <h1>{{title}}</h1>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <h1>Verificação da viatura</h1>
+      <form class="form-horizontal" #f="ngForm" (ngSubmit)="verify(f.value, f.valid)" novalidate>      
+        <div class="form-group">
+          <label for="vehicle" class="col-md-4 control-label">Matrícula <small>(obrigatório)</small></label>
+          <div class="col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" [(ngModel)]="veh" #vehicle="ngModel" name="vehicle" id="tfVehicle"
+                placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
+              <div class="has-error" *ngIf="vehicle.invalid && vehicle.touched">
+                <span *ngIf="vehicle.invalid && vehicle.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+              </div>
+              <div class="has-success" *ngIf="vehicle.valid && vehicle.touched">
+                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
+              </div>
+            </div>
+            <small class="text-danger" *ngIf="vehicle.invalid && vehicle.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Verificar Viatura</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

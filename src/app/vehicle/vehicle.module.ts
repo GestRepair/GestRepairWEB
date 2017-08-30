@@ -6,17 +6,18 @@ import { RouterModule } from '@angular/router';
 //component
 import { VehicleCreateComponent } from "app/vehicle/create/create.vehicle.component";
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
-import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
+import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
+import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
 //service
 import { VehicleService } from "app/vehicle/vehicle.service";
-
 
 
 @NgModule({
     declarations: [
         VehicleCreateComponent,
+        VehicleExistsComponent,
         VehicleListComponent,
-        VehicleInfoComponent
+        VehicleVerifyComponent
     ],
     imports: [
         BrowserModule,
@@ -26,8 +27,9 @@ import { VehicleService } from "app/vehicle/vehicle.service";
     ],
     exports: [
         VehicleCreateComponent,
+        VehicleExistsComponent,
         VehicleListComponent,
-        VehicleInfoComponent
+        VehicleVerifyComponent
     ],
     providers: [
         VehicleService

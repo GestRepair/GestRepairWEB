@@ -70,7 +70,7 @@
           <div class="col-md-8">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" [(ngModel)]="f.registration" #registration="ngModel" name="registration" id="tfMorada"
+              <input type="text" class="form-control" [ngModel]="regis" #registration="ngModel" name="registration" id="tfRegestration"
                 placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
               <div class="has-error" *ngIf="registration.invalid && registration.touched">
                 <span *ngIf="registration.invalid && registration.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
@@ -82,7 +82,7 @@
             <small class="text-danger" *ngIf="registration.invalid && registration.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <label for="registration" class="col-md-4 control-label">Data <small>(obrigatório)</small></label>
           <div class='col-md-2'>
             <div class="form-group">
@@ -136,7 +136,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="form-group">
           <div class="col-md-4"></div>
           <div class="col-md-8">

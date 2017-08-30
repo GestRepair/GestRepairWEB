@@ -20,7 +20,8 @@ import { UserRecoveryComponent } from "app/user/recovery/recovery.user.component
 import { UserRecoveryEmailComponent } from "app/user/recoveryemail/recovery.email.user.component";
 import { VehicleCreateComponent } from "app/vehicle/create/create.vehicle.component";
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
-import { VehicleInfoComponent } from "app/vehicle/info/info.vehicle.component";
+import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
+import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
 
 const routes: Routes = [
 	{ path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -45,8 +46,9 @@ const routes: Routes = [
 	{ path: 'user/recovery/:email/:token', component: UserRecoveryEmailComponent },
 	{ path: 'user', component: UserInfoComponent },
 	{ path: 'vehicle', component: VehicleListComponent },
-	{ path: 'vehicle/create', component: VehicleCreateComponent },
-	{ path: 'vehicle/:id', component: VehicleInfoComponent },
+	{ path: 'vehicle/create/:vehicle', component: VehicleCreateComponent },
+	{ path: 'vehicle/verify', component: VehicleVerifyComponent },
+	{ path: 'vehicle/exists', component: VehicleExistsComponent },
 	{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

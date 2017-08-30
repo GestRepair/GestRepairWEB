@@ -13,11 +13,12 @@ import { Vehicle } from './vehicle';
 import { Brand } from './brand';
 import { Model } from './model';
 import { Fuel } from './fuel';
+import { Verify } from './verify';
 import { CreateVehicle } from "app/vehicle/create/createVehicle";
 
 @Injectable()
 export class VehicleService {
-
+    mess:String;
     headers: Headers;
     options: RequestOptions;
     apiUrl = API.url + API.port;  // URL to web api
@@ -30,6 +31,11 @@ export class VehicleService {
     }
     create(data: CreateVehicle) {
         return this._http.post(this.apiUrl + '/vehicle/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify(data), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    verify(data: string) {
+        return this._http.post(this.apiUrl + '/vehicle/exists',JSON.stringify({vehicle: data}), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
@@ -60,13 +66,14 @@ export class VehicleService {
     }
 
     list(id: number): Observable<Vehicle[]> {
+        
         return this._http
             .get(this.apiUrl + '/vehicle/' + id + '/user', this.options)
             .map((response: Response) => <Vehicle[]>response.json().data)
             .catch(this.handleError);
     }
     private handleError(error: Response) {
-        return Observable.throw(error.json().error || "Server error");
+        return Observable.throw(error.json().error);
     }
 
 }
