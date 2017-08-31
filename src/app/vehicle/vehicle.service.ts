@@ -34,8 +34,25 @@ export class VehicleService {
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
+    add(data: string) {
+        console.log(data);
+        return this._http.post(this.apiUrl + '/vehicle/exists/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify({vehicle:data}), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    up(data: string) {
+        console.log(data);
+        return this._http.put(this.apiUrl + '/vehicle/exists/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify({vehicle:data}), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
     verify(data: string) {
         return this._http.post(this.apiUrl + '/vehicle/exists',JSON.stringify({vehicle: data}), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    owner(data: string) {
+        return this._http.post(this.apiUrl + '/vehicle/exists/user',JSON.stringify({vehicle: data}), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }

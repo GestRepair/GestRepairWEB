@@ -8,6 +8,8 @@ import { VehicleCreateComponent } from "app/vehicle/create/create.vehicle.compon
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
 import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
+import { VehicleAddExistsComponent } from "app/vehicle/addExists/addExits.vehicle.component";
+
 //service
 import { VehicleService } from "app/vehicle/vehicle.service";
 
@@ -17,7 +19,8 @@ import { VehicleService } from "app/vehicle/vehicle.service";
         VehicleCreateComponent,
         VehicleExistsComponent,
         VehicleListComponent,
-        VehicleVerifyComponent
+        VehicleVerifyComponent,
+        VehicleAddExistsComponent
     ],
     imports: [
         BrowserModule,
@@ -29,7 +32,8 @@ import { VehicleService } from "app/vehicle/vehicle.service";
         VehicleCreateComponent,
         VehicleExistsComponent,
         VehicleListComponent,
-        VehicleVerifyComponent
+        VehicleVerifyComponent,
+        VehicleAddExistsComponent
     ],
     providers: [
         VehicleService

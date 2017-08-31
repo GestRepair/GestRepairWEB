@@ -22,6 +22,7 @@ import { VehicleCreateComponent } from "app/vehicle/create/create.vehicle.compon
 import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
 import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
+import { VehicleAddExistsComponent } from "app/vehicle/addExists/addExits.vehicle.component";
 
 const routes: Routes = [
 	{ path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
 	{ path: 'repair/list', redirectTo: 'repair', pathMatch: 'full' },
 	{ path: 'schedule/list', redirectTo: 'schedule', pathMatch: 'full' },
 	{ path: 'vehicle/list', redirectTo: 'vehicle', pathMatch: 'full' },
+	
 	{ path: '', component: HomeComponent },
 	{ path: 'budget', component: BudgetListComponent },
 	{ path: 'repair', component: RepairListComponent },
@@ -47,6 +49,7 @@ const routes: Routes = [
 	{ path: 'user', component: UserInfoComponent },
 	{ path: 'vehicle', component: VehicleListComponent },
 	{ path: 'vehicle/create/:vehicle', component: VehicleCreateComponent },
+	{ path: 'vehicle/create/exists/:vehicle', component:VehicleAddExistsComponent},
 	{ path: 'vehicle/verify', component: VehicleVerifyComponent },
 	{ path: 'vehicle/exists', component: VehicleExistsComponent },
 	{ path: '**', redirectTo: '', pathMatch: 'full' }
