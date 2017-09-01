@@ -35,10 +35,10 @@ export class VehicleVerifyComponent {
                     if (data.data.bool == 0) {
                         this.router.navigate(['vehicle/create/' + this.veh]);
                     } else {
-                        this._vehicle.owner(this.veh).subscribe(
+                        this._vehicle.nowner(this.veh).subscribe(
                             ndata => {
                                 this.vehicles = ndata;
-                                if (ndata.data.bool == 0) {
+                                if (ndata.data.bool == 1) {
                                     this.router.navigate(['vehicle/create/exists/'+this.veh]);
                                 } else {
                                     let myContainer = <HTMLElement>document.querySelector("#notif");
