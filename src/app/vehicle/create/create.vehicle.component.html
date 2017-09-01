@@ -82,7 +82,7 @@
             <small class="text-danger" *ngIf="registration.invalid && registration.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
           </div>
         </div>
-        <!-- <div class="row">
+        <div class="row">
           <label for="registration" class="col-md-4 control-label">Data <small>(obrigatório)</small></label>
           <div class='col-md-2'>
             <div class="form-group">
@@ -114,7 +114,7 @@
             <div class="form-group">
               <label for="comment">Dia:</label>
               <div class='input-group'>
-                <select class="form-control" [ngModel]="date" #date="ngModel" name="day" (ngModelChange)="hour($event)"> 
+                <select class="form-control" [ngModel]="date" #date="ngModel" name="day"> 
                         <option [value]="d" *ngFor="let d of ds">{{d}}</option>
                     </select>
                 <span class="input-group-addon">
@@ -123,24 +123,11 @@
               </div>
             </div>
           </div>
-          <div class='col-md-2'>
-            <div class="form-group">
-              <label for="comment">Hora:</label>
-              <div class='input-group'>
-                <select class="form-control" [ngModel]="date" #date="ngModel" name="hour" (ngModelChange)="obth($event)"> 
-                    <option [value]="h" *ngFor="let h of hs">{{h}}</option>
-                </select>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-service"></span>
-                </span>
-              </div>
+          <div class="form-group">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+              <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
             </div>
-          </div>
-        </div> -->
-        <div class="form-group">
-          <div class="col-md-4"></div>
-          <div class="col-md-8">
-            <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
           </div>
         </div>
       </form>

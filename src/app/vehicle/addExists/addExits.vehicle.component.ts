@@ -44,7 +44,7 @@ export class VehicleAddExistsComponent {
                     this._vehicle.nowner(this.regis).subscribe(
                         ndata => {
                             this.vehicles = ndata;
-                            if (ndata.data.bool == 1) {
+                            if (ndata.data.bool == 0) {
                                 this._vehicle.add(this.regis).subscribe(
                                     nta => {
                                         this.vehicles = nta;
@@ -60,7 +60,6 @@ export class VehicleAddExistsComponent {
                                     }
                                 );
                             } else {
-                                console.log("edit");
                                 this._vehicle.up(this.regis).subscribe(
                                     nata => {
                                         this.vehicles = nata;

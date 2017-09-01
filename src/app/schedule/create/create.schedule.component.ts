@@ -29,7 +29,7 @@ export class ScheduleCreateComponent {
   schedule: Schedule;
   services: Service[];
   vehicles: Vehicle[];
-  constructor(private _schedule: ScheduleService, private _service: ServiceService, private _vehicle: VehicleService,  private router: Router) { }
+  constructor(private _schedule: ScheduleService, private _service: ServiceService, private _vehicle: VehicleService, private router: Router) { }
   ngOnInit(): void {
     this.serv();
     this.vehic(JSON.parse(localStorage.getItem('currentUser')).idUser);
@@ -71,7 +71,7 @@ export class ScheduleCreateComponent {
             this.ds[i] = i;
           }
         } else {
-          if (this.syear % 4 == 0) {
+          if ((this.syear % 4 == 0 && this.syear % 100 != 0) || this.syear % 400 == 0) {
             for (var i = this.dday + 1; i <= 29; i++) {
               this.ds[i] = i;
             }
@@ -91,7 +91,7 @@ export class ScheduleCreateComponent {
             this.ds[i] = i;
           }
         } else {
-          if ( ( this.syear % 4 == 0 && this.syear % 100 != 0 ) || this.syear % 400 == 0 ){
+          if ((this.syear % 4 == 0 && this.syear % 100 != 0) || this.syear % 400 == 0) {
             for (var i = 1; i <= 29; i++) {
               this.ds[i] = i;
             }
@@ -112,7 +112,7 @@ export class ScheduleCreateComponent {
           this.ds[i] = i;
         }
       } else {
-        if ( ( this.syear % 4 == 0 && this.syear % 100 != 0 ) || this.syear % 400 == 0 ){
+        if ((this.syear % 4 == 0 && this.syear % 100 != 0) || this.syear % 400 == 0) {
           for (var i = 1; i <= 29; i++) {
             this.ds[i] = i;
           }
@@ -126,7 +126,7 @@ export class ScheduleCreateComponent {
     this.ds = this.ds.filter(function (entry) { return /\S/.test(entry); });
   }
   hour(day: number) {
-    this.hs = []; 
+    this.hs = [];
     this.sday = day;
     for (var i = 8; i < 12; i++) {
       this.hs[i] = i;
@@ -139,7 +139,6 @@ export class ScheduleCreateComponent {
   // sign up when the form is valid
   create(model: Schedule, isValid: boolean) {
     model.date = this.syear + "-" + this.smonth + "-" + this.sday + " " + this.shour + ":00";
-    alert(model.date);
     // check if model is valid
     if (isValid) {
       this._schedule.create(model).subscribe(
