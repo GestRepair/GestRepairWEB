@@ -39,55 +39,69 @@ export class VehicleAddExistsComponent {
             data => {
                 this.vehicles = data;
                 if (data.data.bool == 0) {
-                    this.router.navigate(['vehicle/create/'+this.regis]);
+                    this.router.navigate(['vehicle/create/' + this.regis]);
                 } else {
                     this._vehicle.owner(this.regis).subscribe(
                         ndata => {
                             this.vehicles = ndata;
-                            if (ndata.data.bool == 1) {
-                                this._vehicle.add(this.regis).subscribe(
-                                    nata => {
-                                        this.vehicles = nata;
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-danger">Viatura adicionada com sucesso</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
-                                        setTimeout(() => { this.router.navigate(['home']); }, 500)
-                                    },
-                                    error => {
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                            if (ndata.data.bool == 0) {
+                                this._vehicle.nowner(this.regis).subscribe(
+                                    nadata => {
+                                        this.vehicles = nadata;
+                                        if (nadata.data.bool == 0) {
+                                            console.log("add");
+                                            this._vehicle.add(this.regis).subscribe(
+                                                nta => {
+                                                    this.vehicles = nta;
+                                                    let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                    myContainer.innerHTML = '<div class="alert alert-success">Viatura adicionada com sucesso</div>';
+                                                    setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+                                                    setTimeout(() => { this.router.navigate(['home']); }, 500)
+                                                },
+                                                error => {
+                                                    let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                    myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                                                    setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                                                }
+                                            );
+                                        } else {
+                                            console.log("edit");
+                                            this._vehicle.up(this.regis).subscribe(
+                                                nata => {
+                                                    this.vehicles = nata;
+                                                    let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                    myContainer.innerHTML = '<div class="alert alert-success">Viatura adicionada com sucesso</div>';
+                                                    setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+                                                    setTimeout(() => { this.router.navigate(['home']); }, 500)
+                                                },
+                                                error => {
+                                                    let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                    myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                                                    setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                                                }
+                                            );
+                                        };
                                     }
                                 );
                             } else {
-                                this._vehicle.up(this.regis).subscribe(
-                                    nata => {
-                                        this.vehicles = nata;
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-danger">Viatura adicionada com sucesso</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
-                                        setTimeout(() => { this.router.navigate(['home']); }, 500)
-                                    },
-                                    error => {
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000)
-                                    }
-                                );
-                            };
+                                let myContainer = <HTMLElement>document.querySelector("#notif");
+                                myContainer.innerHTML = '<div class="alert alert-danger">Já existe</div>';
+                                setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                                setTimeout(() => { this.router.navigate(['/vehicle/exists']); }, 500)
+                            }
                         },
-                        error => {
-                            let myContainer = <HTMLElement>document.querySelector("#notif");
-                            myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-                            setTimeout(() => { myContainer.innerHTML = '' }, 3000)
-                        }
-                    );
-                }
-                error => {
-                    let myContainer = <HTMLElement>document.querySelector("#notif");
-                    myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-                    setTimeout(() => { myContainer.innerHTML = '' }, 3000)
-                }
+            error => {
+                let myContainer = <HTMLElement>document.querySelector("#notif");
+                myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+            }
+        );
+    }
+    error => {
+    let myContainer = <HTMLElement>document.querySelector("#notif");
+    myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+    setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+}
             }
         );
     }

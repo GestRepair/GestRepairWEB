@@ -1,5 +1,5 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,EmailValidator } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -17,13 +17,15 @@ import { ScheduleModule} from "app/schedule/schedule.module";
 import { ServiceModule } from "app/service/service.module";
 import { UserModule } from "app/user/user.module";
 import { VehicleModule } from "app/vehicle/vehicle.module";
+import { NIFValidator } from "app/utils/validator/nif.directive";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    NIFValidator
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { VehicleModule } from "app/vehicle/vehicle.module";
     ScheduleModule,
     ServiceModule,
     UserModule,
-    VehicleModule,
+    VehicleModule
+    
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

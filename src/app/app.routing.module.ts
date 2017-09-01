@@ -23,6 +23,7 @@ import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
 import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
 import { VehicleAddExistsComponent } from "app/vehicle/addExists/addExits.vehicle.component";
+import { VehicleDisableComponent } from "app/vehicle/disable/disable.vehicle.component";
 
 const routes: Routes = [
 	{ path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -52,6 +53,7 @@ const routes: Routes = [
 	{ path: 'vehicle/create/exists/:vehicle', component:VehicleAddExistsComponent},
 	{ path: 'vehicle/verify', component: VehicleVerifyComponent },
 	{ path: 'vehicle/exists', component: VehicleExistsComponent },
+	{ path: 'vehicle/disable/:id', component: VehicleDisableComponent },
 	{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

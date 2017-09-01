@@ -10,6 +10,8 @@
     </div>
     <br>
     <div class="col-md-8">
+    
+    
       <form class="form-horizontal" #f="ngForm" (ngSubmit)="create(f.value, f.valid)" novalidate>
         <div class="row">
           <div class="col-md-12">
@@ -42,7 +44,7 @@
                   <label for="username" class="col-md-3 control-label">Username <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                      <span class="input-group-addon"><i class="fa fa-address-card" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" [(ngModel)]="f.username" #username="ngModel" name="username" id="tfSigninUserName"
                         placeholder="Introduz o teu nome" pattern="[A-zÀ-ÖØ-öø-ž0-9 ]+" required>
                       <div class="has-error" *ngIf="username.invalid && username.touched">
@@ -66,7 +68,7 @@
                   <label for="street" class="col-md-3 control-label">Morada <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                      <span class="input-group-addon"><i class="fa fa-road" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" [(ngModel)]="f.street" #street="ngModel" name="street" id="tfSigninUserName" placeholder="Introduza a sua Morada"
                         required>
                       <div class="has-error" *ngIf="street.invalid && street.touched">
@@ -76,6 +78,7 @@
                         <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
                       </div>
                     </div>
+                    <small class="text-danger" *ngIf="street.invalid && street.touched"> A introdução da morada é obrigatória</small>
                   </div>
                 </div>
               </div>
@@ -86,7 +89,7 @@
                   <label for="zipcode" class="col-md-3 control-label">Código Postal <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                      <span class="input-group-addon"><i class="fa fa-street-view" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" [(ngModel)]="f.zipcode" #zipcode="ngModel" name="zipcode" id="tfMorada" placeholder="Introduz o teu Código de Postal"
                         pattern="\d{4}-\d{3}" required>
                       <div class="has-error" *ngIf="zipcode.invalid && zipcode.touched">
@@ -107,7 +110,7 @@
                   <label for="city" class="col-md-3 control-label">Localidade <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                      <span class="input-group-addon"><i class="fa fa-street-view" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" [(ngModel)]="f.city" #city="ngModel" name="city" id="tfSigninUserName" placeholder="Introduza a sua Localidade"
                         pattern="[A-zÀ-ÖØ-öø-ž ]+" required>
                       <div class="has-error" *ngIf="city.invalid && city.touched">
@@ -130,7 +133,7 @@
                   <label for="email" class="col-md-3 control-label">Email <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                      <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                       <input type="email" class="form-control" [(ngModel)]="f.email" #email="ngModel" name="email" id="tfSigninUserEmail" placeholder="Introduz o teu email"
                         email required/>
                       <div class="has-error" *ngIf="email.invalid && email.touched">
@@ -180,7 +183,6 @@
                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
                       <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="f.confirmpassword" name="confirmpassword"
                         id="tfSigninUserRepPass" placeholder="Introduz novamente a password" validateEqual="password" reverse="false"
-                        pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"
                         required/>
                       <div class="has-error" *ngIf="confirmpassword.invalid && confirmpassword.touched">
                         <span *ngIf="confirmpassword.invalid && confirmpassword.touched" class="glyphicon form-control-feedback glyphicon-remove"
@@ -221,22 +223,22 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nif" class="col-md-3 control-label">NIF <small>(opcional)</small></label>
+                  <label for="nif" class="col-md-3 control-label">NIF <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" #nif="ngModel" [(ngModel)]="f.nif" name="nif" id="tfSigninUserPhone" placeholder="Introduz o teu número de telemóvel"
-                        pattern="[0-9]{9}" />
-                      <div class="has-error" *ngIf="nif.invalid && nif.touched">
-                        <span *ngIf="nif.invalid && nif.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+                        (change)="onChange($event) " pattern="[0-9]" required/>
+                      <div class="has-error" *ngIf="nif.touched && nifVal==false  && i==1">
+                        <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
-                      <div class="has-success" *ngIf="nif.valid && nif.touched">
+                      <div class="has-success" *ngIf="nif.touched && nifVal==true && i==1">
                         <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
                       </div>
                     </div>
-                    <small class="text-danger" *ngIf="nif.invalid && nif.touched">
+                    <small class="text-danger" *ngIf="nif.touched && nifVal==false && i==1">
                                 O NIF deve ser um número válido.
-                            </small>
+                    </small>
                   </div>
                 </div>
               </div>

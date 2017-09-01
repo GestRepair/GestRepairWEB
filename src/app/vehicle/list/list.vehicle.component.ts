@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { VehicleService } from '../vehicle.service';
@@ -22,7 +22,8 @@ export class VehicleListComponent {
 
 	constructor(
 		private _VehicleService: VehicleService,
-		private router: ActivatedRoute
+		private router: ActivatedRoute,
+		private nrouter: Router
 	) { }
 
 	// Method that is called on initialization of the page

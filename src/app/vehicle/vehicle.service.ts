@@ -35,13 +35,19 @@ export class VehicleService {
             .catch(this.handleError);
     }
     add(data: string) {
-        console.log(data);
         return this._http.post(this.apiUrl + '/vehicle/exists/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify({vehicle:data}), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
+    dis(data: number) {
+        let id =JSON.parse(localStorage.getItem('currentUser')).idUser;
+        let obj = JSON.stringify({user:id,vehicle:data});
+        console.log(obj);
+        return this._http.put(this.apiUrl + '/vehicle/disable',obj, this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
     up(data: string) {
-        console.log(data);
         return this._http.put(this.apiUrl + '/vehicle/exists/' + JSON.parse(localStorage.getItem('currentUser')).idUser, JSON.stringify({vehicle:data}), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
@@ -53,6 +59,11 @@ export class VehicleService {
     }
     owner(data: string) {
         return this._http.post(this.apiUrl + '/vehicle/exists/user',JSON.stringify({vehicle: data}), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+    nowner(data: string) {
+        return this._http.post(this.apiUrl + '/vehicle/exists/nuser',JSON.stringify({vehicle: data}), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }

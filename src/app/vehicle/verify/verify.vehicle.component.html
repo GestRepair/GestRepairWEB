@@ -16,7 +16,7 @@
           <label for="vehicle" class="col-md-4 control-label">Matrícula <small>(obrigatório)</small></label>
           <div class="col-md-8">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <span class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></span>
               <input type="text" class="form-control" [(ngModel)]="veh" #vehicle="ngModel" name="vehicle" id="tfVehicle"
                 placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
               <div class="has-error" *ngIf="vehicle.invalid && vehicle.touched">
@@ -32,7 +32,7 @@
         <div class="form-group">
           <div class="col-md-4"></div>
           <div class="col-md-8">
-            <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Verificar Viatura</button>
+            <button id="tfSignupUserRegister" type="submit" class="btn btn-default" [disabled]="!f.form.valid">Verificar Viatura</button>
           </div>
         </div>
       </form>

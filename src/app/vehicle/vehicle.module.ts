@@ -9,9 +9,10 @@ import { VehicleListComponent } from "app/vehicle/list/list.vehicle.component";
 import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.component";
 import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
 import { VehicleAddExistsComponent } from "app/vehicle/addExists/addExits.vehicle.component";
-
+import { VehicleDisableComponent } from "app/vehicle/disable/disable.vehicle.component";
 //service
 import { VehicleService } from "app/vehicle/vehicle.service";
+
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { VehicleService } from "app/vehicle/vehicle.service";
         VehicleExistsComponent,
         VehicleListComponent,
         VehicleVerifyComponent,
-        VehicleAddExistsComponent
+        VehicleAddExistsComponent,
+        VehicleDisableComponent
     ],
     imports: [
         BrowserModule,
@@ -33,7 +35,8 @@ import { VehicleService } from "app/vehicle/vehicle.service";
         VehicleExistsComponent,
         VehicleListComponent,
         VehicleVerifyComponent,
-        VehicleAddExistsComponent
+        VehicleAddExistsComponent,
+        VehicleDisableComponent
     ],
     providers: [
         VehicleService
