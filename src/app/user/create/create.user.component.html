@@ -232,11 +232,11 @@
                       <div class="has-error" *ngIf="nif.touched && nifVal==false  && i==1">
                         <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
-                      <div class="has-success" *ngIf="nif.touched && nifVal==true && i==1">
+                      <div class="has-success" *ngIf="nifVal==true && i==1">
                         <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
                       </div>
                     </div>
-                    <small class="text-danger" *ngIf="nif.touched && nifVal==false && i==1">
+                    <small class="text-danger" *ngIf="nifVal==false && i==1">
                                 O NIF deve ser um número válido.
                     </small>
                   </div>
@@ -248,7 +248,7 @@
                 <div class="form-group">
                   <div class="col-md-4"></div>
                   <div class="col-md-8">
-                    <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
+                    <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid && (nifVal == false && tam == false) || tam == false ">Registar</button>
                   </div>
                 </div>
               </div>

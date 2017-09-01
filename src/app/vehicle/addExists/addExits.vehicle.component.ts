@@ -49,7 +49,6 @@ export class VehicleAddExistsComponent {
                                     nadata => {
                                         this.vehicles = nadata;
                                         if (nadata.data.bool == 0) {
-                                            console.log("add");
                                             this._vehicle.add(this.regis).subscribe(
                                                 nta => {
                                                     this.vehicles = nta;
