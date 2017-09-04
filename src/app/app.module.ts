@@ -17,7 +17,6 @@ import { ScheduleModule} from "app/schedule/schedule.module";
 import { ServiceModule } from "app/service/service.module";
 import { UserModule } from "app/user/user.module";
 import { VehicleModule } from "app/vehicle/vehicle.module";
-import { NIFValidator } from "app/utils/validator/nif.directive";
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import { NIFValidator } from "app/utils/validator/nif.directive";
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    NIFValidator
   ],
   imports: [
     BrowserModule,

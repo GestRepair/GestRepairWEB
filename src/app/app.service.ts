@@ -47,7 +47,6 @@ export class AppService {
                     "contact":data.data.contact,
                     "nif":data.data.nif
                 }));
-                console.log(JSON.parse(localStorage.getItem('currentUser')));
 				this.name = data.data.name;
 				this.idUser = data.data.numUtilizador;
 				this.role = data.data.isEmployer;
