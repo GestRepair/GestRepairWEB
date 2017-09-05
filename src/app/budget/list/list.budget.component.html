@@ -14,7 +14,8 @@
         <div class="panel panel-default" *ngFor="let budget of budgets">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#c{{budget?.idBudget}}">Orçamento n.º: {{budget?.idBudget}} - {{budget?.vehicle}} - {{budget?.state}}</a>
+              <a data-toggle="collapse" href="#c{{budget?.idBudget}}">
+                  <strong>Orçamento n.º </strong>{{budget?.idBudget}} <strong>Data: </strong>{{budget?.processOpen | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura: </strong>{{budget?.vehicle}} <strong>Estado: </strong>{{budget?.state}}</a>
             </h4>
           </div>
           <div id="c{{budget?.idBudget}}" data-parent="#accordion" class="panel-collapse collapse">
@@ -29,7 +30,7 @@
                     <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>Estado: {{budget?.state}}</p>
                   </li>
                   <li *ngIf="budget?.price != null">
-                    <p><span class="glyphicon glyphicon-dashboard one" style="width:50px;"></span>Preço: {{budget?.price}} €</p>
+                    <p><span class="fa fa-eur" style="width:50px;"></span>Preço: {{budget?.price}} €</p>
                   </li>
                 </ul>
               </div>
@@ -48,8 +49,8 @@
                 <div class="bot-border"></div>
                 <br>
                 <div class="col-sm-6 col-xs-6 tital "></div>
-                <div class="col-sm-3 col-xs-3 "><button class="btn btn-success">Aprovar</button></div>
-                <div class="col-sm-3 col-xs-3 "><button class="btn btn-danger">Reprovar</button></div>
+                <div *ngIf='budget?.state == "Em Aprovação"' class="col-sm-3 col-xs-3 "><button class="btn btn-success" (click)="aproved(budget?.idBudget)">Aprovar</button></div>
+                <div *ngIf='budget?.state == "Em Aprovação"' class="col-sm-3 col-xs-3 "><button class="btn btn-danger" (click)="notaproved(budget?.idBudget)">Reprovar</button></div>
                 <div class="clearfix"></div>
                 <div class="bot-border"></div>
               </div>

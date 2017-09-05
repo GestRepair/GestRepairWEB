@@ -43,7 +43,6 @@ export class UserService {
             .catch(this.handleError);
     }
     edit(data: User, num: number) {
-        console.log(data);
         return this._http.put(this.apiUrl + '/user/' + num, JSON.stringify(data), this.options)
             .map((response: Response) => response.json())
             .catch(this.handleError);

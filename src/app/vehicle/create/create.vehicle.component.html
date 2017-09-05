@@ -6,127 +6,67 @@
   </div>
   <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
     <div class="" style="border-bottom:1px solid black">
-      <h1>{{title}}</h1>
+      <h1>{{title}} - {{regis}}</h1>
     </div>
     <br>
     <div class="col-md-12">
       <form class="form-horizontal" #f="ngForm" (ngSubmit)="create(f.value, f.valid)" novalidate>
         <div class="form-group">
-          <label for="brand" class="col-md-4 control-label">Marca <small>(obrigatório)</small></label>
+          <label for="brand" class="col-md-4 control-label">Marca</label>
           <div class="col-md-8">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+              <span class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></span>
               <select class="form-control" [ngModel]="brand" #brand="ngModel" name="brand" (ngModelChange)="listModel($event)" required>
                       <option *ngFor="let brand of brands" [value]="brand.idBrand"  >{{brand.nameBrand}}</option>
                     </select>
-              <div class="has-error" *ngIf="brand.invalid && brand.touched">
-                <span *ngIf="brand.invalid && brand.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-              </div>
-              <div class="has-success" *ngIf="brand.valid && brand.touched">
-                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
-              </div>
             </div>
-            <small class="text-danger" *ngIf="brand.invalid && brand.touched">Deverá selecionar uma marca</small>
           </div>
         </div>
         <div class="form-group">
-          <label for="model" class="col-md-4 control-label">Modelo <small>(obrigatório)</small></label>
+          <label for="model" class="col-md-4 control-label">Modelo</label>
           <div class="col-md-8">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-              <select class="form-control" [ngModel]="model" #model="ngModel" name="model">
+              <span class="input-group-addon"><i class="fa fa-taxi" aria-hidden="true"></i></span>
+              <select class="form-control" [ngModel]="model" #model="ngModel" name="model" (ngModelChange)="modelsel()">
                       <option *ngFor="let model of models" [value]="model.idModel">{{model.nameModel}}</option>
                     </select>
-              <div class="has-error" *ngIf="model.invalid && model.touched">
-                <span *ngIf="model.invalid && model.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-              </div>
-              <div class="has-success" *ngIf="model.valid && model.touched">
-                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
-              </div>
             </div>
-            <small class="text-danger" *ngIf="model.invalid && model.touched">Deverá selecionar uma marca</small>
           </div>
         </div>
         <div class="form-group">
-          <label for="fuel" class="col-md-4 control-label">Combustivel <small>(obrigatório)</small></label>
+          <label for="fuel" class="col-md-4 control-label">Combustivel</label>
           <div class="col-md-8">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-              <select class="form-control" [ngModel]="fuel" #fuel="ngModel" name="fuel">
+              <span class="input-group-addon"><i class="fa fa-battery-full" aria-hidden="true"></i></span>
+              <select class="form-control" [ngModel]="fuel" #fuel="ngModel" name="fuel" (ngModelChange)="fuelsel()">
                       <option *ngFor="let fuel of fuels" [value]="fuel.idFuel">{{fuel.nameFuel}}</option>
                     </select>
-              <div class="has-error" *ngIf="fuel.invalid && fuel.touched">
-                <span *ngIf="fuel.invalid && fuel.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-              </div>
-              <div class="has-success" *ngIf="fuel.valid && fuel.touched">
-                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
-              </div>
             </div>
-            <small class="text-danger" *ngIf="fuel.invalid && fuel.touched">Deverá selecionar uma marca</small>
           </div>
         </div>
-        <div class="form-group">
-          <label for="registration" class="col-md-4 control-label">Matrícula <small>(obrigatório)</small></label>
-          <div class="col-md-8">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" [ngModel]="regis" #registration="ngModel" name="registration" id="tfRegestration"
-                placeholder="Introduza a Matrícula do seu Veículo" pattern="\w{2}-\w{2}-\w{2}" required>
-              <div class="has-error" *ngIf="registration.invalid && registration.touched">
-                <span *ngIf="registration.invalid && registration.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-              </div>
-              <div class="has-success" *ngIf="registration.valid && registration.touched">
-                <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
-              </div>
-            </div>
-            <small class="text-danger" *ngIf="registration.invalid && registration.touched">  A introdução da Matrícula é obrigatória e deverá conter letras e números e "-" ser do seguinte formato XX-XX-XX</small>
+        <label for="date" class="col-md-4 control-label">Data</label>
+        <div class="form-group col-md-8">
+          <div class="col-md-4">
+            <select class="form-control" [ngModel]="date" #date="ngModel" name="year" (ngModelChange)="month($event)"> 
+                    <option [value]="y" *ngFor="let y of ys">{{y}}</option> 
+                </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-control col-md-3" [ngModel]="date" #date="ngModel" name="month" (ngModelChange)="day($event)"> 
+                    <option [value]="m" *ngFor="let m of ms">{{m}}</option>
+                </select>
+          </div>
+          <div class="col-md-4">
+            <select class="form-control col-md-3" [ngModel]="date" #date="ngModel" name="day" (ngModelChange)="dateday($event)"> 
+                    <option [value]="d" *ngFor="let d of ds">{{d}}</option>
+                </select>
           </div>
         </div>
         <div class="row">
-          <label for="registration" class="col-md-4 control-label">Data <small>(obrigatório)</small></label>
-          <div class='col-md-2'>
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
             <div class="form-group">
-              <label for="comment">Ano:</label>
-              <div class='input-group'>
-                <select class="form-control" [ngModel]="date" #date="ngModel" name="year" (ngModelChange)="month($event)"> 
-                        <option [value]="y" *ngFor="let y of ys">{{y}}</option> 
-                    </select>
-                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-service"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class='col-md-2'>
-            <div class="form-group">
-              <label for="comment">Mês:</label>
-              <div class='input-group'>
-                <select class="form-control" [ngModel]="date" #date="ngModel" name="month" (ngModelChange)="day($event)"> 
-                        <option [value]="m" *ngFor="let m of ms">{{m}}</option>
-                    </select>
-                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-service"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class='col-md-2'>
-            <div class="form-group">
-              <label for="comment">Dia:</label>
-              <div class='input-group'>
-                <select class="form-control" [ngModel]="date" #date="ngModel" name="day"> 
-                        <option [value]="d" *ngFor="let d of ds">{{d}}</option>
-                    </select>
-                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-service"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-              <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid">Registar</button>
+              <button id="tfSignUpVehicleRegister" class="btn btn-default" [disabled]="(bbrand == false|| bfuel == false || bmodel == false || byear == false || bmouth == false || bday == false)">Adicionar</button>
             </div>
           </div>
         </div>

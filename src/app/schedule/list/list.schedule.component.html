@@ -14,7 +14,9 @@
         <div class="panel panel-default" *ngFor="let schedule of schedules">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#c{{schedule?.idSchedule}}">Marcação n.º {{schedule?.idSchedule}} - {{schedule?.vehicle}}</a>
+              <a data-toggle="collapse" href="#c{{schedule?.idSchedule}}">
+                  <strong>Agendamento n.º </strong>{{schedule?.idSchedule}} <strong>Data: </strong>{{schedule?.date | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura: </strong>{{schedule?.vehicle}} 
+              </a>
             </h4>
           </div>
           <div id="c{{schedule?.idSchedule}}" data-parent="#accordion" class="panel-collapse collapse">

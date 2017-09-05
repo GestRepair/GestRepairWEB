@@ -26,10 +26,10 @@
                   <li>
                     <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Matrícula: {{vehicle?.registration}}</p>
                   </li>
-                  <li>
+                  <li *ngIf="vehicle?.displacement != null">
                     <p><span class="glyphicon glyphicon-cog one" style="width:50px;"></span>Cilindrada: {{vehicle?.displacement}} CC</p>
                   </li>
-                  <li>
+                  <li *ngIf="vehicle?.kilometers != null">
                     <p><span class="glyphicon glyphicon-dashboard one" style="width:50px;"></span>Quilometros: {{vehicle?.kilometers}} KM</p>
                   </li>
                 </ul>
@@ -43,12 +43,12 @@
                 <div class="col-sm-6 col-xs-5 ">{{vehicle?.date | date:'dd-MM-y' }}</div>
                 <div class="clearfix"></div>
                 <div class="bot-border"></div>
-                <div class="col-sm-6 col-xs-6 tital ">Medida dos pneus frontal:</div>
-                <div class="col-sm-6 col-xs-6 ">{{vehicle?.fronttiresize}}</div>
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="vehicle?.fronttiresize != null">Medida dos pneus frontal:</div>
+                <div class="col-sm-6 col-xs-6" *ngIf="vehicle?.fronttiresize != null">{{vehicle?.fronttiresize}}</div>
                 <div class="clearfix"></div>
                 <div class="bot-border"></div>
-                <div class="col-sm-6 col-xs-6 tital ">Medida dos pneus traseiros:</div>
-                <div class="col-sm-6 col-xs-6 ">{{vehicle?.reartiresize}}</div>
+                <div class="col-sm-6 col-xs-6 tital" *ngIf="vehicle?.reartiresize != null">Medida dos pneus traseiros:</div>
+                <div class="col-sm-6 col-xs-6" *ngIf="vehicle?.reartiresize != null">{{vehicle?.reartiresize}}</div>
                 <div class="clearfix"></div>
                 <div class="bot-border"></div>
                 <br>

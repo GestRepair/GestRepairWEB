@@ -57,11 +57,13 @@ export class VehicleCreateComponent {
             models => this.models = models,
             error => console.log("Impossível carregar lista de modelos")
         );
+        this.bbrand = true;
     }
+    /*list to dropdown list of fuels*/
     listFuel() {
         this._vehicle.listFuel().subscribe(
             fuels => this.fuels = fuels,
-            error => console.log("Impossível carregar lista de marcas")
+            error => console.log("Impossível carregar lista de Combustiveis")
         );
     }
     // sign up when the form is valid
@@ -73,8 +75,9 @@ export class VehicleCreateComponent {
                 data => {
                     this.vehicles = data;
                     if (data.data.bool == 0) {
+                        model.registration = this.regis;
                         model.date = this.syear + "-" + this.smonth + "-" + this.sday;
-                        this._vehicle.create(model).subscribe(
+                        this._vehicle.create(model).subscribe(                          
                             data => {
                                 this.vehicles = data;
                                 myContainer.innerHTML = '<div class="alert alert-success">Registo da viatura efetuada com sucesso</div>';
@@ -98,6 +101,12 @@ export class VehicleCreateComponent {
             );
         }
     }
+    bbrand = false;
+    bmodel = false;
+    bfuel = false;
+    byear = false;
+    bmouth = false;
+    bday = false;
     ldate: string;
     dyear = new Date().getFullYear();
     dmonth = new Date().getMonth() + 1;
@@ -108,6 +117,12 @@ export class VehicleCreateComponent {
     ys = [];
     ms = [];
     ds = [];
+    modelsel() {
+        this.bmodel = true;
+    }
+    fuelsel() {
+        this.bfuel = true;
+    }
     year() {
         for (var i = 0; i < 100; i++) {
             this.ys[i] = this.dyear - i;
@@ -124,8 +139,10 @@ export class VehicleCreateComponent {
             for (var i = 1; i <= 12; i++) {
                 this.ms[i] = i;
             }
+            
         }
         this.ms = this.ms.filter(function (entry) { return /\S/.test(entry); });
+        this.byear = true;
     }
     day(month: number) {
         this.smonth = month;
@@ -178,5 +195,10 @@ export class VehicleCreateComponent {
             }
         }
         this.ds = this.ds.filter(function (entry) { return /\S/.test(entry); });
+        this.bmouth = true;
+    }
+    dateday(day: number){
+        this.sday = day;
+        this.bday = true;
     }
 }

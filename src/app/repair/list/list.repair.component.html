@@ -16,7 +16,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">
-                      Reparação n.º {{reps?.registration}} - {{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} {{reps?.nameState}}</a>
+                  <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.registration}} <strong>Estado:</strong> {{reps?.nameState}}</a>
             </h4>
           </div>
           <div id="c{{reps?.idRepair}}" class="panel-collapse collapse">

@@ -31,6 +31,11 @@ export class BudgetService {
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
+    aproved(id:number, data:number): Observable<Budget> {
+        return this._http.put(this.apiUrl + '/budget/'+ id+'/aprove/', JSON.stringify({state:data}), this.options)
+            .map((res: Response) => res.json().data)
+            .catch(this.handleError);
+    }
     
     list(id: number): Observable<Budget[]> {
         return this._http

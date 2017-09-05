@@ -8,7 +8,7 @@
       <H4 style="vertical-align: middle;">Projeto Final</H4>
     </div>
     <div class="col-md-9">
-      
+
     </div>
 
   </div>
@@ -25,7 +25,7 @@
       </button>
 
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse js-navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a routerLink="/" routerLinkActive="active-link">Home</a></li>
         <li class="dropdown">
@@ -34,15 +34,31 @@
             <li *ngFor=" let service of services"><a [routerLink]="['/service', service?.idService]">{{service?.nameService}}</a></li>
           </ul>
         </li>
-        <li *ngIf="autenticated" class="dropdown">
+        <li *ngIf="autenticated" class="dropdown dropdown-large">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="vehicle">Lista de Veiculos</a></li>
-            <li><a routerLink="vehicle/verify">Registar Veiculos</a></li>
-            <li><a routerLink="schedule/create">Agendar Serviço</a></li>
-            <li><a routerLink="schedule">Ver Agendamentos</a></li>
-            <li><a routerLink="repair">Ver Reparações</a></li>
-            <li><a routerLink="budget">Ver Orçamentos</a></li>
+          <ul class="dropdown-menu dropdown-menu-large row">
+            <li class="col-md-4">
+              <ul>
+                <li class="dropdown-header">Viaturas</li>
+                <li><a routerLink="vehicle">Lista de Viaturas</a></li>
+                <li><a routerLink="vehicle/verify">Registar Viatura</a></li>
+              </ul>
+            </li>
+            <li class="col-md-4">
+              <ul>
+                <li class="dropdown-header">Marcações</li>
+                <li><a routerLink="schedule/create">Agendar Serviço</a></li>
+                <li><a routerLink="schedule">Ver Agendamentos</a></li>
+              </ul>
+            </li>
+            <li class="col-md-4">
+              <ul>
+                <li class="dropdown-header">Reparações</li>
+                <li><a routerLink="repair">Ver Reparações</a></li>
+                <li class="dropdown-header">Orçamentos</li>
+                <li><a routerLink="budget">Ver Orçamentos</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -57,12 +73,22 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="autenticated">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{name}}<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="user/edit" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Editar Utilizador </a></li>
-            <li><a routerLink="user/info" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Ver Perfil </a></li>
-            <li><a routerLink="user/changepass" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Alterar Password </a></li>
+        <li class="dropdown dropdown-large ">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>Bem-vindo </strong>{{name}}<span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-large row">
+            <li class="col-md-6">
+              <ul>
+                <li class="dropdown-header">Perfil</li>
+                <li><a routerLink="user/edit" routerLinkActive="active-link">Editar Utilizador </a></li>
+                <li><a routerLink="user/info" routerLinkActive="active-link">Ver Perfil </a></li>
+              </ul>
+            </li>
+            <li class="col-md-6">
+              <ul>
+                <li class="dropdown-header">Password</li>
+                <li><a routerLink="user/changepass" routerLinkActive="active-link">Alterar Password </a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li>
