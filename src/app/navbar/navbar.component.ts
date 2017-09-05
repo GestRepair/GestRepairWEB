@@ -18,13 +18,7 @@ export class NavbarComponent {
   private password: string;
   private idUser: number;
   private name: string;
-  private street: string;
-  private zipcode: string;
-  private city: string;
   private nameRole: string;
-  private email: string;
-  private contact: string;
-  private nif: string;
   private loading = false;
   private error = false;
   private autenticated = false;
@@ -64,6 +58,7 @@ export class NavbarComponent {
     }
   }
   login() {
+    let myContainer = <HTMLElement>document.querySelector("#notif");
     this.loading = true;
     this._httpService.auth(this.username, this.password).subscribe(
       result => {
@@ -71,19 +66,16 @@ export class NavbarComponent {
         this.autenticated = true;
         this.name = JSON.parse(localStorage.getItem('currentUser')).name;
         this.nameRole = JSON.parse(localStorage.getItem('currentUser')).nameRole;
-        let myContainer = <HTMLElement>document.querySelector("#notif");
         myContainer.innerHTML = '<div class="alert alert-success"><strong>Login</strong> Bem-Vindo ' + this.name + '</div>';
-        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
         $("#myModal").modal("hide");
       },
       error => {
         this.error = true;
         this.loading = false;
-        let myContainer = <HTMLElement>document.querySelector("#notif");
         myContainer.innerHTML = '<div class="alert alert-danger"><strong>Login</strong> ' + error + '</div>';
-        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
       }
     );
+    setTimeout(() => { myContainer.innerHTML = '' }, 3000);
     this.load();
   }
   load() {

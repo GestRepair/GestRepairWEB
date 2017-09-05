@@ -39,13 +39,7 @@ export class AppService {
                     "password":password,
                     "idUser":data.data.idUser,
                     "name":data.data.name,
-                    "street":data.data.street,
-                    "zipcode":data.data.zipcode,
-                    "city":data.data.city,
-                    "isEmployer":data.data.isEmployer,
-                    "email":data.data.email,
-                    "contact":data.data.contact,
-                    "nif":data.data.nif
+                    "isEmployer":data.data.isEmployer
                 }));
 				this.name = data.data.name;
 				this.idUser = data.data.numUtilizador;

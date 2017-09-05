@@ -12,15 +12,25 @@ import { UserService } from "app/user/user.service";
 export class UserRecoveryEmailComponent {
     title = 'Recuperação de password';
     recov: string;
+    e = 0;
+    eq = false;
+    pass: string;
+    conf: string;
     constructor(
         private route: ActivatedRoute,
-        private nrouter: Router, 
+        private nrouter: Router,
         private _User: UserService) { }
-
-    recovery(model: User, isValid: boolean) {
-        if (isValid) {
+    verifypass() {
+        this.e = 1;
+        if (this.pass == this.conf)
+        { this.eq = true; }
+        else
+        { this.eq = false };
+    }
+    recovery() {
+        if (this.eq == true) {
             this.route.params
-                .switchMap((params: Params) => this._User.recemail(model, params['email'], params['token']))
+                .switchMap((params: Params) => this._User.recemail(this.pass, params['email'], params['token']))
                 .subscribe(
                 activ => {
                     this.recov = activ;

@@ -18,6 +18,12 @@ export class ScheduleCreateComponent {
   dyear = new Date().getFullYear();
   dmonth = new Date().getMonth() + 1;
   dday = new Date().getDate();
+  service= false;
+  vehicle= false;
+  yea= false;
+  moun= false;
+  da= false;
+  hou= false;
   syear = 0;
   smonth = 0;
   sday = 0;
@@ -35,7 +41,14 @@ export class ScheduleCreateComponent {
     this.vehic(JSON.parse(localStorage.getItem('currentUser')).idUser);
     this.year();
   }
+  obtServ() {
+    this.service=true;
+  }
+  obtVeh() {
+    this.vehicle=true;
+  }
   obth(hour: number) {
+    this.hou=true;
     this.shour = hour;
   }
   year() {
@@ -44,6 +57,7 @@ export class ScheduleCreateComponent {
     }
   }
   month(year: number) {
+    this.yea=true;
     this.syear = year;
     this.ms = [];
     if (this.dyear == year) {
@@ -58,6 +72,7 @@ export class ScheduleCreateComponent {
     this.ms = this.ms.filter(function (entry) { return /\S/.test(entry); });
   }
   day(month: number) {
+    this.moun=true;
     this.smonth = month;
     this.ds = [];
     if (this.dyear == this.syear) {
@@ -126,6 +141,7 @@ export class ScheduleCreateComponent {
     this.ds = this.ds.filter(function (entry) { return /\S/.test(entry); });
   }
   hour(day: number) {
+    this.da=true;
     this.hs = [];
     this.sday = day;
     for (var i = 8; i < 12; i++) {

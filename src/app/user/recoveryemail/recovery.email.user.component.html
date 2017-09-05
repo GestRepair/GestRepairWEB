@@ -10,14 +10,15 @@
     </div>
     <br>
     <div class="col-md-8">
-      <form class="form-horizontal" #f="ngForm" (ngSubmit)="recovery(f.value, f.valid)" novalidate>
+      <form class="form-horizontal" #f="ngForm"  novalidate>
         <div class="form-group">
           <label for="password" class="col-md-4 control-label">Password <small>(obrigatório)</small></label>
           <div class="col-md-8">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" [(ngModel)]="f.password" #password="ngModel" name="password" id="tfSigninUserPass"
-                placeholder="Introduz a password" validateEqual="confirmpassword" reverse="true" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$" required/>
+              <input type="password" class="form-control" [(ngModel)]="pass" #password="ngModel" name="password" id="tfSigninUserPass"
+                placeholder="Introduz a password" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"
+                required/>
               <div class="has-error" *ngIf="password.invalid && password.touched">
                 <span *ngIf="password.invalid && password.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
               </div>
@@ -35,25 +36,23 @@
           <div class="col-md-8">
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="f.confirmpassword" name="confirmpassword"
-                id="tfSigninUserRepPass" placeholder="Introduz novamente a password" validateEqual="password" reverse="false"
-                required/>
-              <div class="has-error" *ngIf="confirmpassword.invalid && confirmpassword.touched">
-                <span *ngIf="confirmpassword.invalid && confirmpassword.touched" class="glyphicon form-control-feedback glyphicon-remove"
-                  aria-hidden="true"></span>
+              <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="conf" name="confirmpassword" (change)="verifypass($event)"
+                id="tfSigninUserRepPass" placeholder="Introduz novamente a password" required/>
+              <div class="has-error" *ngIf="eq == false  && e == 1">
+                <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
               </div>
-              <div class="has-success" *ngIf="confirmpassword.valid && confirmpassword.touched">
+              <div class="has-success" *ngIf="eq == true && e == 1">
                 <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
               </div>
             </div>
-            <small class="text-danger" *ngIf="confirmpassword.invalid && confirmpassword.touched">
-                                A introdução da confirmação da password é obrigatória e as passwords devem corresponder.
-                            </small>
+            <small class="text-danger" *ngIf="eq == false  && e == 1">
+                          A introdução da confirmação da password é obrigatória e as passwords devem corresponder.
+                      </small>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <input type="submit" class="btn btn-primary" [disabled]="!f.form.valid" value="Recuperar Password">
+            <input type="submit" class="btn btn-primary" (click)="recovery()" [disabled]="!f.form.valid || eq == false" value="Recuperar Password">
           </div>
         </div>
       </form>

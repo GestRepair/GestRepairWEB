@@ -12,12 +12,16 @@ import { User } from '../user';
 
 export class UserCreateComponent {
     i = 0;
+    e = 0;
     bot = 0;
     tam = false;
     nifVal = false;
+    eq = false;
     title = 'Registar Utilizador';
     createUser: string;
     email: string;
+    pass: string;
+    conf: string;
     constructor(
         private _user: UserService,
         private router: Router) {
@@ -57,10 +61,17 @@ export class UserCreateComponent {
         let newValue = event.target.value;
         this.validarNIF(newValue);
     }
+    verifypass() {
+        this.e = 1;
+        if (this.pass == this.conf) 
+        { this.eq = true; } 
+        else 
+        { this.eq = false };
+    }
     create(model: User, isValid: boolean) {
         // check if model is valid
-
-        if (isValid || this.nifVal == true) {
+        if (this.nifVal == true && this.eq == true) {
+            model.password = this.pass;
             this._user.create(model).subscribe(
                 data => {
                     this.createUser = data

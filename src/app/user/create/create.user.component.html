@@ -157,8 +157,8 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-                      <input type="password" class="form-control" [(ngModel)]="f.password" #password="ngModel" name="password" id="tfSigninUserPass"
-                        placeholder="Introduz a password" validateEqual="confirmpassword" reverse="true" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"
+                      <input type="password" class="form-control" [(ngModel)]="pass" #password="ngModel" name="password" id="tfSigninUserPass"
+                        placeholder="Introduz a password" pattern="^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$"
                         required/>
                       <div class="has-error" *ngIf="password.invalid && password.touched">
                         <span *ngIf="password.invalid && password.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
@@ -181,18 +181,17 @@
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
-                      <input type="password" class="form-control" #confirmpassword="ngModel" [(ngModel)]="f.confirmpassword" name="confirmpassword"
-                        id="tfSigninUserRepPass" placeholder="Introduz novamente a password" validateEqual="password" reverse="false"
-                        required/>
-                      <div class="has-error" *ngIf="confirmpassword.invalid && confirmpassword.touched">
-                        <span *ngIf="confirmpassword.invalid && confirmpassword.touched" class="glyphicon form-control-feedback glyphicon-remove"
+                      <input type="password" class="form-control" [(ngModel)]="conf" name="confirmpassword" (change)="verifypass($event)"
+                        id="tfSigninUserRepPass" placeholder="Introduz novamente a password" required/>
+                      <div class="has-error" *ngIf="eq == false  && e == 1">
+                        <span class="glyphicon form-control-feedback glyphicon-remove"
                           aria-hidden="true"></span>
                       </div>
-                      <div class="has-success" *ngIf="confirmpassword.valid && confirmpassword.touched">
+                      <div class="has-success" *ngIf="eq == true && e == 1">
                         <span class="glyphicon form-control-feedback glyphicon-ok" aria-hidden="true"></span>
                       </div>
                     </div>
-                    <small class="text-danger" *ngIf="confirmpassword.invalid && confirmpassword.touched">
+                    <small class="text-danger" *ngIf="eq == false  && e == 1">
                                 A introdução da confirmação da password é obrigatória e as passwords devem corresponder.
                             </small>
                   </div>
@@ -207,7 +206,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" #contact="ngModel" [(ngModel)]="f.contact" name="contact" id="tfSigninUserPhone"
-                        placeholder="Introduz o teu número de telemóvel" pattern="[0-9]{9}" />
+                        placeholder="Introduz o teu número de telemóvel" pattern="[0-9]" />
                       <div class="has-error" *ngIf="contact.invalid && contact.touched">
                         <span *ngIf="contact.invalid && contact.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
@@ -226,9 +225,9 @@
                   <label for="nif" class="col-md-3 control-label">NIF <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
-                      <input type="text" class="form-control" #nif="ngModel" [(ngModel)]="f.nif" name="nif" id="tfSigninUserPhone" placeholder="Introduz o teu número de telemóvel"
-                        (change)="onChange($event) " pattern="[0-9]" required/>
+                      <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" #nif="ngModel" [(ngModel)]="f.nif" name="nif" id="tfSignUpUserPhone" placeholder="Introduza o seu NIF"
+                        (change)="onChange($event)" pattern="[0-9]" required/>
                       <div class="has-error" *ngIf="nif.touched && nifVal==false  && i==1">
                         <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
@@ -248,7 +247,7 @@
                 <div class="form-group">
                   <div class="col-md-4"></div>
                   <div class="col-md-8">
-                    <button id="tfSigninUserRegister" type="submit" class="btn btn-primary col-xs-12" [disabled]="!f.form.valid && (nifVal == false && tam == false) || tam == false ">Registar</button>
+                    <button id="tfSignUpUserRegister" type="submit" class="btn btn-default" [disabled]="!f.form.valid && (nifVal == false && tam == false) || tam == false || eq == false ">Registar</button>
                   </div>
                 </div>
               </div>

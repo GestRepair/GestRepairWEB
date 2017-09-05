@@ -58,13 +58,13 @@ export class UserService {
             .map((response: Response) =>response.json())
             .catch(this.handleError);
     }
-    recemail(data:User,email: string,token:string) {
-        return this._http.put(this.apiUrl + '/user/'+email+'/recovery/'+token,JSON.stringify(data),this.options)
+    recemail(data:string,email: string,token:string) {
+        return this._http.put(this.apiUrl + '/user/'+email+'/recovery/'+token,JSON.stringify({password:data}),this.options)
             .map((response: Response) =>response.json())
             .catch(this.handleError);
     }
-    changePass(data:ChangePassword,id: number){
-        return this._http.put(this.apiUrl + '/chpass/'+id,JSON.stringify(data),this.options)
+    changePass(data:string,olddata:string,id: number){
+        return this._http.put(this.apiUrl + '/chpass/'+id,JSON.stringify({newPassword:data,oldPassword:olddata}),this.options)
             .map((response: Response) =>response.json())
             .catch(this.handleError);
     }
