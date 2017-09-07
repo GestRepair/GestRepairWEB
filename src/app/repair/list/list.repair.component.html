@@ -16,7 +16,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">
-                  <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.registration}} <strong>Estado:</strong> {{reps?.nameState}}</a>
+                  <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.vehicle}} <strong>Estado:</strong> {{reps?.state}}</a>
             </h4>
           </div>
           <div id="c{{reps?.idRepair}}" class="panel-collapse collapse">
@@ -24,7 +24,7 @@
               <div class="col-md-6">
                 <ul class=" details">
                   <li>
-                    <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Viatura: {{reps?.registration}}</p>
+                    <p><span class="glyphicon glyphicon-list-alt one" style="width:50px;"></span>Viatura: {{reps?.vehicle}}</p>
                   </li>
                   <li *ngIf="reps?.price != null">
                     <p><span class="glyphicon glyphicon-euro one" style="width:50px;"></span>Preço: {{reps?.price}} €</p>
@@ -36,7 +36,7 @@
                     <p><span class="glyphicon glyphicon-wrench one" style="width:50px;"></span>Dados da Reparação: {{reps?.information}}</p>
                   </li>
                   <li>
-                    <p><span class="glyphicon glyphicon-warning-sign one" style="width:50px;"></span>Estado: {{reps?.nameState }}</p>
+                    <p><span class="glyphicon glyphicon-warning-sign one" style="width:50px;"></span>Estado: {{reps?.state }}</p>
                   </li>
                   <li>
                     <p><span class="glyphicon glyphicon-calendar one" style="width:50px;"></span><span class="glyphicon glyphicon-menu-right one"

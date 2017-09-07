@@ -1,6 +1,6 @@
 export interface Repair {
     idRepair: number;
-    registration:string;
+    vehicle:string;
     description: string;
     price: number;
     state: string;
