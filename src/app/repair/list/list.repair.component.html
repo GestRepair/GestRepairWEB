@@ -15,8 +15,9 @@
         <div class="panel panel-default" *ngFor="let reps of repairs">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">
-                  <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.vehicle}} <strong>Estado:</strong> {{reps?.state}}</a>
+              <!--<a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">-->
+                <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}">  
+                <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.vehicle}} <strong>Estado:</strong> {{reps?.state}}</a>
             </h4>
           </div>
           <div id="c{{reps?.idRepair}}" class="panel-collapse collapse">
