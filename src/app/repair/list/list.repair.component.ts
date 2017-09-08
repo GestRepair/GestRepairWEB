@@ -42,7 +42,7 @@ export class RepairListComponent {
 			error => console.log("Impossível carregar lista de Reparações"),
 		);
 	}
-	info(rep:number) {
+	/*info(rep:number) {
        this.router.params
             .switchMap((params: Params) => this._Repair.info(JSON.parse(localStorage.getItem('currentUser')).idUser,rep))
             .subscribe(
@@ -54,5 +54,5 @@ export class RepairListComponent {
                 this.nrouter.navigate(['home']);
                 console.log(error);
             })
-    }
+	}*/
 }
