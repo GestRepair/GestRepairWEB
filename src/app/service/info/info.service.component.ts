@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ServiceService } from '../service.service';
-
+import { API } from '../../../main';
 import { Service } from '../service';
 
 @Component({
@@ -15,7 +15,7 @@ import { Service } from '../service';
 export class ServiceInfoComponent {
 
 	service: Service;
-
+	photo = API.url+API.port+"/service/img/";
 	constructor(
 		private _serviceService: ServiceService,
 		private router: ActivatedRoute,

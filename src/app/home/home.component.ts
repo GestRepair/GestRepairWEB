@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ServiceService } from "app/service/service.service";
 import { Router } from "@angular/router";
 import { Service } from "app/service/service";
+import { API } from '../../main';
 declare var $;
 
 @Component({
@@ -12,8 +13,9 @@ declare var $;
 export class HomeComponent {
   title = 'GestRepair';
   services: Service[];
-
-  constructor(private _serviceService: ServiceService, private router: Router) { }
+  photo = API.url+API.port+"/service/img/";
+  constructor(private _serviceService: ServiceService, private router: Router) {
+   }
   ngOnInit() {
     this.serv();
     this.carousel();
