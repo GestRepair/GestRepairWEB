@@ -63,13 +63,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="!autenticated">
         <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registar<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="user/create" routerLinkActive="active-link"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a routerLink="user/recovery" routerLinkActive="active">Esqueceu-se da Password?</a></li>
-          </ul>
-        </li>
+        <li><a routerLink="user/create" routerLinkActive="active-link">Registar</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="autenticated">
         <li class="dropdown dropdown-large ">
@@ -124,6 +118,7 @@
             </div>
           </div>
           <br>
+          <a routerLink="user/recovery" routerLinkActive="active">Esqueceu-se da Password?</a>
           <div class="row">
             <div *ngIf="loading">
               <div class="loading" style="width:50px; height:50px; padding-top:30px;">

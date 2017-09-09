@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 import { User } from '../user';
 import { UserService } from "app/user/user.service";
-
+declare var $;
 @Component({
     templateUrl: './recovery.user.component.html',
     styleUrls: ['./recovery.user.component.css']
@@ -14,7 +14,9 @@ export class UserRecoveryComponent {
     email: string;
     constructor(
         private _user: UserService,
-        private router: Router) { }
+        private router: Router) { 
+            $("#myModal").modal("hide");
+        }
     recovery(model: User, isValid: boolean) {
         // check if model is valid
         if (isValid) {
