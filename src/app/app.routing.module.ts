@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 //components
 import { AppComponent } from './app.component';
 import { BudgetListComponent } from "app/budget/list/list.budget.component";
+import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent} from 'app/navbar/navbar.component';
 import { RepairListComponent } from "app/repair/list/list.repair.component";
@@ -35,6 +36,7 @@ const routes: Routes = [
 	
 	{ path: '', component: HomeComponent },
 	{ path: 'budget', component: BudgetListComponent },
+	{ path: 'about', component: AboutComponent },
 	{ path: 'repair', component: RepairListComponent },
 	{ path: 'schedule/create', component: ScheduleCreateComponent },
 	{ path: 'schedule', component: ScheduleListComponent },

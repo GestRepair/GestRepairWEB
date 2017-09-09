@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 //component
 import { AppComponent } from './app.component';
+import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from 'app/navbar/navbar.component';
 //service
@@ -22,6 +23,7 @@ import { VehicleModule } from "app/vehicle/vehicle.module";
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     HomeComponent,
     NavbarComponent,
   ],
