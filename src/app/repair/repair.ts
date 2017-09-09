@@ -12,10 +12,10 @@ export interface Repair {
 }
 export interface Part {
     idPart:number;
-    part:string;
+    namePart:string;
 }
 export interface Employer {
     idEmployer:number;
-    nameEmployer:string;
+    name:string;
     nameService:string;
 }

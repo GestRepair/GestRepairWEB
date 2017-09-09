@@ -9,7 +9,7 @@ import "rxjs/add/operator/catch";
 
 import { API } from '../../main';
 
-import { Repair } from './repair';
+import { Repair,Part,Employer } from './repair';
 
 @Injectable()
 export class RepairService {
@@ -36,6 +36,18 @@ export class RepairService {
         return this._http
             .get(this.apiUrl + '/repair/user/' + id, this.options)
             .map((response: Response) => <Repair[]>response.json().data)
+            .catch(this.handleError);
+    }
+    part(id: number): Observable<Part[]> {
+        return this._http
+            .get(this.apiUrl + '/repair/parts/' + id, this.options)
+            .map((response: Response) => <Part[]>response.json().data)
+            .catch(this.handleError);
+    }
+    employer(id: number): Observable<Employer[]> {
+        return this._http
+            .get(this.apiUrl + '/repair/employer/' + id, this.options)
+            .map((response: Response) => <Employer[]>response.json().data)
             .catch(this.handleError);
     }
     private handleError(error: Response) {

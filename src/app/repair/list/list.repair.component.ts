@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { RepairService } from '../repair.service';
 
-import { Repair } from '../repair';
+import { Repair, Part, Employer } from '../repair';
 
 @Component({
 	templateUrl: './list.repair.component.html',
@@ -15,25 +15,22 @@ import { Repair } from '../repair';
 export class RepairListComponent {
 
 	title = 'Histórico de Reparações';
-	repair: Repair;
+	parts: Part[];
 	repairs: Repair[];
-	//parts:Part[];
-	
-	errorMessage: string;
-	searchFilter: string;
+	employers: Employer[];
 
 	constructor(
 		private _Repair: RepairService,
 		private router: ActivatedRoute,
 		private nrouter: Router
 	) { }
-	
+
 	// Method that is called on initialization of the page
 	ngOnInit(): void {
 		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 		//this.info(this.repair.idRepair);
 	}
-	getList(id:number) {
+	getList(id: number) {
 		this._Repair.list(id).subscribe(
 			repairs => {
 				this.repairs = repairs;
@@ -42,17 +39,36 @@ export class RepairListComponent {
 			error => console.log("Impossível carregar lista de Reparações"),
 		);
 	}
-	/*info(rep:number) {
-       this.router.params
-            .switchMap((params: Params) => this._Repair.info(JSON.parse(localStorage.getItem('currentUser')).idUser,rep))
-            .subscribe(
-            data => {
-                this.repair = data;
-                //this.parts = data.part;
-            },
-            error => {
-                this.nrouter.navigate(['home']);
-                console.log(error);
-            })
-	}*/
+	getInfo(rep: number) {
+		setTimeout(() => {
+			this.infopart(rep);
+			this.infoEmployer(rep);
+		}, 100);
+	}
+	infopart(rep: number) {
+		this.router.params
+			.switchMap((params: Params) => this._Repair.part(rep))
+			.subscribe(
+			data => {
+				this.parts = data;
+				//this.parts = data.part;
+			},
+			error => {
+				this.nrouter.navigate(['home']);
+				console.log(error);
+			})
+	}
+	infoEmployer(rep: number) {
+		this.router.params
+			.switchMap((params: Params) => this._Repair.employer(rep))
+			.subscribe(
+			data => {
+				this.employers = data;
+				//this.parts = data.part;
+			},
+			error => {
+				this.nrouter.navigate(['home']);
+				console.log(error);
+			})
+	}
 }

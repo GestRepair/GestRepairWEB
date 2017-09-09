@@ -15,9 +15,10 @@
         <div class="panel panel-default" *ngFor="let reps of repairs">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <!--<a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="info(reps?.idRepair)">-->
-                <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}">  
-                <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy - HH:mm" }} <strong>Viatura:</strong> {{reps?.vehicle}} <strong>Estado:</strong> {{reps?.state}}</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}" (click)="getInfo(reps?.idRepair)">
+                <!-- <a data-toggle="collapse" data-parent="#accordion" href="#c{{reps?.idRepair}}">  -->
+                <strong>Reparação n.º </strong>{{reps?.idRepair}} <strong>Data: </strong>{{reps?.startDate | date : "dd/MM/yyyy
+                - HH:mm" }} <strong>Viatura:</strong> {{reps?.vehicle}} <strong>Estado:</strong> {{reps?.state}}</a>
             </h4>
           </div>
           <div id="c{{reps?.idRepair}}" class="panel-collapse collapse">
@@ -49,33 +50,44 @@
                   </li>
                 </ul>
               </div>
-              <!--<div class="col-md-6">
-                <div class="col-sm-6 col-xs-6 tital" *ngIf="repair?.employer != null">Serviços:</div>
-                <div class="col-sm-6 col-xs-6 " *ngIf="repair?.employer != null">
-                  <ul class=" details">
-                    <li *ngFor="let employer of repair?.employer">
-                      <p>{{employer?.nameService}} - {{employer?.nameEmployer}}</p>
-                    </li>
-                  </ul>
+              <div class="col-md-6">
+                <div *ngIf="employers?.length > 0; else elseEmployer">
+                  <div class="col-sm-6 col-xs-6 tital">Serviços:</div>
+                  <div class="col-sm-6 col-xs-6 ">
+                    <ul class=" details">
+                      <li *ngFor="let employer of employers">
+                        <p>{{employer?.nameService}} - {{employer?.name}}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="bot-border"></div>
+                <ng-template #elseEmployer>
+                  <div class="col-sm-6 col-xs-6 tital"></div>
+                  <div class="col-sm-6 col-xs-6 "></div>
+                </ng-template>
                 <br>
-                <div class="col-sm-6 col-xs-6 tital" *ngIf="repair?.part != null">Peças:</div>
-                <div class="col-sm-6 col-xs-6 " *ngIf="repair?.part != null">
-                  <ul class=" details">
-                    <li *ngFor="let part of repair?.part">
-                      <p>{{part?.part}}</p>
-                    </li>
-                  </ul>
+                <div *ngIf="parts?.length > 0; else elseParts">
+                  <div class="col-sm-6 col-xs-6 tital">Peças:</div>
+                  <div class="col-sm-6 col-xs-6 ">
+                    <ul class=" details">
+                      <li *ngFor="let part of parts">
+                        <p>{{part.namePart}}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="bot-border"></div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="bot-border"></div>
-              </div>-->
+                <ng-template #elseParts>
+                  <div class="col-sm-6 col-xs-6 tital"></div>
+                  <div class="col-sm-6 col-xs-6 "></div>
+                </ng-template>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
