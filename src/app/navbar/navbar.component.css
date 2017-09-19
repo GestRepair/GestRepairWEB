@@ -10,6 +10,7 @@
 body {
   position: relative; 
 }
+.shadow:hover {-webkit-filter: drop-shadow(8px 8px 10px #888888);filter: drop-shadow(8px 8px 10px #888888);}
 .affix {
   top:0;
   width: 100%;
