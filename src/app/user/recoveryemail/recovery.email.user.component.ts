@@ -20,13 +20,17 @@ export class UserRecoveryEmailComponent {
         private route: ActivatedRoute,
         private nrouter: Router,
         private _User: UserService) { }
+    /**
+     * Verifica se as passwords são iguais
+     */
     verifypass() {
         this.e = 1;
-        if (this.pass == this.conf)
-        { this.eq = true; }
-        else
-        { this.eq = false };
+        if (this.pass == this.conf) { this.eq = true; }
+        else { this.eq = false };
     }
+    /**
+     * Pede a recuperação da password
+     */
     recovery() {
         if (this.eq == true) {
             this.route.params

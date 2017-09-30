@@ -36,26 +36,47 @@ export class ScheduleCreateComponent {
   services: Service[];
   vehicles: Vehicle[];
   constructor(private _schedule: ScheduleService, private _service: ServiceService, private _vehicle: VehicleService, private router: Router) { }
+  /**
+   * Classe que é chamada no momento que a página é carregada
+   */
   ngOnInit(): void {
     this.serv();
     this.vehic(JSON.parse(localStorage.getItem('currentUser')).idUser);
     this.year();
   }
+  /**
+   * Caso o serviço seja ativo este valor passa a true e é usado para a ativação do botão
+   */
   obtServ() {
     this.service=true;
   }
+  /**
+   * Caso a viatura seja ativo este valor passa a true e é usado para a ativação do botão
+   */
   obtVeh() {
     this.vehicle=true;
   }
+  /**
+   * Serve para verificar se as horas existem
+   * @param hour 
+   */
   obth(hour: number) {
     this.hou=true;
     this.shour = hour;
   }
+  /**
+   * Insere o proprio ano + 5 na dropdown
+   * (Foi obtado em por 5 anos para a verificar o ano bissexto)
+   */
   year() {
     for (var i = 0; i < 5; i++) {
       this.ys[i] = this.dyear + i;
     }
   }
+  /**
+   * Verifica o ano e insere os meses
+   * @param year 
+   */
   month(year: number) {
     this.yea=true;
     this.syear = year;
@@ -71,6 +92,10 @@ export class ScheduleCreateComponent {
     }
     this.ms = this.ms.filter(function (entry) { return /\S/.test(entry); });
   }
+  /**
+   * Verifica o mes e insere os dias
+   * @param month 
+   */
   day(month: number) {
     this.moun=true;
     this.smonth = month;
@@ -140,6 +165,10 @@ export class ScheduleCreateComponent {
     }
     this.ds = this.ds.filter(function (entry) { return /\S/.test(entry); });
   }
+  /**
+   * Verifica os dias e insere as horas
+   * @param day 
+   */
   hour(day: number) {
     this.da=true;
     this.hs = [];
@@ -175,6 +204,9 @@ export class ScheduleCreateComponent {
       );
     }
   }
+  /**
+   * Mostra a lista de serviços
+   */
   serv() {
     this._service.list().subscribe(
       services => this.services = services,
@@ -183,6 +215,10 @@ export class ScheduleCreateComponent {
       }
     );
   }
+  /**
+   * Mostra a lista de viaturas
+   * @param id 
+   */
   vehic(id: number) {
     this._vehicle.list(id).subscribe(
       vehicles => this.vehicles = vehicles,

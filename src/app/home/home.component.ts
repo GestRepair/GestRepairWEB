@@ -9,23 +9,34 @@ declare var $;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
+/**
+ * Class home
+ */
 export class HomeComponent {
   title = 'GestRepair';
   services: Service[];
-  photo = API.url+API.port+"/service/img/";
+  photo = API.url + API.port + "/service/img/";
   constructor(private _serviceService: ServiceService, private router: Router) {
-   }
+  }
+  /**
+   * Classe que inicia os atributos no arranque
+   */
   ngOnInit() {
     this.serv();
     this.carousel();
   }
+  /**
+   * Lista de serviços
+   */
   serv() {
     this._serviceService.list().subscribe(
       services => this.services = services,
       error => console.log("Impossível carregar lista de Serviços")
     );
   }
+  /**
+   * Inicializa o carrosel a trabalhar
+   */
   carousel() {
     // Instantiate the Bootstrap carousel
     $('.multi-item-carousel').carousel({

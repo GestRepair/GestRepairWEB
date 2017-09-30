@@ -56,21 +56,31 @@ export class UserCreateComponent {
             this.nifVal = false;
         }
     }
+    /**
+     * Valida o nif após a sua inserssão
+     * @param event 
+     */
     private onChange(event) {
         this.i = 1;
         let newValue = event.target.value;
         this.validarNIF(newValue);
     }
+    /**
+     * Verifica a se a pass é igual à confirmação
+     */
     verifypass() {
         this.e = 1;
-        if (this.pass == this.conf) 
-        { this.eq = true; } 
-        else 
-        { this.eq = false };
+        if (this.pass == this.conf) { this.eq = true; }
+        else { this.eq = false };
     }
+    /**
+     * Cria utilizador
+     * @param model 
+     * @param isValid 
+     */
     create(model: User, isValid: boolean) {
         // check if model is valid
-        if (this.nifVal == true && this.eq == true) {
+        if (isValid || this.nifVal == true || this.eq == true || this.tam == true) {
             model.password = this.pass;
             this._user.create(model).subscribe(
                 data => {

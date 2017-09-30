@@ -17,6 +17,11 @@ export class UserRecoveryComponent {
         private router: Router) { 
             $("#myModal").modal("hide");
         }
+    /**
+     * Envia um e-mail para a recuperação de password
+     * @param model 
+     * @param isValid 
+     */
     recovery(model: User, isValid: boolean) {
         // check if model is valid
         if (isValid) {

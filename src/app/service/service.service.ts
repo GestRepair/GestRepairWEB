@@ -23,12 +23,19 @@ export class ServiceService {
 		this.headers.append('Content-Type', 'application/json');
 		this.options = new RequestOptions({ headers: this.headers });
 	}
+	/**
+	 * Lista os serviços
+	 */
 	list(): Observable<Service[]> {
 		return this._http
 			.get(this.apiUrl + '/service', this.options)
 			.map((response: Response) => <Service[]>response.json().data)
 			.catch(this.handleError);
 	}
+	/**
+	 * Mostra os detalhes do serviço
+	 * @param num 
+	 */
 	info(num: number): Observable<Service>  {
         return this._http
 			.get(this.apiUrl +'/service/'+num, this.options)

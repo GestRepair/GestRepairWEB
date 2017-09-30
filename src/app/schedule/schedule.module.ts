@@ -9,7 +9,9 @@ import { ScheduleDisableComponent } from 'app/schedule/disable/disable.schedule.
 import { ScheduleListComponent } from 'app/schedule/list/list.schedule.component';
 //service
 import { ScheduleService } from "app/schedule/schedule.service";
-
+/**
+ * Aqui é definido os componentes e serviços
+ */
 @NgModule({
     declarations: [
         ScheduleCreateComponent,

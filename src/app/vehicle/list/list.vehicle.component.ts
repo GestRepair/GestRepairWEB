@@ -30,10 +30,14 @@ export class VehicleListComponent {
 	ngOnInit(): void {
 		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 	}
+	/**
+	 * Mostra a lista de viaturas
+	 * @param id 
+	 */
 	getList(id:number) {
 		this._VehicleService.list(id).subscribe(
 			vehicles => this.vehicles = vehicles,
-			error => console.log("Impossível carregar lista de estudantes")
+			error => console.log("Impossível carregar lista de viaturas")
 		);
 	}
 }

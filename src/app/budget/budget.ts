@@ -1,3 +1,6 @@
+/**
+ * Template para receber os dados
+ */
 export interface Budget {
     idBudget: number;
     service:string;

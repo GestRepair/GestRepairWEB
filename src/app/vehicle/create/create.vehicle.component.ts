@@ -34,24 +34,36 @@ export class VehicleCreateComponent {
     ) {
 
     }
+    /**
+     * Chama as funções quando a página é ativada
+     */
     ngOnInit(): void {
         this.listBrand();
         this.listFuel();
         this.val();
         this.year();
     }
+    /**
+     * Vai buscar o valor do parametro do URL
+     */
     val() {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.regis = params['vehicle'];
         });
     }
-
+    /**
+     * Lista Marcas
+     */
     listBrand() {
         this._vehicle.listBrand().subscribe(
             brands => this.brands = brands,
             error => console.log("Impossível carregar lista de marcas")
         );
     }
+    /**
+     * Lista modelos
+     * @param id 
+     */
     listModel(id: number) {
         this._vehicle.listModel(id).subscribe(
             models => this.models = models,
@@ -117,17 +129,30 @@ export class VehicleCreateComponent {
     ys = [];
     ms = [];
     ds = [];
+    /**
+     * Verifica se o modelo foi selecionado
+     */
     modelsel() {
         this.bmodel = true;
     }
+    /**
+     * Verifica se o modelo foi selecionado
+     */
     fuelsel() {
         this.bfuel = true;
     }
+    /**
+     * Adiciona os ultimos 100 anos
+     */
     year() {
         for (var i = 0; i < 100; i++) {
             this.ys[i] = this.dyear - i;
         }
     }
+    /**
+     * Vai buscar o mês através do ano
+     * @param year 
+     */
     month(year: number) {
         this.syear = year;
         this.ms = [];
@@ -144,6 +169,10 @@ export class VehicleCreateComponent {
         this.ms = this.ms.filter(function (entry) { return /\S/.test(entry); });
         this.byear = true;
     }
+    /**
+     * Vai buscar os dias do ano através do mes
+     * @param month 
+     */
     day(month: number) {
         this.smonth = month;
         this.ds = [];
@@ -197,6 +226,10 @@ export class VehicleCreateComponent {
         this.ds = this.ds.filter(function (entry) { return /\S/.test(entry); });
         this.bmouth = true;
     }
+    /**
+     * Verifica a data
+     * @param day 
+     */
     dateday(day: number){
         this.sday = day;
         this.bday = true;

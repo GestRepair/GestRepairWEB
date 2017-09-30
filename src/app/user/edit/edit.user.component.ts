@@ -66,10 +66,16 @@ export class UserEditComponent {
             this.nifVal = false;
         }
     }
+    /**
+     * Mostra os Dados quando a página é iniciada
+     */
     ngOnInit(): void {
         this.info();
-        
+
     }
+    /**
+     * Detalhes
+     */
     info() {
         this._UserService.info(JSON.parse(localStorage.getItem('currentUser')).idUser).subscribe(
             data => {
@@ -88,6 +94,10 @@ export class UserEditComponent {
                 console.log(error);
             });
     }
+    /**
+     * Novo Model para o Update
+     * @param model 
+     */
     update(model: User) {
         model.name = this.ename;
         model.street = this.estreet;
@@ -98,27 +108,59 @@ export class UserEditComponent {
         model.nif = this.enif;
         return model;
     }
+    /**
+     * Novo nome
+     * @param name 
+     */
     updateName(name: string) {
         this.ename = name;
     }
+    /**
+     * Nova rua
+     * @param stre 
+     */
     updateStreet(stre: string) {
         this.estreet = stre;
     }
+    /**
+     * Novo Código Postal
+     * @param zip 
+     */
     updateZip(zip: string) {
         this.ezipcode = zip;
     }
+    /**
+     * Nova Cidade
+     * @param city
+     */
     updateCity(city: string) {
         this.ecity = city;
     }
+    /**
+     * Novo e-mail
+     * @param email 
+     */
     updateEmail(email: string) {
         this.eemail = email;
     }
+    /**
+     * Novo Contacto
+     * @param cont 
+     */
     updateContact(cont: string) {
         this.econtact = cont;
     }
+    /**
+     * Novo Nif
+     * @param nif 
+     */
     updateNIF(nif: string) {
         this.enif = nif;
     }
+    /**
+     * Ao alterar a informação verifico o nif
+     * @param event
+     */
     private onChange(event) {
         let newValue = event.target.value;
         this.validarNIF(newValue);
@@ -126,17 +168,19 @@ export class UserEditComponent {
     // sign up when the form is valid
     edit(isValid: boolean) {
         // check if model is valid
-        let myContainer = <HTMLElement>document.querySelector("#notif");
-        this._UserService.edit(this.update(this.user), JSON.parse(localStorage.getItem('currentUser')).idUser).subscribe(
-            data => {
-                this.data = data
-                myContainer.innerHTML = '<div class="alert alert-success"><strong>Alteração do registo</strong> efectuada com sucesso</div>';
-                this.nrouter.navigate(['home']);
-            },
-            error => {
-                myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-            }
-        );
-        setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+        if (isValid || this.nifVal == true || this.tam == true) {
+            let myContainer = <HTMLElement>document.querySelector("#notif");
+            this._UserService.edit(this.update(this.user), JSON.parse(localStorage.getItem('currentUser')).idUser).subscribe(
+                data => {
+                    this.data = data
+                    myContainer.innerHTML = '<div class="alert alert-success"><strong>Alteração do registo</strong> efectuada com sucesso</div>';
+                    this.nrouter.navigate(['home']);
+                },
+                error => {
+                    myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                }
+            );
+            setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+        }
     }
 }

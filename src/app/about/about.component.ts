@@ -7,7 +7,9 @@ declare var $;
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-
+/**
+ * Página de informação sobre o produto
+ */
 export class AboutComponent {
   title = 'Sobre Nós';
   photo = API.url+API.port+"/service/img/";

@@ -1,4 +1,7 @@
-﻿export interface Schedule{
+﻿/**
+ * Modelo de marcação
+ */
+export interface Schedule{
 	idService:number;
 	service:number;
 	vehicle:number;

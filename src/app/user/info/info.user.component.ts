@@ -24,10 +24,16 @@ export class UserInfoComponent {
         private router: ActivatedRoute,
 		private nrouter: Router
     ) { }
-
+    /**
+     * Ativa funções quando é iniciado
+     */
     ngOnInit(): void {
         this.info(JSON.parse(localStorage.getItem('currentUser')).idUser);
     }
+    /**
+     * Mostra os detalhes
+     * @param id 
+     */
     info(id:number) {
         this.router.params
             .switchMap((params: Params) => this._UserService.info(id))

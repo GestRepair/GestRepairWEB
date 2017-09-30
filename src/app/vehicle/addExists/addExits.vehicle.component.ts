@@ -12,7 +12,9 @@ import { Verify } from '../verify';
     templateUrl: './addExits.vehicle.component.html',
     styleUrls: ['./addExits.vehicle.component.css']
 })
-
+/**
+ * Adiciona a viatura se ela existir
+ */
 export class VehicleAddExistsComponent {
     veh: string;
     title = 'Registar Veículo';
@@ -34,6 +36,9 @@ export class VehicleAddExistsComponent {
             this.regis = params['vehicle'];
         });
     }
+    /**
+     * Faz as várias verificações para adicionar a viatura
+     */
     add() {
         this._vehicle.verify(this.regis).subscribe(
             data => {

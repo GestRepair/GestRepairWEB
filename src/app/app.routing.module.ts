@@ -25,7 +25,9 @@ import { VehicleVerifyComponent } from "app/vehicle/verify/verify.vehicle.compon
 import { VehicleExistsComponent } from "app/vehicle/exists/exists.vehicle.component";
 import { VehicleAddExistsComponent } from "app/vehicle/addExists/addExits.vehicle.component";
 import { VehicleDisableComponent } from "app/vehicle/disable/disable.vehicle.component";
-
+/**
+ * Aqui é definida as rotas
+ */
 const routes: Routes = [
 	{ path: 'home', redirectTo: '', pathMatch: 'full' },
 	{ path: 'budget/list', redirectTo: 'budget', pathMatch: 'full' },

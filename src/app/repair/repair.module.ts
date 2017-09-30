@@ -7,7 +7,9 @@ import { RouterModule } from '@angular/router';
 import { RepairListComponent } from "app/repair/list/list.repair.component";
 //service
 import { RepairService } from "app/repair/repair.service";
-
+/**
+ * Aqui é declarado os compunentes e serviços
+ */
 @NgModule({
     declarations: [
         RepairListComponent

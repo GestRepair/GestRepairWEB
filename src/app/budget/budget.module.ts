@@ -7,7 +7,9 @@ import { RouterModule } from '@angular/router';
 import { BudgetListComponent } from "app/budget/list/list.budget.component";
 //service
 import { BudgetService } from "app/budget/budget.service";
-
+/**
+ * Declaração de componentes e serviços associados aos orçamentos
+ */
 @NgModule({
     declarations: [
         BudgetListComponent

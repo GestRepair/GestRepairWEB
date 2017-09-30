@@ -16,7 +16,7 @@ export class BudgetService {
 
     headers: Headers;
     options: RequestOptions;
-    apiUrl = API.url+API.port;  // URL to web api
+    apiUrl = API.url + API.port;  // URL to web api
 
     constructor(private _http: Http) {
         this.headers = new Headers();
@@ -24,19 +24,31 @@ export class BudgetService {
         this.headers.append("Authorization", "Basic " + btoa(JSON.parse(localStorage.getItem('currentUser')).username + ":" + JSON.parse(localStorage.getItem('currentUser')).password));
         this.options = new RequestOptions({ headers: this.headers });
     }
-    
-    info(id:number, budget:number): Observable<Budget> {
+    /**
+     * Faz um pedido à API para obter a informação do orçamento
+     * @param id 
+     * @param budget 
+     */
+    info(id: number, budget: number): Observable<Budget> {
         return this._http
-            .get(this.apiUrl + `/budget/`+ id+'/'+budget, this.options)
+            .get(this.apiUrl + `/budget/` + id + '/' + budget, this.options)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
-    aproved(id:number, data:number): Observable<Budget> {
-        return this._http.put(this.apiUrl + '/budget/'+ id+'/aprove/', JSON.stringify({state:data}), this.options)
+    /**
+     * Aprova ou não aprova os orçamentos
+     * @param id 
+     * @param data 
+     */
+    aproved(id: number, data: number): Observable<Budget> {
+        return this._http.put(this.apiUrl + '/budget/' + id + '/aprove/', JSON.stringify({ state: data }), this.options)
             .map((res: Response) => res.json().data)
             .catch(this.handleError);
     }
-    
+    /**
+     * Faz um pedido à api para mostrar a listagem de orçamentos por orçamento
+     * @param id 
+     */
     list(id: number): Observable<Budget[]> {
         return this._http
             .get(this.apiUrl + '/budget/' + id, this.options)

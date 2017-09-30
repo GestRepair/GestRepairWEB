@@ -15,7 +15,9 @@ import { UserRecoveryEmailComponent } from "app/user/recoveryemail/recovery.emai
 //service
 import { UserService } from "app/user/user.service";
 
-
+/**
+ * Aqui é declarado os serviços e os components
+ */
 @NgModule({
     declarations: [
         UserActivateComponent,

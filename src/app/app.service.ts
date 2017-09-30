@@ -24,7 +24,11 @@ export class AppService {
         // set token if saved in local storage      
         this.apiURL = API.url+API.port;
     }
-
+    /**
+     * Aqui é é onde se faz o pedido de autenticação
+     * @param username 
+     * @param password 
+     */
     auth(username: string, password:string): Observable<boolean>{
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');

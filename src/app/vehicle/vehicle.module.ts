@@ -13,7 +13,9 @@ import { VehicleDisableComponent } from "app/vehicle/disable/disable.vehicle.com
 //service
 import { VehicleService } from "app/vehicle/vehicle.service";
 
-
+/**
+ * Aqui é declarado os components e os services
+ */
 
 @NgModule({
     declarations: [

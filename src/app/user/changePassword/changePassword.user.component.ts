@@ -26,6 +26,9 @@ export class UserChangePassComponent {
         private route: ActivatedRoute,
         private nrouter: Router,
         private _User: UserService) { }
+    /**
+     * Verifica se a pass é igual á actual
+     */
     verifequal() {
         if (this.old == JSON.parse(localStorage.getItem('currentUser')).password) {
             this.bold = true;
@@ -34,6 +37,9 @@ export class UserChangePassComponent {
         };
         this.on = 1;
     }
+    /**
+     * Verifica se a antiga é diferente da nova e se a nova é igual à confirmação
+     */
     verifypass() {
         if (this.old != this.new) {
             this.bnou = true;
@@ -48,6 +54,10 @@ export class UserChangePassComponent {
         this.non = 1;
         this.verif = (this.bold == true) ? ((this.bnou == true) ? ((this.bncf == true) ? true : false) : false) : false;
     }
+    /**
+     * Altera a password
+     * @param isValid 
+     */
     changePassword(isValid: boolean) {
         if (isValid) {
             let myContainer = <HTMLElement>document.querySelector("#notif");

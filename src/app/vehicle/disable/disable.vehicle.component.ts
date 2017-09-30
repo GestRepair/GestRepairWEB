@@ -16,10 +16,13 @@ export class VehicleDisableComponent {
         private _vehicle: VehicleService,
         private router: ActivatedRoute,
         private nrouter: Router
-    ) {  }
+    ) { }
     ngOnInit() {
 
     }
+    /**
+     * Aqui é chamada função pelo dono da viatura para desassociar a propria viatura
+     */
     disable() {
         this.router.params
             .switchMap((params: Params) => this._vehicle.dis(+params['id']))

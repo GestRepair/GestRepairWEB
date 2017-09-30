@@ -8,7 +8,9 @@ import { ServiceInfoComponent } from 'app/service/info/info.service.component';
 //service
 import { ServiceService } from "app/service/service.service";
 
-
+/**
+ * Aqui é declarados os components e services
+ */
 @NgModule({
     declarations: [
         ServiceInfoComponent,

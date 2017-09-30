@@ -25,7 +25,11 @@ export class VehicleVerifyComponent {
         private router: Router) { }
     ngOnInit(): void {
     }
-    // sign up when the form is valid
+    /**
+     * 
+     * @param isValid Verifica se a viatura existe no sistema
+     */
+    // verify when the form is valid
     verify(isValid: boolean) {
         // check if model is valid
         if (isValid) {

@@ -20,6 +20,9 @@ export class ScheduleDisableComponent {
     ngOnInit() {
 
     }
+    /**
+     * Função que desabilita orçamento
+     */
     public disable() {
         this.router.params
             .switchMap((params: Params) => this._schedule.disable(+params['id']))

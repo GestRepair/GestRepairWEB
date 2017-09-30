@@ -29,7 +29,11 @@ export class ScheduleListComponent {
 	ngOnInit(): void {
 		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 	}
-	getList(id:number) {
+	/**
+	 * Mostra a lista de agendamentos
+	 * @param id 
+	 */
+	getList(id: number) {
 		this._schedule.list(id).subscribe(
 			vehicles => this.schedules = vehicles,
 			error => console.log("Impossível carregar lista de agendamentos")

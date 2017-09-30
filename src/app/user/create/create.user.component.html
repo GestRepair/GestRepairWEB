@@ -201,12 +201,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="contact" class="col-md-3 control-label">Telemóvel <small>(opcional)</small></label>
+                  <label for="contact" class="col-md-3 control-label">Telemóvel <small>(obrigatório)</small></label>
                   <div class="col-md-9">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" #contact="ngModel" [(ngModel)]="f.contact" name="contact" id="tfSigninUserPhone"
-                        placeholder="Introduz o teu número de telemóvel" pattern="[0-9]" />
+                        placeholder="Introduz o teu número de telemóvel" pattern="[0-9]{9}" required/>
                       <div class="has-error" *ngIf="contact.invalid && contact.touched">
                         <span *ngIf="contact.invalid && contact.touched" class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
@@ -227,7 +227,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
                       <input type="text" class="form-control" #nif="ngModel" [(ngModel)]="f.nif" name="nif" id="tfSignUpUserPhone" placeholder="Introduza o seu NIF"
-                        (change)="onChange($event)" pattern="[0-9]" required/>
+                        (change)="onChange($event)" pattern="[0-9]{9}" required/>
                       <div class="has-error" *ngIf="nif.touched && nifVal==false  && i==1">
                         <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
                       </div>
@@ -247,7 +247,7 @@
                 <div class="form-group">
                   <div class="col-md-4"></div>
                   <div class="col-md-8">
-                    <button id="tfSignUpUserRegister" type="submit" class="btn btn-default" [disabled]="!f.form.valid && (nifVal == false && tam == false) || tam == false || eq == false ">Registar</button>
+                    <button id="tfSignUpUserRegister" type="submit" class="btn btn-default" [disabled]="!f.form.valid || nifVal == false || tam == false || eq == false ">Registar</button>
                   </div>
                 </div>
               </div>

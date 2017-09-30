@@ -1,3 +1,6 @@
+/**
+ * Modelo para o utilizador
+ */
 export interface User {
     idUser:String;
     name: string;

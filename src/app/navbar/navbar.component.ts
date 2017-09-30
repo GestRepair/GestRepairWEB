@@ -11,9 +11,9 @@ declare var $;
 })
 export class NavbarComponent {
   title = 'app';
-  
+
   services: Service[];
-  
+
   private username: string;
   private password: string;
   private idUser: number;
@@ -22,13 +22,19 @@ export class NavbarComponent {
   private loading = false;
   private error = false;
   private autenticated = false;
-  
+
 
   constructor(private _httpService: AppService, private _serviceService: ServiceService, private router: Router) { }
+  /**
+   * Classe que é inicializada automáticamente
+   */
   ngOnInit() {
     this.serv();
     this.autologin();
   }
+  /**
+   * Inicia os serviços
+   */
   serv() {
     this._serviceService.list().subscribe(
       services => this.services = services,
@@ -38,7 +44,9 @@ export class NavbarComponent {
       }
     );
   }
-  
+  /**
+   * Caso já exista dados efectua o login
+   */
   autologin() {
     if (JSON.parse(localStorage.getItem('currentUser'))) {
       this.loading = true;
@@ -54,9 +62,12 @@ export class NavbarComponent {
           this.loading = false;
         }
       );
-      this.load();
+
     }
   }
+  /**
+   * Efectua o login
+   */
   login() {
     let myContainer = <HTMLElement>document.querySelector("#notif");
     this.loading = true;
@@ -76,16 +87,11 @@ export class NavbarComponent {
       }
     );
     setTimeout(() => { myContainer.innerHTML = '' }, 3000);
-    this.load();
+
   }
-  load() {
-    this.nameRole = "";
-    var user_data = JSON.parse(localStorage.getItem('currentUser'));
-    if (user_data != null) {
-      this.nameRole = user_data.nameRole;
-    }
-    // this.login.getRole();
-  }
+  /**
+   * Termina a sessão
+   */
   logout() {
     this._httpService.logout();
     this.autenticated = false;
@@ -94,6 +100,5 @@ export class NavbarComponent {
     myContainer.innerHTML = '<div class="alert alert-warning"><strong>Logout</strong> Efectuado com Sucesso</div>';
     setTimeout(() => { myContainer.innerHTML = '' }, 3000)
     this.router.navigate(['home']);
-    this.load();
   }
 }

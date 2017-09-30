@@ -11,7 +11,9 @@ import { Budget } from '../budget';
 	styleUrls: ['./list.budget.component.css'],
 	providers: [BudgetService]
 })
-
+/**
+ * Listagem de orçamentos do utilizador
+ */
 export class BudgetListComponent {
 
 	title = 'Histórico de Orçamentos';
@@ -30,18 +32,26 @@ export class BudgetListComponent {
 	ngOnInit(): void {
 		this.getList(JSON.parse(localStorage.getItem('currentUser')).idUser);
 	}
-	getList(id:number) {
+	/**
+	 * Mostra a lista de orçamento
+	 * @param id
+	 */
+	getList(id: number) {
 		this._Repair.list(id).subscribe(
 			budget => this.budgets = budget,
 			error => console.log("Impossível carregar lista de Reparações")
 		);
 	}
-	aproved(idBudget:number){
+	/**
+	 * Função que aprova os orçamentos
+	 * @param idBudget 
+	 */
+	aproved(idBudget: number) {
 		let myContainer = <HTMLElement>document.querySelector("#notif");
-		this._Repair.aproved(idBudget,3).subscribe(
+		this._Repair.aproved(idBudget, 3).subscribe(
 			budget => {
 				myContainer.innerHTML = '<div class="alert alert-success">O seu <strong>orçamento foi</strong> aprovado</div>';
-                this.nrouter.navigate(['home']);
+				this.nrouter.navigate(['home']);
 			},
 			error => {
 				myContainer.innerHTML = '<div class="alert alert-warning"><strong>ERRO</strong> UPS... Algo correu mal</div>';
@@ -49,12 +59,16 @@ export class BudgetListComponent {
 		);
 		setTimeout(() => { myContainer.innerHTML = '' }, 3000)
 	}
-	notaproved(idBudget:number){
+	/**
+	 * Função que não aprova os orçamentos
+	 * @param idBudget 
+	 */
+	notaproved(idBudget: number) {
 		let myContainer = <HTMLElement>document.querySelector("#notif");
-		this._Repair.aproved(idBudget,4).subscribe(
+		this._Repair.aproved(idBudget, 4).subscribe(
 			budget => {
 				myContainer.innerHTML = '<div class="alert alert-danger">O seu <strong>orçamento não foi</strong> aprovado</div>';
-                this.nrouter.navigate(['home']);
+				this.nrouter.navigate(['home']);
 			},
 			error => {
 				myContainer.innerHTML = '<div class="alert alert-warning"><strong>ERRO</strong> UPS... Algo correu mal</div>';
@@ -62,5 +76,5 @@ export class BudgetListComponent {
 		);
 		setTimeout(() => { myContainer.innerHTML = '' }, 3000)
 	}
-	
+
 }

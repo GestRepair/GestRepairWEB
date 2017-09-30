@@ -19,7 +19,9 @@ import { ServiceModule } from "app/service/service.module";
 import { UserModule } from "app/user/user.module";
 import { VehicleModule } from "app/vehicle/vehicle.module";
 
-
+/**
+ * Aqui é declarado os serviços, components e outros modules já declarados anteriormente
+ */
 @NgModule({
   declarations: [
     AppComponent,

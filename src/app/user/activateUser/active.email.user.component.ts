@@ -27,7 +27,9 @@ export class UserActiveEmailComponent {
         private nrouter: Router
         ,private _User: UserService) {
     }
-
+    /**
+     * Activa a função para ativar a conta
+     */
     activate() {
         this.route.params
         .switchMap((params: Params) => this._User.active(params['email'],params['token']))

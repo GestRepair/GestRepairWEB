@@ -25,6 +25,9 @@ export class ServiceInfoComponent {
 	ngOnInit(): void {
 		this.info();
 	}
+	/**
+	 * Informação dos serviços
+	 */
 	info() {
 		this.router.params
 			.switchMap((params: Params) => this._serviceService.info(+params['id']))

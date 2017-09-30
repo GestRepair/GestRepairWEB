@@ -1,3 +1,6 @@
+/**
+ * Modelo da autenticação
+ */
 export interface Auth {
     username: string;
     password: string;

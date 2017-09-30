@@ -1,4 +1,7 @@
-﻿export interface Vehicle {
+﻿/**
+ * Cria um modelo para listar os detalhes das viaturas
+ */
+export interface Vehicle {
 	idVehicle: number;
 	registration: string;
 	nameBrand: string;
