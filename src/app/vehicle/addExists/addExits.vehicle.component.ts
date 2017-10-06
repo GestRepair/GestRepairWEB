@@ -65,21 +65,43 @@ export class VehicleAddExistsComponent {
                                     }
                                 );
                             } else {
-                                this._vehicle.up(this.regis).subscribe(
-                                    nata => {
-                                        this.vehicles = nata;
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-success">Viatura adicionada com sucesso</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
-                                        setTimeout(() => { this.router.navigate(['home']); }, 500)
-                                    },
-                                    error => {
-                                        let myContainer = <HTMLElement>document.querySelector("#notif");
-                                        myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
-                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                                this._vehicle.nuowner(this.regis, JSON.parse(localStorage.getItem('currentUser')).idUser).subscribe(
+                                    n => {
+                                        this.vehicles = n;
+                                        if (n.data.bool == 0) {
+                                            this._vehicle.owner(this.regis).subscribe(
+                                                no => {
+                                                    this.vehicles = no;
+                                                    if (no.data.bool == 0) {
+                                                        this._vehicle.up(this.regis).subscribe(
+                                                            nata => {
+                                                                this.vehicles = nata;
+                                                                let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                                myContainer.innerHTML = '<div class="alert alert-success">Viatura adicionada com sucesso</div>';
+                                                                setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+                                                                setTimeout(() => { this.router.navigate(['home']); }, 500)
+                                                            },
+                                                            error => {
+                                                                let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                                myContainer.innerHTML = '<div class="alert alert-danger">' + error + '</div>';
+                                                                setTimeout(() => { myContainer.innerHTML = '' }, 3000)
+                                                            }
+                                                        );
+                                                    } else {
+                                                        let myContainer = <HTMLElement>document.querySelector("#notif");
+                                                        myContainer.innerHTML = '<div class="alert alert-success">Viatura está associada a outro cliente</div>';
+                                                        setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+                                                    }
+                                                }
+                                            )
+                                        } else {
+                                            let myContainer = <HTMLElement>document.querySelector("#notif");
+                                            myContainer.innerHTML = '<div class="alert alert-success">Viatura está associada a outro cliente</div>';
+                                            setTimeout(() => { myContainer.innerHTML = '' }, 3000);
+                                        }
                                     }
-                                );
-                            };
+                                )
+                            }
                         }
                     );
                 }

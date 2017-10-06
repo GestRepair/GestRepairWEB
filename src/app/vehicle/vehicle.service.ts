@@ -95,6 +95,11 @@ export class VehicleService {
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
+    nuowner(data: string, id:number) {
+        return this._http.post(this.apiUrl + '/vehicle/exists/user/'+id, JSON.stringify({ vehicle: data }), this.options)
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
     /**
      * Mostra os detalhes da viatura
      * @param id 
