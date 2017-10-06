@@ -3,23 +3,19 @@
     <div class="col-md-1 header" style="vertical-align: middle; text-align: center;">
       <img routerLink="/" routerLinkActive="active-link" src="../assets/logo.png" height="100px" alt="">
     </div>
-    <div class="col-md-2">
+    <div class="col-md-5">
       <h1 style="vertical-align: middle;">GestRepair</h1>
       <H4 style="vertical-align: middle;">Projeto Final</H4>
     </div>
-    <div class="col-md-3">
-    </div>
     <div class="col-md-6">
       <div class="row">
-        <div class="col-md-3">
-          <img src="assets/google-play-badge.png" style="height:90px" class="img" alt="">
-        </div>
-        <div class="col-md-6">
-          <h3>Faça já download da Aplicação</h3>
+        <div class="col-md-4">
+          <h3>Faça download da Aplicação</h3>
         </div>
         <div class="col-md-3">
-          <a href="https://play.google.com/store/apps/details?id=ipt.gestrepair&hl=pt_PT&rdid=ipt.gestrepair"><img src="assets/logodown.png"  style="height:100px" class="img shadow"
-            alt=""></a>
+          <a href="https://play.google.com/store/apps/details?id=ipt.gestrepair&hl=pt_PT&rdid=ipt.gestrepair">
+            <img src="assets/google-play-badge.png" style="height:100px" class="img shadow" alt="">
+          </a>
         </div>
       </div>
     </div>
@@ -29,75 +25,111 @@
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
       aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
   </div>
   <div class="collapse navbar-collapse js-navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li><a routerLink="/" routerLinkActive="active-link">Home</a></li>
-      <li><a routerLink="/about" routerLinkActive="active-link">Sobre nós</a></li>
+      <li>
+        <a routerLink="/" routerLinkActive="active-link">Home</a>
+      </li>
+      <li>
+        <a routerLink="/about" routerLinkActive="active-link">Sobre nós</a>
+      </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviço<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviço
+          <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu">
-          <li *ngFor=" let service of services"><a [routerLink]="['/service', service?.idService]">{{service?.nameService}}</a></li>
+          <li *ngFor=" let service of services">
+            <a [routerLink]="['/service', service?.idService]">{{service?.nameService}}</a>
+          </li>
         </ul>
       </li>
       <li *ngIf="autenticated" class="dropdown dropdown-large">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cliente
+          <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu dropdown-menu-large row">
           <li class="col-md-4">
             <ul>
               <li class="dropdown-header">Viaturas</li>
-              <li><a routerLink="vehicle">Lista de Viaturas</a></li>
-              <li><a routerLink="vehicle/verify">Registar Viatura</a></li>
+              <li>
+                <a routerLink="vehicle">Lista de Viaturas</a>
+              </li>
+              <li>
+                <a routerLink="vehicle/verify">Registar Viatura</a>
+              </li>
             </ul>
           </li>
           <li class="col-md-4">
             <ul>
               <li class="dropdown-header">Marcações</li>
-              <li><a routerLink="schedule/create">Agendar Serviço</a></li>
-              <li><a routerLink="schedule">Ver Agendamentos</a></li>
+              <li>
+                <a routerLink="schedule/create">Agendar Serviço</a>
+              </li>
+              <li>
+                <a routerLink="schedule">Ver Agendamentos</a>
+              </li>
             </ul>
           </li>
           <li class="col-md-4">
             <ul>
               <li class="dropdown-header">Reparações</li>
-              <li><a routerLink="repair">Ver Reparações</a></li>
+              <li>
+                <a routerLink="repair">Ver Reparações</a>
+              </li>
               <li class="dropdown-header">Orçamentos</li>
-              <li><a routerLink="budget">Ver Orçamentos</a></li>
+              <li>
+                <a routerLink="budget">Ver Orçamentos</a>
+              </li>
             </ul>
           </li>
         </ul>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" *ngIf="!autenticated">
-      <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
-      <li><a routerLink="user/create" routerLinkActive="active-link">Registar</a></li>
+      <li>
+        <a data-toggle="modal" data-target="#myModal">Login</a>
+      </li>
+      <li>
+        <a routerLink="user/create" routerLinkActive="active-link">Registar</a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" *ngIf="autenticated">
       <li class="dropdown dropdown-large ">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>Bem-vindo </strong>{{name}}<span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <strong>Bem-vindo </strong>{{name}}
+          <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu dropdown-menu-large row">
           <li class="col-md-6">
             <ul>
               <li class="dropdown-header">Perfil</li>
-              <li><a routerLink="user/edit" routerLinkActive="active-link">Editar Utilizador </a></li>
-              <li><a routerLink="user/info" routerLinkActive="active-link">Ver Perfil </a></li>
+              <li>
+                <a routerLink="user/edit" routerLinkActive="active-link">Editar Utilizador </a>
+              </li>
+              <li>
+                <a routerLink="user/info" routerLinkActive="active-link">Ver Perfil </a>
+              </li>
             </ul>
           </li>
           <li class="col-md-6">
             <ul>
               <li class="dropdown-header">Password</li>
-              <li><a routerLink="user/changepass" routerLinkActive="active-link">Alterar Password </a></li>
+              <li>
+                <a routerLink="user/changepass" routerLinkActive="active-link">Alterar Password </a>
+              </li>
             </ul>
           </li>
         </ul>
       </li>
       <li>
-        <a id="btUserLogout" (click)="logout()"><span class="glyphicon glyphicon-user"></span> Logout </a>
+        <a id="btUserLogout" (click)="logout()">
+          <span class="glyphicon glyphicon-user"></span> Logout </a>
       </li>
     </ul>
   </div>
@@ -115,7 +147,9 @@
         <form class="form" role="form" class="navbar-form" method="post" action="login" accept-charset="UTF-8" id="login">
           <div class="row">
             <div class="form-group input-group col-md-12">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+              </span>
               <input type="text" class="form-control" id="tfLogUsername" placeholder="Username" [(ngModel)]="username" name="username"
                 required>
             </div>
@@ -123,7 +157,9 @@
           <br>
           <div class="row">
             <div class="form-group input-group col-md-12">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-lock"></i>
+              </span>
               <input type="password" class="form-control" id="tfLogUserPass" placeholder="Password" [(ngModel)]="password" name="password"
                 required>
             </div>
