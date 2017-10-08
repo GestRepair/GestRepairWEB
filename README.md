@@ -17,6 +17,6 @@ The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairDB
 The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairAPPAndroid)
 
 ## USED
-Frontend - http://ec2-52-56-143-158.eu-west-2.compute.amazonaws.com
-API - http://ec2-52-56-143-158.eu-west-2.compute.amazonaws.com:8080
+Frontend - http://gestrepair.ddns.net
+API - http://gestrepair.ddns.net:8080
 
