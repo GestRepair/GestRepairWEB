@@ -1,22 +1,24 @@
-## GestRepair Frontend Angular
-Repository with the Web Frontend code 
+## GestRepair Web
 
 ## API
 The API can be found [here](https://github.com/GestRepair/GestRepairAPI)
 
-## Frontend Desktop Java
-The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairBackOffice)
+## Backoffice
+The Backoffice can be found [here](https://github.com/GestRepair/GestRepairBackOffice)
 
-## Frontend Web Angular
-The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairWeb)
+## Web
+The Web can be found [here](https://github.com/GestRepair/GestRepairWeb)
 
 ## Database
-The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairDB)
+The Database can be found [here](https://github.com/GestRepair/GestRepairDB)
 
 ## APP Android
-The Frontend JAVA can be found [here](https://github.com/GestRepair/GestRepairAPPAndroid)
+The APP Android can be found [here](https://github.com/GestRepair/GestRepairAPPAndroid)
 
-## USED
-Frontend - http://gestrepair.ddns.net
-API - http://gestrepair.ddns.net:8080
+## Docs
+The Docs can be found [here](https://github.com/GestRepair/GestRepairDocs)
 
+## API
+http://gestrepair.ddns.net:8080
+
+### [Access Web Site](http://gestrepair.ddns.net)
